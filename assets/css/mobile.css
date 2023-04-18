@@ -1,0 +1,464 @@
+@media screen and (max-width: 600px) {
+
+    .profa img {
+        width: 120px;
+        height: 120px;
+    }
+
+    #bloco1 {
+        padding: 10px;
+    }
+
+    #bloco1,
+    #bloco2,
+    #bloco3,
+    #bloco4 {
+        max-width: 350px;
+    }
+
+    .menu-hamburguer ul {
+        margin-top: 43px;
+    }
+
+    #botao {
+        width: 120px;
+        height: 28.33px;
+        background-size: 100%;
+    }
+
+    .topo {
+        width: 100%;
+        height: 55px;
+    }
+
+    .topointerior {
+        width: 100%;
+    }
+
+    .logotopo {
+        margin-left: 7px;
+        margin-top: 2px;
+        width: 64px;
+    }
+
+    .menu li {
+        font-size: 12px;
+        float: right;
+    }
+
+    .menu {
+        line-height: 40px;
+        width: 240px;
+    }
+
+    .container,
+    .container2,
+    .container3 {
+        max-width: 500px;
+        width: 100%;
+        margin-top: auto;
+        display: block;
+        text-align: center;
+        margin: auto;
+
+    }
+
+    fieldset {
+        background-color: rgba(200, 200, 200, 0.3);
+
+    }
+
+    legend {
+        background-color: rgba(17, 15, 15, 0.3);
+        color: white;
+        border: 1px solid white;
+    }
+
+    .inputuser {
+        border-bottom: 1px solid white;
+    }
+
+    .mural {
+        font-size: 14px;
+    }
+
+    .imgRowBelow {
+        left: 20px;
+    }
+
+    #feminino,
+    #masculino {
+        position: absolute;
+        display: flex;
+        margin-left: 100px;
+    }
+
+    #insta {
+        margin-right: 15px;
+    }
+
+    #whats {
+        margin-left: 15px;
+    }
+
+    #flexgrow {
+        width: 100%;
+    }
+
+    .rodape2 {
+        font-size: 14px;
+
+    }
+
+    .rodape {
+        position: fixed;
+    }
+
+    .box4 {
+        height: fit-content;
+    }
+
+    .box31 {
+        width: 49%;
+    }
+
+    .box32 {
+        float: right;
+    }
+
+    .box,
+    .box1,
+    .box2,
+    .box3,
+    .box4 {
+        padding: 0;
+        margin: 0 auto;
+        width: 100%;
+        float: none;
+        display: inline-block;
+        margin-bottom: 20px;
+        color: black;
+    }
+
+    #sangue {
+        border: none;
+        padding: 5px;
+        padding: 8px;
+        border-radius: 10px;
+        outline: none;
+        width: 120px;
+        margin-left: 10px;
+    }
+
+    #grau1,
+    #grau2,
+    #civil1,
+    #civil2 {
+        border: none;
+        padding: 5px;
+        padding: 8px;
+        border-radius: 10px;
+        outline: none;
+        margin-left: 10px;
+    }
+
+    .titulo {
+        color: white;
+
+    }
+
+    #nome,
+    #mae,
+    #pai,
+    #rua1,
+    #rua2,
+    #rua,
+    #bairro,
+    #bairro1,
+    #bairro2,
+    #complemento,
+    #vacinas,
+    #doencas,
+    #saude,
+    #medicamento,
+    #alimento,
+    #alergia,
+    #complemento1,
+    #complemento2,
+    #email1,
+    #email2 {
+        width: 300px;
+    }
+
+    fieldset {
+        font-size: 3px;
+        width: 320px;
+    }
+
+    .inputbox {
+        width: 50%;
+        margin-bottom: 12px;
+        margin-left: 12px;
+    }
+
+    #medico,
+    #naturalidade1,
+    #naturalidade2 {
+        width: 250px;
+    }
+
+    .div1 {
+        width: 100vw;
+        background: none;
+        margin-left: 0;
+        margin-top: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+        border-radius: 0;
+        padding: 0;
+        max-width: none;
+    }
+
+    .conteudo {
+        background: none;
+        color: black;
+        width: 100vw;
+        max-width: none;
+        margin: auto;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .sobretext {
+        width: 90%;
+        margin-left: 3%;
+
+    }
+
+    .conteudo-sobre {
+        color: black;
+        width: 100%;
+        max-width: none;
+        margin: auto;
+        padding: 0;
+        display: inline-block;
+        background-color: white;
+    }
+
+    .full {
+        width: 97vw;
+    }
+
+
+
+    .mySlides {
+
+        margin: auto;
+        width: 50%;
+    }
+
+    .album {
+        width: 80%;
+        justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        max-width: 300px;
+        text-align: center;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .w3-button {
+        border: none;
+        padding: 8px 16px;
+        vertical-align: middle;
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        background-color: inherit;
+        text-align: center;
+        white-space: nowrap;
+        color: #FFD700;
+    }
+
+    .w3-display-container {
+        position: relative;
+
+    }
+
+    .w3-display-left {
+        position: absolute;
+        top: 50%;
+        left: -4%;
+        transform: translate(0%, -50%);
+        -ms-transform: translate(-0%, -50%);
+    }
+
+    .w3-display-right {
+        position: absolute;
+        top: 50%;
+        right: -4%;
+        transform: translate(0%, -50%);
+        -ms-transform: translate(0%, -50%);
+
+    }
+
+    .btns button {
+        font-size: small;
+        padding: 5px;
+    }
+
+
+    .modal,
+    .modal2 {
+        height: 130vw;
+        width: 93%;
+    }
+
+    .modalSucess {
+        width: 350px;
+        height: 570px;
+    }
+
+    .gallery-items {
+        width: 40%;
+        height: 50%;
+    }
+
+    .gallery-items2 {
+        width: 40%;
+        height: 50%;
+    }
+
+    #data_nascimento,
+    #data_nascimento1,
+    #data_nascimento2 {
+        border: none;
+        padding: 5px;
+        width: 135px;
+    }
+
+    .container-map {
+        width: 80%;
+        align-items: center;
+        margin-top: 20px;
+        display: flex;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        margin: auto;
+    }
+
+    .map {
+        height: 260px;
+    }
+
+
+    .wid {
+        width: 20%;
+    }
+
+    .owl-nav .owl-prev,
+    .owl-nav .owl-next {
+        opacity: 0.3;
+    }
+
+    .slid {
+        width: 100%;
+        margin: auto;
+        text-align: center;
+        justify-content: center;
+        margin-top: 50px;
+    }
+
+    .waves {
+        min-height: 40px;
+        max-height: 70px;
+    }
+
+    .main-footer {
+        margin-top: 30px;
+    }
+
+    #prof2,
+    #prof4 {
+        margin-left: 0%;
+    }
+
+    a:-webkit-any-link {
+        cursor: none;
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+    #prof1,
+    #prof3 {
+        margin-right: 5%;
+    }
+
+}
+
+@media screen and (max-width: 360px) {
+
+
+    #bloco1,
+    #bloco2,
+    #bloco3,
+    #bloco4 {
+        max-width: 250px;
+    }
+
+    .container-map {
+        width: 85%;
+    }
+
+    .telalogin {
+        padding: 40px;
+    }
+
+    .inputlogin {
+        padding: 10px;
+        border: none;
+        outline: none;
+    }
+
+    .loginbtn {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .telalogin {
+        padding: 30px;
+    }
+
+    .inputlogin {
+        padding: 7px;
+        border: none;
+        outline: none;
+    }
+
+    .loginbtn {
+        padding: 7px;
+    }
+
+    .sobretext {
+        font-size: 14px;
+    }
+
+    .sobre1 {
+        width: 90%;
+    }
+
+    #prof1,
+    #prof2,
+    #prof3,
+    #prof4 {
+        margin-left: 0%;
+        margin-right: 0;
+    }
+}
