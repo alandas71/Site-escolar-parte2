@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Insere a nova turma na tabela "turmas"
         $sql = "INSERT INTO turmas (turma, turno) VALUES ('$turma', '$turno')";
         if (mysqli_query($conn, $sql)) {
-            header('Location: dashboard.php?view=turma');
+            header('Location: dashboard.php?view=criar_turmas');
         } else {
             echo "Erro ao criar nova turma: " . mysqli_error($conn);
         }
@@ -45,7 +45,7 @@ if (isset($_GET['id']) && $_GET['action'] == 'excluir') {
     // Exclui a turma da tabela "turmas"
     $sql = "DELETE FROM turmas WHERE id = $id_turma";
     if (mysqli_query($conn, $sql)) {
-        header('Location: dashboard.php?view=turma');
+        header('Location: dashboard.php?view=criar_turmas');
     } else {
         echo "Erro ao excluir turma: " . mysqli_error($conn);
     }
@@ -55,12 +55,13 @@ if (isset($_GET['id']) && $_GET['action'] == 'excluir') {
 }
 
 // Exibe o formulário HTML para criar novas turmas
-echo '<form method="POST" action="relacao_turmas.php">';
+echo '<form method="POST" action="config_turmas.php">';
 echo '<label for="turma">Nome da turma:</label>';
 echo '<input type="text" id="turma" name="turma" required>';
 echo '<br><br>';
 echo '<label for="turno">Turno:</label>';
-echo '<select id="turno" name="turno">';
+echo '<select id="turno" name="turno" required>';
+echo '<option selected disabled value="">Selecione</option>';
 echo '<option value="Matutino">Matutino</option>';
 echo '<option value="Vespertino">Vespertino</option>';
 echo '</select>';
@@ -105,7 +106,7 @@ if (mysqli_num_rows($result) > 0) {
         echo "<td>" . $row["id"] . "</td>";
         echo "<td>" . $row["turma"] . "</td>";
         echo "<td>" . $row["turno"] . "</td>";
-        echo "<td><a href='dashboard.php?view=turma&delete=" . $row["id"] . "'>Excluir</a></td>";
+        echo "<td><a href='dashboard.php?view=criar_turmas&delete=" . $row["id"] . "'>Excluir</a></td>";
         echo "</tr>";
     }
     echo "</table>";
