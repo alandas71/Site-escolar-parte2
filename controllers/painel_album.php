@@ -44,12 +44,15 @@ include_once('configImages.php');
                 <?php while ($row_album = $result_album->fetch(PDO::FETCH_ASSOC)) {
                     list("id_album" => $id_album) = $row_album;
                     $id_album = strtolower(str_replace(" ", "", $id_album));
+                    ini_set('upload_max_filesize', '100M');
+                    ini_set('post_max_size', '100M');
                     echo "<option value='$id_album'>$id_album</option>";
                 } ?>
             </select>
-            <input type="file" name="nova_foto">
-            <input type="submit" value="Adicionar foto">
+            <input type="file" name="nova_foto[]" multiple>
+            <button type="submit">Enviar</button>
         </form>
+
         <br>
         <h1 class="title">Excluir álbum</h1>
         <?php
@@ -72,12 +75,43 @@ include_once('configImages.php');
             <input type="submit" value="Excluir álbum">
         </form>
         <br>
-        <h1 class="title">Todas as fotos</h1>
+        <h1 class="title">Excluir fotos</h1>
         <div class="delete">
-            <?php
-            include('delete_fotos.php');
-            ?>
+            <form method="post" action="delete_all_photos_album.php">
+                <select id="album" name="id_album" required>
+                    <option selected disabled value="">Escolha um álbum</option>
+                    <?php
+                    // Conexão com o banco de dados
+                    $dbHost = 'localhost';
+                    $dbUserName = 'root';
+                    $dbPassword = '';
+                    $dbName = 'banco-dados';
+                    $conn = mysqli_connect($dbHost, $dbUserName, $dbPassword, $dbName);
+
+                    // Consulta para obter todos os álbuns
+                    $sql = "SELECT id_album FROM albuns";
+                    $result = mysqli_query($conn, $sql);
+
+                    // Loop através dos resultados e criar opções para o menu suspenso
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $id_album = $row['id_album'];
+                        echo "<option value='$id_album'>$id_album</option>";
+                    }
+
+                    // Fechar a conexão com o banco de dados
+                    mysqli_close($conn);
+                    ?>
+                </select>
+                <input type="submit" value="Excluir fotos">
+            </form>
+            <br>
+            <div class="delete">
+                <?php
+                include('delete_fotos.php');
+                ?>
+            </div>
         </div>
+
     </div>
 </body>
 

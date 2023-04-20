@@ -18,9 +18,9 @@ if (!$result) {
 
 // exibir os resultados em uma tabela HTML
 echo "<table style='box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5); width: 95%;'>";
+echo    '<thead><tr><th>Nome</th><th>Turma</th><th>E-mail</th><th>Senha</th></tr></thead>';
 while ($row = $result->fetch_assoc()) {
-    echo    '<thead><tr><th>Nome</th><th>E-mail</th><th>Senha</th></tr></thead>';
-    echo    "<tbody><tr><td>" . $row['nome'] . "</td><td>" . $row["email"] . "</td><td>" . $row["senha"] . "</td></tr></tbody>";
+    echo    "<tbody><tr><td>" . $row['nome'] . "</td><td>" . $row['turma'] . "</td><td>" . $row["email"] . "</td><td>" . $row["senha"] . "</td></tr></tbody>";
 }
 echo '</table>';
 

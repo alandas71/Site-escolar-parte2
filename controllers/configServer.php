@@ -5,7 +5,7 @@ $dbUsername = 'root';
 $dbPassword = '';
 $dbName = 'banco-dados';
 
-$conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+$conn = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
 
 //$conn = new PDO("mysql:host=$dbHost;dbname=" . $dbName, $dbUsername, $dbPassword);
 

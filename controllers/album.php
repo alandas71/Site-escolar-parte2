@@ -14,6 +14,7 @@ include_once('configImages.php');
     <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <script src="../assets/js/album.js" defer></script>
+    <script src="../assets/js/zoom_image.js" defer></script>
 </head>
 
 <body>
@@ -72,7 +73,6 @@ include_once('configImages.php');
             $result_album = $conn->prepare($query_album);
             $result_album->execute();
 
-            $quantidade_album = $result_album->rowCount();
             ?>
             <div class="gallery-container2">
                 <?php
@@ -84,60 +84,49 @@ include_once('configImages.php');
                     echo "<p class='title'>$id_album</p>";
                     echo "<img onclick=\"openModal('.$id_album')\" src='../assets/images/album/$capa' class='gallery-items2' alt='album'>";
                     echo "</div>";
-                };
-                ?>
-            </div>
 
-            <?php
-            $query_album = "SELECT id, capa, id_album FROM albuns WHERE situacao = 1";
-            $result_album = $conn->prepare($query_album);
-            $result_album->execute();
+                    echo "<div class='$id_album modal-container'>";
+                    echo " <div class='btns'>";
+                    echo "<button class='btnClose btns' onclick=\"closeModal('.$id_album')\">Fechar</button>";
+                    echo "</div>";
 
-            while ($row_album = $result_album->fetch(PDO::FETCH_ASSOC)) {
-                extract($row_album);
-                $id_album = str_replace(" ", "", $id_album);
-                $id_album = strtolower($id_album);
-
-                echo "<div class='$id_album modal-container' onclick=\"closeModal('.$id_album')\")'>";
-                echo " <div class='btns'>";
-                echo "<button class='btnClose btns' onclick=\"closeModal('.$id_album')\">Fechar</button>";
-                echo "</div>";
-
-                $query_foto = "SELECT id, foto, id_album FROM fotos WHERE situacao = 1 AND id_album = :id_album";
-                $result_foto = $conn->prepare($query_foto);
-                $result_foto->bindValue(':id_album', $id_album, PDO::PARAM_STR);
-                $result_foto->execute();
-
-                while ($row_foto = $result_foto->fetch(PDO::FETCH_ASSOC)) {
-                    extract($row_foto);
+                    $query_foto = "SELECT id, foto, id_album FROM fotos WHERE situacao = 1 AND id_album = :id_album";
+                    $result_foto = $conn->prepare($query_foto);
+                    $result_foto->bindValue(':id_album', $id_album, PDO::PARAM_STR);
+                    $result_foto->execute();
 
                     echo "<div class='modal'>";
                     echo "<span>";
                     echo "<main>";
                     echo "<div class='gallery-container'>";
-                    echo "<img class='gallery-items' src='../assets/images/album/fotos/$foto' alt='$id_album'>";
+
+                    while ($row_foto = $result_foto->fetch(PDO::FETCH_ASSOC)) {
+                        extract($row_foto);
+                        echo "<img class='gallery-items' src='../assets/images/album/fotos/$foto' alt='$id_album'>";
+                    }
+
                     echo "</div>";
                     echo "</main>";
                     echo "</span>";
                     echo "</div>";
+                    echo "</div>";
                 }
-                echo "</div>";
-            }
-            ?>
-        </div>
 
-        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-            <defs>
-                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-            </defs>
-            <g class="parallax">
-                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
-                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
-                <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
-            </g>
-        </svg>
-    </div>
+                ?>
+            </div>
+
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                </g>
+            </svg>
+        </div>
 </body>
 
 </html>

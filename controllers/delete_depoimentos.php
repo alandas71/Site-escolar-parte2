@@ -24,11 +24,15 @@ if (isset($_POST['excluir_depoimentos'])) {
     $diretorio = "../assets/images/depoimentos/";
     $caminho_arquivo = $diretorio . $nome_arquivo;
     unlink($caminho_arquivo);
+    header("location: dashboard.php?view=site");
+    exit();
 } elseif (isset($_POST['alterar-situacao_depoimentos'])) {
     $id = $_POST['id'];
     $situacao = $_POST['situacao'] == 1 ? 2 : 1;
     $sql = "UPDATE depoimentos SET situacao = $situacao WHERE id = $id";
     mysqli_query($conn, $sql);
+    header("location: dashboard.php?view=site");
+    exit();
 }
 
 // Consulta as imagens no banco de dados
@@ -38,7 +42,7 @@ $resultado = mysqli_query($conn, $sql);
 while ($row = mysqli_fetch_assoc($resultado)) {
     echo '<div>';
     echo '<img style="height: 200px; width: 250px;" src="../assets/images/depoimentos/' . $row['depoimento'] . '">';
-    echo '<form method="post" action="">';
+    echo '<form method="post" action="delete_depoimentos.php">';
     echo '<input type="hidden" name="id" value="' . $row['id'] . '">';
     echo '<input type="hidden" name="situacao" value="' . $row['situacao'] . '">';
     echo '<button type="submit" name="alterar-situacao_depoimentos">' . (($row['situacao'] == 1) ? 'Desativar' : 'Ativar') . '</button>';

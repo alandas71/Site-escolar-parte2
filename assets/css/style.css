@@ -642,9 +642,6 @@ legend {
     cursor: pointer;
 }
 
-
-
-
 .gallery-container,
 .gallery-container {
     margin-top: 30px;
@@ -656,12 +653,13 @@ legend {
 }
 
 .gallery-items {
-    width: 340px;
-    height: 340px;
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
     border: 10px solid #FFF;
     box-shadow: 5px 5px 5px #0006;
     flex-grow: 1;
-    transition: transform .5s linear;
+    transition: transform .2s;
 }
 
 .gallery-items img {
@@ -817,6 +815,7 @@ span {
 .gallery-items2 {
     width: 340px;
     height: 340px;
+    cursor: pointer;
     border: 7px solid #FFD700;
     border-radius: 10px;
     box-shadow: 5px 5px 5px #0006;
@@ -1078,9 +1077,11 @@ span {
 
 .delete {
     height: 200px;
-    width: 80vw;
+    max-width: 80vw;
     display: flex;
     gap: 10px;
+
+    flex-wrap: wrap;
 }
 
 .delete img {
@@ -1112,6 +1113,26 @@ span {
     z-index: 1;
 }
 
+.sidebar ul li a {
+    display: block;
+    text-decoration: none;
+    display: flex;
+}
+
+.sidebar ul li a i {
+    display: inline-block;
+    font-size: 20px;
+}
+
+.sidebar ul li a.hide-text {
+    font-size: 0;
+}
+
+.sidebar-menu li a p {
+    display: block;
+    margin: 0;
+}
+
 .topo_dashboard {
     position: fixed;
     top: 0;
@@ -1123,15 +1144,15 @@ span {
 }
 
 .view {
-
     position: relative;
     top: 49px;
     left: 300px;
     width: calc(100% - 300px);
-    height: calc(100% - 49px);
     background-color: #f2f2f2;
     padding: 20px;
     z-index: 0;
+    overflow: auto;
+    height: auto;
 }
 
 .sidebar-menu {
@@ -1199,4 +1220,51 @@ tr:hover {
 th {
     background-color: #133d6d;
     color: white;
+}
+
+.hide-sidebar {
+    left: 0;
+}
+
+.hide-sidebar i {
+    z-index: 999;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    font-size: 40px;
+}
+
+#checkbox-sidebar {
+    z-index: 1000;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+}
+
+.zoomed {
+    transform: scale(1.8);
+    z-index: 9999;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    overflow-x: auto;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+tbody {
+    overflow-y: auto;
+    max-height: 500px;
+    /* altura máxima da área visível */
+}
+
+#situacao_aluno {
+    color: #16d70b;
 }

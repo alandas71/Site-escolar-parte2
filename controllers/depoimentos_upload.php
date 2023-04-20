@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
         }
     }
     // Redireciona o usuário para a página de painel
-    header('Location: painel.php');
+    header('Location: dashboard.php?view=site');
     exit();
 
     // Fecha a conexão com o banco de dados

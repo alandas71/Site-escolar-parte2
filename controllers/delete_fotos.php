@@ -24,11 +24,13 @@ if (isset($_POST['excluir_fotos'])) {
     $diretorio = "../assets/images/album/fotos/";
     $caminho_arquivo = $diretorio . $nome_arquivo;
     unlink($caminho_arquivo);
+    header("location: dashboard.php?view=album");
 } elseif (isset($_POST['alterar-situacao_fotos'])) {
     $id = $_POST['id'];
     $situacao = $_POST['situacao'] == 1 ? 2 : 1;
     $sql = "UPDATE fotos SET situacao = $situacao WHERE id = $id";
     mysqli_query($conn, $sql);
+    header("location: dashboard.php?view=album");
 }
 
 // Consulta as imagens no banco de dados
@@ -38,7 +40,7 @@ $resultado = mysqli_query($conn, $sql);
 while ($row = mysqli_fetch_assoc($resultado)) {
     echo '<div>';
     echo '<img style="height: 100px; width: 100px;" src="../assets/images/album/fotos/' . $row['foto'] . '">';
-    echo '<form method="post" action="">';
+    echo '<form method="post" action="delete_fotos.php">';
     echo '<input type="hidden" name="id" value="' . $row['id'] . '">';
     echo '<input type="hidden" name="situacao" value="' . $row['situacao'] . '">';
     echo '<button style=" font-size:10px;" type="submit" name="alterar-situacao_fotos">' . (($row['situacao'] == 1) ? 'Desativar' : 'Ativar') . '</button>';

@@ -88,43 +88,55 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                         <li>
                             <a href="dashboard.php?view=dashboard" id="menu-dashboard">
                                 <i class="fas fa-tachometer-alt"></i>
-                                DASHBOARD
+                                <p>DASHBOARD</p>
                             </a>
                         </li>
                         <li>
                             <a href="dashboard.php?view=estudantes">
                                 <i class="fas fa-users" id="menu-estudantes"></i>
-                                ESTUDANTES
-                            </a>
-                        </li>
-                        <li>
-                            <a href="dashboard.php?view=assuntos">
-                                <i class="fas fa-book" id="menu-assuntos"></i>
-                                ASSUNTOS
-                            </a>
-                        </li>
-                        <li>
-                            <a href="dashboard.php?view=notas">
-                                <i class="fas fa-clipboard-list" id="menu-notas"></i>
-                                NOTAS
+                                <p>ESTUDANTES</p>
                             </a>
                         </li>
                         <li>
                             <a href="dashboard.php?view=professores">
                                 <i class="fas fa-chalkboard-teacher" id="menu-professores"></i>
-                                PROFESSORES
+                                <p>PROFESSORES</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard.php?view=turma">
+                                <i class="fas fa-door-open" id="menu-mtr"></i>
+                                <p>TURMAS</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard.php?view=assuntos">
+                                <i class="fas fa-book" id="menu-assuntos"></i>
+                                <p>SUPORTE</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard.php?view=notas">
+                                <i class="fas fa-clipboard-list" id="menu-notas"></i>
+                                <p>NOTAS</p>
                             </a>
                         </li>
                         <li>
                             <a href="dashboard.php?view=album">
                                 <i class="fas fa-door-open" id="menu-album"></i>
-                                ÁLBUM
+                                <p>EDITAR ÁLBUM</p>
                             </a>
                         </li>
                         <li>
                             <a href="dashboard.php?view=site">
                                 <i class="fas fa-door-open" id="menu-site"></i>
-                                EDITAR SITE
+                                <p>EDITAR SITE</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard.php?view=matricula">
+                                <i class="fas fa-door-open" id="menu-mtr"></i>
+                                <p>PRÉ-MATRICULAS</p>
                             </a>
                         </li>
                     </ul>
@@ -137,11 +149,23 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                             case "estudantes":
                                 include('relacao_alunos.php');
                                 break;
+                            case "professores":
+                                include('relacao_professores.php');
+                                break;
+                            case "turma":
+                                include('relacao_turmas.php');
+                                break;
+                            case "notas":
+                                include('tabela_notas.php');
+                                break;
                             case "album":
                                 include('painel_album.php');
                                 break;
                             case "site":
                                 include('painel.php');
+                                break;
+                            case "matricula":
+                                include('print_matricula.php');
                                 break;
                         }
                     }
