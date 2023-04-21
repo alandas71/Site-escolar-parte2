@@ -72,9 +72,11 @@ while ($row_turma2 = $result_turma2->fetch_assoc()) {
 }
 echo '</table>';
 
-// liberar os resultados da turma2 e fechar a conexão
+// liberar os resultados da turma2
 $result_turma2->free();
 $mysqli->close();
+
+include('add_aluno.php');
 
 echo '<script>'; // selecionar todas as tags <span> com a classe "senha"
 echo "var spansSenha = document.querySelectorAll('.senha');";

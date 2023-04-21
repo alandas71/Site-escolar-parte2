@@ -56,7 +56,7 @@ echo '<select name="turma">';
 echo '<option selected disabled value="">Selecione</option>';
 
 // Consulta a tabela turmas para obter os valores da coluna "turma"
-$sql = "SELECT turma FROM turmas";
+$sql = "SELECT DISTINCT turma FROM turmas";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {

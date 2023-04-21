@@ -76,6 +76,8 @@ echo '</table>';
 $result_turma2->free();
 $mysqli->close();
 
+include('add_prof.php');
+
 echo '<script>'; // selecionar todas as tags <span> com a classe "senha"
 echo "var spansSenha = document.querySelectorAll('.senha');";
 
