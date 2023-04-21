@@ -1268,3 +1268,63 @@ tbody {
 #situacao_aluno {
     color: #16d70b;
 }
+
+.container-count {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 100vh;
+
+}
+
+.container-count>div {
+    position: relative;
+    height: 150px;
+    width: 200px;
+    box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+}
+
+.container-count>div:not(:last-child) {
+    margin-right: 10px;
+}
+
+.container-count>div:not(:first-child) {
+    margin-left: 10px;
+}
+
+.top-left,
+.top-right,
+.bottom-left,
+.bottom-right {
+    height: 50vh;
+    width: 50vw;
+    background-color: whitesmoke;
+}
+
+.dsh-count {
+    color: black;
+    font-weight: bold;
+    font-size: 40px;
+    position: absolute;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.count-title {
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
+
+.container-grafico {
+    float: left;
+}
+
+.senha {
+    cursor: pointer;
+    color: red;
+}

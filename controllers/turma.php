@@ -1,79 +1,20 @@
-<?php
-// Conexão com o banco de dados
-include('configServer.php');
+<!DOCTYPE html>
+<html lang="pt-br">
 
-// Verifica se a conexão foi estabelecida corretamente
-if (!$conn) {
-    die("Conexão falhou: " . mysqli_connect_error());
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARCO-ÍRIS</title>
+</head>
 
-// Se o formulário foi submetido, insere as informações na tabela users
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nome = $_POST["nome"];
-    $turma = $_POST["turma"];
-    $turno = $_POST["turno"];
+<body>
+    <div>
+        <?php include('config_turmas.php'); ?>
+    </div>
+    <br>
+    <div>
+        <?php include('criar_turmas.php'); ?>
+    </div>
+</body>
 
-    if ($turno == "Matutino") {
-        $turma_coluna = "turma1";
-    } elseif ($turno == "Vespertino") {
-        $turma_coluna = "turma2";
-    } else {
-        // Tratar erro caso o valor selecionado para turno seja inválido
-        die("Valor inválido para turno.");
-    }
-
-    $sql = "UPDATE users SET $turma_coluna='$turma' WHERE nome='$nome'";
-
-    if (mysqli_query($conn, $sql)) {
-        header("location: dashboard.php?view=turma");
-    } else {
-        echo "Erro ao atualizar registro: " . mysqli_error($conn);
-    }
-}
-
-echo '<form method="post" action="turma.php">';
-echo 'Nome:';
-echo '<select name="nome">';
-echo '<option selected disabled value="">Selecione</option>';
-
-// Consulta a tabela users para obter os valores únicos da coluna "nome"
-$sql = "SELECT DISTINCT nome FROM users";
-$result = mysqli_query($conn, $sql);
-
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo "<option value='" . $row["nome"] . "'>" . $row["nome"] . "</option>";
-    }
-} else {
-    echo "Não foram encontrados registros na tabela users.";
-}
-
-echo '</select><br>';
-echo 'Turma:';
-echo '<select name="turma">';
-echo '<option selected disabled value="">Selecione</option>';
-
-// Consulta a tabela turmas para obter os valores da coluna "turma"
-$sql = "SELECT turma FROM turmas";
-$result = mysqli_query($conn, $sql);
-
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo "<option value='" . $row["turma"] . "'>" . $row["turma"] . "</option>";
-    }
-} else {
-    echo "Não foram encontrados registros na tabela turmas.";
-}
-
-echo '</select><br>';
-echo 'Turno:';
-echo '<select name="turno">';
-echo '<option selected disabled value="">Selecione</option>';
-echo '<option value="Matutino">Matutino</option>';
-echo '<option value="Vespertino">Vespertino</option>';
-echo '</select><br>';
-echo '<input type="submit" value="Atualizar">';
-echo '</form>';
-
-// Fecha a conexão com o banco de dados
-mysqli_close($conn);
+</html>

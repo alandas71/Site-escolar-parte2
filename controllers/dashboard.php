@@ -110,21 +110,9 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                             </a>
                         </li>
                         <li>
-                            <a href="dashboard.php?view=notas">
-                                <i class="fas fa-clipboard-list" id="menu-notas"></i>
-                                <p>NOTAS</p>
-                            </a>
-                        </li>
-                        <li>
                             <a href="dashboard.php?view=turma">
                                 <i class="fas fa-door-open" id="menu-turma"></i>
-                                <p>ATRIBUIR TURMAS</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="dashboard.php?view=criar_turmas">
-                                <i class="fas fa-door-open" id="menu-confturma"></i>
-                                <p>CRIAR TURMAS</p>
+                                <p>TURMAS</p>
                             </a>
                         </li>
                         <li>
@@ -152,20 +140,17 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                     if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["view"])) {
                         $view = $_GET["view"];
                         switch ($view) {
+                            case "dashboard":
+                                include('dashboard_items.php');
+                                break;
                             case "estudantes":
                                 include('relacao_alunos.php');
                                 break;
                             case "professores":
                                 include('relacao_professores.php');
                                 break;
-                            case "criar_turmas":
-                                include('config_turmas.php');
-                                break;
                             case "turma":
                                 include('turma.php');
-                                break;
-                            case "notas":
-                                include('tabela_notas.php');
                                 break;
                             case "album":
                                 include('painel_album.php');
