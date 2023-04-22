@@ -1,4 +1,6 @@
 <?php
+include('criar_vagas.php');
+echo "<br>";
 // Conecte-se ao banco de dados
 $dbHost = 'localhost';
 $dbUsername = 'root';
@@ -23,6 +25,7 @@ echo "<thead>";
 echo "<tr>";
 echo "<th>Situação</th>";
 echo "<th>Turma</th>";
+echo "<th>Turno</th>";
 echo "<th>Nome</th>";
 echo "<th>Rua</th>";
 echo "<th>Endereço</th>";
@@ -107,6 +110,7 @@ if ($result->num_rows > 0) {
             echo "<td><a href='add_user.php?email=$email&nome=$nome'>Cadastrar</a></td>";
         }
         echo "<td>" . $row['turma'] . "</td>";
+        echo "<td>" . $row['turno'] . "</td>";
         echo "<td>" . $row['nome'] . "</td>";
         echo "<td>" . $row['rua'] . "</td>";
         echo "<td>" . $row['endereco'] . "</td>";

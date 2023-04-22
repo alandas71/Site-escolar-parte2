@@ -82,8 +82,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
             <div class="wrapper">
                 <div class="sidebar">
                     <h1>Centro Educar Arco-íris</h1>
-                    <div class="sidebar-header">
-                    </div>
+                    <div class="sidebar-header"></div>
                     <ul class="sidebar-menu">
                         <li>
                             <a href="dashboard.php?view=dashboard" id="menu-dashboard">
@@ -93,48 +92,49 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                         </li>
                         <li>
                             <a href="dashboard.php?view=estudantes">
-                                <i class="fas fa-users" id="menu-estudantes"></i>
+                                <i class="fas fa-users"></i>
                                 <p>ESTUDANTES</p>
                             </a>
                         </li>
                         <li>
                             <a href="dashboard.php?view=professores">
-                                <i class="fas fa-chalkboard-teacher" id="menu-professores"></i>
+                                <i class="fas fa-chalkboard-teacher"></i>
                                 <p>PROFESSORES</p>
                             </a>
                         </li>
                         <li>
                             <a href="dashboard.php?view=assuntos">
-                                <i class="fas fa-book" id="menu-assuntos"></i>
+                                <i class="fas fa-book"></i>
                                 <p>SUPORTE</p>
                             </a>
                         </li>
                         <li>
                             <a href="dashboard.php?view=turma">
-                                <i class="fas fa-door-open" id="menu-turma"></i>
+                                <i class="fas fa-door-open"></i>
                                 <p>TURMAS</p>
                             </a>
                         </li>
                         <li>
                             <a href="dashboard.php?view=album">
-                                <i class="fas fa-door-open" id="menu-album"></i>
+                                <i class="fas fa-images"></i>
                                 <p>EDITAR ÁLBUM</p>
                             </a>
                         </li>
                         <li>
                             <a href="dashboard.php?view=site">
-                                <i class="fas fa-door-open" id="menu-site"></i>
+                                <i class="fas fa-globe"></i>
                                 <p>EDITAR SITE</p>
                             </a>
                         </li>
                         <li>
                             <a href="dashboard.php?view=matricula">
-                                <i class="fas fa-door-open" id="menu-mtr"></i>
+                                <i class="fas fa-clipboard"></i>
                                 <p>PRÉ-MATRICULAS</p>
                             </a>
                         </li>
                     </ul>
                 </div>
+
                 <div class="view">
                     <?php
                     if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["view"])) {

@@ -107,7 +107,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "<table>";
     echo "<tr><th>ID</th><th>Turma</th><th>Turno</th><th>Vagas</th><th>Ações</th></tr>";
     // Consulta para contar valores repetidos em 'turma1'
-    $sql_quantidade_turma1 = "SELECT turma1, COUNT(*) as quantidade FROM users GROUP BY turma1";
+    $sql_quantidade_turma1 = "SELECT turma1, COUNT(*) as quantidade FROM users WHERE tipo = 'aluno' GROUP BY turma1";
     $result_quantidade_turma1 = mysqli_query($conn, $sql_quantidade_turma1);
     $quantidades_turma1 = array();
     if (mysqli_num_rows($result_quantidade_turma1) > 0) {
@@ -117,7 +117,7 @@ if (mysqli_num_rows($result) > 0) {
     }
 
     // Consulta para contar valores repetidos em 'turma2'
-    $sql_quantidade_turma2 = "SELECT turma2, COUNT(*) as quantidade FROM users GROUP BY turma2";
+    $sql_quantidade_turma2 = "SELECT turma2, COUNT(*) as quantidade FROM users WHERE tipo = 'aluno' GROUP BY turma2";
     $result_quantidade_turma2 = mysqli_query($conn, $sql_quantidade_turma2);
     $quantidades_turma2 = array();
     if (mysqli_num_rows($result_quantidade_turma2) > 0) {
@@ -135,11 +135,11 @@ if (mysqli_num_rows($result) > 0) {
         echo "<td>" . $row["turma"] . "</td>";
         echo "<td>" . $row["turno"] . "</td>";
         if ($row["turno"] == 'Matutino') {
-            echo "<td>" . ($quantidade_turma1 + $quantidade_turma2) . "/" . $row["vagas"] . "</td>";
+            echo "<td>" . $quantidade_turma1 . "/" . $row["vagas"] . "</td>";
         } else {
             echo "<td>" . $quantidade_turma2 . "/" . $row["vagas"] . "</td>";
         }
-        echo "<td><a href='dashboard.php?view=turma&delete=" . $row["id"] . "'>Excluir</a></td>";
+        echo "<td><a href='dashboard.php?view=turma&delete=" . $row["id"] . "'onclick='return confirm(\"Tem certeza de que deseja excluir a turma?\")'>Excluir</a></td>";
         echo "</tr>";
     }
 

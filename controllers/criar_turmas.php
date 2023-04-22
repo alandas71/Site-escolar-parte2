@@ -34,7 +34,7 @@ echo '<h1 class="title">Atribuir turma</h1>';
 echo '<br>';
 echo '<form method="post" action="turma.php">';
 echo 'Nome:';
-echo '<select name="nome">';
+echo '<select name="nome" required>';
 echo '<option selected disabled value="">Selecione</option>';
 
 // Consulta a tabela users para obter os valores únicos da coluna "nome"
@@ -52,7 +52,7 @@ if (mysqli_num_rows($result) > 0) {
 echo '</select><br>';
 echo '<br>';
 echo 'Turma:';
-echo '<select name="turma">';
+echo '<select name="turma" required>';
 echo '<option selected disabled value="">Selecione</option>';
 
 // Consulta a tabela turmas para obter os valores da coluna "turma"
@@ -70,7 +70,7 @@ if (mysqli_num_rows($result) > 0) {
 echo '</select><br>';
 echo '<br>';
 echo 'Turno:';
-echo '<select name="turno">';
+echo '<select name="turno" required>';
 echo '<option selected disabled value="">Selecione</option>';
 echo '<option value="Matutino">Matutino</option>';
 echo '<option value="Vespertino">Vespertino</option>';

@@ -180,16 +180,46 @@ if (isset($_POST['submit'])) {
                 <div class="box">
                     <form action="matricula.php" id="formMatr" class="formMatr" type="post" method="post">
                         <fieldset class=full>
+                            O preenchimento do formulário não garante a matrícula,
+                            para saber sobre disponibilidades de vagas entre em contato pelo nosso
+                            <a href="https://wa.me/557182662374" target="_blank">Whatsapp</a> .
                             <legend><strong>1- Identificação da criança</strong></legend>
                             <br>
                             <div class="titulo"></div><Br>
                             <label for="turma">Turma</label>
                             <select id="turma" name="turma" required>
                                 <option selected disabled value="">Selecione</option>
-                                <option>Grupo 2 e 3</option>
-                                <option>Grupo 4</option>
-                                <option>Grupo 5</option>
-                                <option>Primeiro ano</option>
+                                <?php
+                                // Conectar ao banco de dados
+                                include('configServer.php');
+
+                                // Checar a conexão
+                                if (mysqli_connect_errno()) {
+                                    echo "Falha ao conectar ao MySQL: " . mysqli_connect_error();
+                                    exit();
+                                }
+
+                                // Consultar a tabela 'vagas'
+                                $query = "SELECT vaga FROM vagas";
+                                $result = mysqli_query($conn, $query);
+
+                                // Loop através do resultado da consulta
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo "<option value=\"" . $row['vaga'] . "\">" . $row['vaga'] . "</option>";
+                                }
+
+                                // Liberar o resultado da consulta e fechar a conexão
+                                mysqli_free_result($result);
+                                mysqli_close($conn);
+                                ?>
+                            </select>
+                            <br>
+                            <br>
+                            <label for="turno">Turno</label>
+                            <select id="turno" name="turno" required>
+                                <option selected disabled value="">Selecione</option>
+                                <option>Matutino</option>
+                                <option>Vespertino</option>
                             </select>
                             <br>
                             <br>

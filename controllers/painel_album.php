@@ -72,7 +72,7 @@ include_once('configImages.php');
                     echo "<option value='$id_album_lower'>$id_album</option>";
                 } ?>
             </select>
-            <input type="submit" value="Excluir álbum">
+            <input type="submit" value="Excluir álbum" onclick="return confirm('Tem certeza de que deseja excluir esse album?')">
         </form>
         <br>
         <h1 class="title">Excluir fotos</h1>
@@ -102,7 +102,7 @@ include_once('configImages.php');
                     mysqli_close($conn);
                     ?>
                 </select>
-                <input type="submit" value="Excluir fotos">
+                <input type="submit" value="Excluir fotos" onclick="return confirm('Tem certeza de que deseja excluir todas as fotos desse álbum?')">
             </form>
             <br>
             <div class="delete">
