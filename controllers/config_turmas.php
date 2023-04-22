@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Recebe os valores do formulário
     $turma = $_POST['turma'];
     $turno = $_POST['turno'];
+    $vagas = $_POST['vagas'];
 
     // Verifica se a turma já existe
     $sql = "SELECT * FROM turmas WHERE turma = '$turma' AND turno = '$turno'";
@@ -20,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Essa turma já existe.";
     } else {
         // Insere a nova turma na tabela "turmas"
-        $sql = "INSERT INTO turmas (turma, turno) VALUES ('$turma', '$turno')";
+        $sql = "INSERT INTO turmas (turma, turno, vagas) VALUES ('$turma', '$turno', '$vagas')";
         if (mysqli_query($conn, $sql)) {
             header('Location: dashboard.php?view=turma');
             exit;
@@ -63,6 +64,9 @@ echo '<option value="Matutino">Matutino</option>';
 echo '<option value="Vespertino">Vespertino</option>';
 echo '</select>';
 echo '<br><br>';
+echo '<label for="vagas">Limite de vagas:</label>';
+echo '<input type="number" id="vagas" name="vagas" required>';
+echo '<br><br>';
 echo '<input type="submit" value="Criar turma">';
 echo '</form>';
 
@@ -73,6 +77,10 @@ echo '<h2>Lista de turmas</h2>';
 if (!$conn) {
     die("Conexão falhou: " . mysqli_connect_error());
 }
+
+// Seleciona todas as turmas da tabela "turmas"
+$sql = "SELECT * FROM turmas";
+$result = mysqli_query($conn, $sql);
 
 // Seleciona todas as turmas da tabela "turmas"
 $sql = "SELECT * FROM turmas";
@@ -97,15 +105,44 @@ $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     echo "<table>";
-    echo "<tr><th>ID</th><th>Turma</th><th>Turno</th><th>Ações</th></tr>";
+    echo "<tr><th>ID</th><th>Turma</th><th>Turno</th><th>Vagas</th><th>Ações</th></tr>";
+    // Consulta para contar valores repetidos em 'turma1'
+    $sql_quantidade_turma1 = "SELECT turma1, COUNT(*) as quantidade FROM users GROUP BY turma1";
+    $result_quantidade_turma1 = mysqli_query($conn, $sql_quantidade_turma1);
+    $quantidades_turma1 = array();
+    if (mysqli_num_rows($result_quantidade_turma1) > 0) {
+        while ($row_quantidade_turma1 = mysqli_fetch_assoc($result_quantidade_turma1)) {
+            $quantidades_turma1[$row_quantidade_turma1['turma1']] = $row_quantidade_turma1['quantidade'];
+        }
+    }
+
+    // Consulta para contar valores repetidos em 'turma2'
+    $sql_quantidade_turma2 = "SELECT turma2, COUNT(*) as quantidade FROM users GROUP BY turma2";
+    $result_quantidade_turma2 = mysqli_query($conn, $sql_quantidade_turma2);
+    $quantidades_turma2 = array();
+    if (mysqli_num_rows($result_quantidade_turma2) > 0) {
+        while ($row_quantidade_turma2 = mysqli_fetch_assoc($result_quantidade_turma2)) {
+            $quantidades_turma2[$row_quantidade_turma2['turma2']] = $row_quantidade_turma2['quantidade'];
+        }
+    }
+
+    // Loop while para imprimir as turmas
     while ($row = mysqli_fetch_assoc($result)) {
+        $quantidade_turma1 = isset($quantidades_turma1[$row["turma"]]) ? $quantidades_turma1[$row["turma"]] : 0;
+        $quantidade_turma2 = isset($quantidades_turma2[$row["turma"]]) ? $quantidades_turma2[$row["turma"]] : 0;
         echo "<tr>";
         echo "<td>" . $row["id"] . "</td>";
         echo "<td>" . $row["turma"] . "</td>";
         echo "<td>" . $row["turno"] . "</td>";
+        if ($row["turno"] == 'Matutino') {
+            echo "<td>" . ($quantidade_turma1 + $quantidade_turma2) . "/" . $row["vagas"] . "</td>";
+        } else {
+            echo "<td>" . $quantidade_turma2 . "/" . $row["vagas"] . "</td>";
+        }
         echo "<td><a href='dashboard.php?view=turma&delete=" . $row["id"] . "'>Excluir</a></td>";
         echo "</tr>";
     }
+
     echo "</table>";
 } else {
     echo "Nenhuma turma cadastrada.";

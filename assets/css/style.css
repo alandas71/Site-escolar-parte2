@@ -39,6 +39,10 @@ body {
     margin-top: 2px;
 }
 
+button {
+    cursor: pointer;
+}
+
 .sunLogo {
     width: 80px;
     position: absolute;
