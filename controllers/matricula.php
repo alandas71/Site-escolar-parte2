@@ -1,99 +1,7 @@
 <?php
-
-if (isset($_POST['submit'])) {
-
-    include_once('configServer.php');
-
-    //dados filho
-    $turma =   $_POST['turma'];
-    $nome = $_POST['nome'];
-    $rua = $_POST['rua'];
-    $endereco = $_POST['bairro'];
-    $n = $_POST['n'];
-    $complemento = $_POST['complemento'];
-    $dataNascimento = $_POST['data_nascimento'];
-    $genero = $_POST['genero'];
-    $telefone = $_POST['telefone'];
-
-    //dados mae
-    $mae = $_POST['mae'];
-    $rg1 = $_POST['rg1'];
-    $cpf1 = $_POST['cpf1'];
-    $dataNascimento1 = $_POST['data_nascimento1'];
-    $rua1 = $_POST['rua1'];
-    $bairro1 = $_POST['bairro1'];
-    $n1 = $_POST['n1'];
-    $complemento1 = $_POST['complemento1'];
-    $naturalidade1 = $_POST['naturalidade1'];
-    $grau1 = $_POST['grau1'];
-    $civil1 = $_POST['civil1'];
-    $religiao1 = $_POST['religiao1'];
-    $celular1 = $_POST['celular1'];
-    $telefone1 = $_POST['telefone1'];
-    $email1 = $_POST['email1'];
-
-
-    //dados pai
-    $pai = $_POST['pai'];
-    $rg2 = $_POST['rg2'];
-    $cpf2 = $_POST['cpf2'];
-    $dataNascimento2 = $_POST['data_nascimento2'];
-    $rua2 = $_POST['rua2'];
-    $bairro2 = $_POST['bairro2'];
-    $n2 = $_POST['n2'];
-    $complemento2 = $_POST['complemento2'];
-    $naturalidade2 = $_POST['naturalidade2'];
-    $grau2 =  isset($_POST["grau2"]) && $_POST[“grau1”] != “” ? $_POST[“grau1”] : null;
-    $civil2 =  isset($_POST["civil2"]) && $_POST[“civil2”] != “” ? $_POST[“civil2”] : null;
-    $religiao2 = $_POST['religiao2'];
-    $celular2 = $_POST['celular2'];
-    $telefone2 = $_POST['telefone2'];
-    $email2 = $_POST['email2'];
-
-    //dados adicionais // nao tem 7,11 e 15
-    $p1 = $_POST['1'];
-    $p2 = $_POST['2'];
-    $p3 = $_POST['3'];
-    $p4 = $_POST['4'];
-    $p5 = $_POST['5'];
-    $p6 = $_POST['6'];
-    $sono = $_POST['sono'];
-    $p8 = $_POST['8'];
-    $p9 = $_POST['9'];
-    $p10 = $_POST['10'];
-    $p12 = $_POST['12'];
-    $p13 = $_POST['13'];
-    $p14 = $_POST['14'];
-    $p16 = $_POST['16'];
-
-    $vacinas = $_POST['vacinas'];
-    $doencas = $_POST['doencas'];
-    $saude = $_POST['saude'];
-    $medico = $_POST['medico'];
-    $medicamento = $_POST['medicamento'];
-    $sangue = $_POST['sangue'];
-    $alergia = $_POST['alergia'];
-    $celular3 = $_POST['celular3'];
-    $celular4 = $_POST['celular4'];
-    $autorizados1 = $_POST['autorizados1'];
-    $autorizados2 = $_POST['autorizados2'];
-    $snimg = $_POST['snimg'];
-
-
-
-    $result = mysqli_query($conexao, "INSERT INTO matricula(turma,nome,rua,endereco,n,complemento,dataNascimento,genero,telefone,mae,
- rg1,cpf1,dataNascimento1,rua1,bairro1,n1,complemento1,naturalidade1,grau1,civil1,religiao1,celular1,telefone1,email1,pai,  
- rg2,cpf2,dataNascimento2,rua2,bairro2,n2,complemento2,naturalidade2,grau2,civil2,religiao2,celular2,telefone2,email2,p1,p2,  
- p3,p4,p5,p6,sono,p8,p9,p10,p12,p13,p14,p16,vacinas,doencas,saude,medico,medicamento,sangue,alergia,celular3,celular4,autorizados1,  
- autorizados2,snimg) 
- VALUES ('$turma','$nome','$rua','$endereco','$n','$complemento','$dataNascimento','$genero','$telefone','$mae','$rg1','$cpf1','$dataNascimento1','$rua1','$bairro1',
- '$n1','$complemento1','$naturalidade1','$grau1','$civil1','$religiao1','$celular1','$telefone1','$email1','$pai','$rg2','$cpf2','$dataNascimento2','$rua2',
-'$bairro2','$n2','$complemento2','$naturalidade2','$grau2','$civil2','$religiao2','$celular2','$telefone2','$email2','$p1','$p2','$p3','$p4','$p5','$p6','$sono','$p8','$p9',
-'$p10','$p12','$p13','$p14','$p16','$vacinas','$doencas','$saude','$medico','$medicamento','$sangue','$alergia','$celular3','$celular4','$autorizados1',
-'$autorizados2','$snimg')");
-}
+include('configServer.php');
+include('parametros_matricula.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -180,12 +88,15 @@ if (isset($_POST['submit'])) {
                 <div class="box">
                     <form action="matricula.php" id="formMatr" class="formMatr" type="post" method="post">
                         <fieldset class=full>
-                            O preenchimento do formulário não garante a matrícula,
-                            para saber sobre disponibilidades de vagas entre em contato pelo nosso
-                            <a href="https://wa.me/557182662374" target="_blank">Whatsapp</a> .
+                            <div>O preenchimento do formulário não garante a matrícula,
+                                para saber sobre disponibilidades de vagas entre em contato pelo nosso
+                                <a class="whatsapp-link" href="https://wa.me/557182662374" target="_blank">Whatsapp</a>
+                            </div>
+                            <Br>
+
                             <legend><strong>1- Identificação da criança</strong></legend>
-                            <br>
-                            <div class="titulo"></div><Br>
+                            <hr>
+                            <br><Br>
                             <label for="turma">Turma</label>
                             <select id="turma" name="turma" required>
                                 <option selected disabled value="">Selecione</option>
@@ -224,7 +135,7 @@ if (isset($_POST['submit'])) {
                             <br>
                             <br>
                             <div class="inputbox">
-                                <input type="text" name="nome" id="nome" class="inputuser" minlength="3" maxlength="40" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+$" required>
+                                <input type="text" name="nome" id="nome" class="inputuser" minlength="3" maxlength="40" required>
                                 <label for="nome" class="labelinput">Nome completo</label>
                             </div><br>
                             <div class="inputbox">
@@ -254,7 +165,7 @@ if (isset($_POST['submit'])) {
                                     <label for="masculino">Masculino</label><br><br>
                                     <div class="inputbox">
                                         <input type="tel" name="telefone" id="telefone" minlength="8" maxlength="15" class="inputuser telefone" required>
-                                        <label for="telefone" class="labelinput">Telefone</label>
+                                        <label for="telefone" class="labelinput">Celular</label>
                                     </div><br><br>
                         </fieldset><br>
                 </div>
@@ -265,7 +176,7 @@ if (isset($_POST['submit'])) {
                         <br>
                         <div class="titulo"></div><Br>
                         <div class="inputbox">
-                            <input type="text" name="mae" id="mae" class="inputuser" minlength="3" maxlength="40" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+$" required>
+                            <input type="text" name="mae" id="mae" class="inputuser" minlength="3" maxlength="40" required>
                             <label for="mae" class="labelinput">Nome completo</label>
                         </div><br>
                         <div class="inputbox">
@@ -298,7 +209,7 @@ if (isset($_POST['submit'])) {
                                 <label for="complemento1"></label>
                             </div><br>
                             <div class="inputbox">
-                                <input type="text" name="naturalidade1" id="naturalidade1" class="inputuser" minlength="3" maxlength="15" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
+                                <input type="text" name="naturalidade1" id="naturalidade1" class="inputuser" minlength="3" maxlength="15" required>
                                 <label for="naturalidade1" class="labelinput">Naturalidade</label>
                             </div><br>
                             <label for="grau1">Grau de instrução:</label>
@@ -349,7 +260,7 @@ if (isset($_POST['submit'])) {
                         <legend><strong>3- Identificação do pai</strong></legend>
                         <div class="titulo"></div><Br><br>
                         <div class="inputbox">
-                            <input type="text" name="pai" id="pai" class="inputuser" maxlength="40" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" placeholder="Nome completo">
+                            <input type="text" name="pai" id="pai" class="inputuser" maxlength="40" placeholder="Nome completo">
                             <label for="pai"></label>
                         </div><br>
                         <div class="inputbox">
@@ -382,7 +293,7 @@ if (isset($_POST['submit'])) {
                                 <label for="complemento2"></label>
                             </div><br>
                             <div class="inputbox">
-                                <input type="text" name="naturalidade2" id="naturalidade2" class="inputuser" maxlength="15" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" placeholder="Naturalidade">
+                                <input type="text" name="naturalidade2" id="naturalidade2" class="inputuser" maxlength="15" placeholder="Naturalidade">
                                 <label for="naturalidade2"></label>
                             </div><br>
                             <label for="grau2">Grau de instrução:</label>
@@ -567,43 +478,11 @@ if (isset($_POST['submit'])) {
                     </fieldset>
                 </div>
             </div>
-            <button class="botao" id="submit" name="submit" type="submit" type="button">Enviar</button>
+            <button class="botao" id="submit" name="submit" type="submit" type="button" onclick="return confirm('Enviar o formulário? após o envio entraremos em contato.')">Enviar</button>
             </form>
         </div>
     </div>
-    </div>
-    </div>
-    <div class="containerSucess">
-        <div class="modalSucess">
-            <div class="btnSucess">
-                <button class="btnClose btnSucess" onClick="window.location.reload()">Fechar</button>
-            </div>
-            <p class=sucesstext><b>Pré-matrícula enviada!<b></p>
-            <h1 class="sobretext">Os dados preenchidos serão recolhidos pela diretora para efetuar a matrícula.
-                <br>
-                Para a conclusão, precisamos que o responsável da criança vá até a escola entregar os seguintes documentos:
-                <p><b>*Documentos necessários da criança:</b></p>
-                <ul>
-                    <li>Certidão de nascimento ou RG (cópia);</li>
-                    <li>caderneta de vacinação (cópia);</li>
-                    <li>Cartão do SUS (cópia);</li>
-                    <li>2 fotos 3x4;</li>
-                    <li>Pasta do aluno.</li>
-                </ul>
-                <p><b>*Do responsável financeiro:</b></p>
-                <ul>
-                    <li>RG ou CPF (cópia);</li>
-                    <li>Comprovante de residência (cópia).</li>
-                </ul>
-                <div class="center" style="float:left; margin-top: 10px;" id="whats"><a href="https://wa.me/557182662374" target="_blank"><img src="../assets/images/whats.png" width="30px" height="30px" />
-                    </a></div>
-                <p style="color:red; float:left;"><b>Marque um horário</b></p>
-            </h1>
-        </div>
-    </div>
-
-
-    <svg class="wavesMtr" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+    <svg class=" wavesMtr" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
         <defs>
             <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
         </defs>

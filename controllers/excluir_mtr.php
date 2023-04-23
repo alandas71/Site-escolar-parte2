@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
     // Exclua o registro correspondente no banco de dados
     $sql = "DELETE FROM matricula WHERE id = $id";
     if ($conn->query($sql) === TRUE) {
-        echo "Registro excluído com sucesso";
+        header("location: dashboard.php?view=matricula");
     } else {
         echo "Erro ao excluir registro: " . $conn->error;
     }

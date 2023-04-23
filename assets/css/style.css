@@ -1060,7 +1060,7 @@ span {
 
 .modalSucess {
     width: 500px;
-    height: 500px;
+    height: 200px;
     background-color: #FFF;
     border: #FFD700 solid 2px;
     border-radius: 2px;
@@ -1331,4 +1331,19 @@ tbody {
 .senha {
     cursor: pointer;
     color: red;
+}
+
+.whatsapp-link {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: green;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.whatsapp-link:hover {
+    background-color: darkgreen;
 }
