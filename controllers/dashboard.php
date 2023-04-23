@@ -84,6 +84,8 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                     <h1>Centro Educar Arco-íris</h1>
                     <div class="sidebar-header"></div>
                     <ul class="sidebar-menu">
+                        <hr>
+                        <br>
                         <li>
                             <a href="dashboard.php?view=dashboard" id="menu-dashboard">
                                 <i class="fas fa-tachometer-alt"></i>
@@ -103,15 +105,23 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                             </a>
                         </li>
                         <li>
-                            <a href="dashboard.php?view=assuntos">
-                                <i class="fas fa-book"></i>
-                                <p>SUPORTE</p>
-                            </a>
-                        </li>
-                        <li>
                             <a href="dashboard.php?view=turma">
                                 <i class="fas fa-door-open"></i>
                                 <p>TURMAS</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard.php?view=matricula">
+                                <i class="fas fa-clipboard"></i>
+                                <p>PRÉ-MATRICULAS</p>
+                            </a>
+                        </li>
+                        <hr>
+                        <br>
+                        <li>
+                            <a href="dashboard.php?view=assuntos">
+                                <i class="fas fa-book"></i>
+                                <p>SUPORTE</p>
                             </a>
                         </li>
                         <li>
@@ -124,12 +134,6 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                             <a href="dashboard.php?view=site">
                                 <i class="fas fa-globe"></i>
                                 <p>EDITAR SITE</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="dashboard.php?view=matricula">
-                                <i class="fas fa-clipboard"></i>
-                                <p>PRÉ-MATRICULAS</p>
                             </a>
                         </li>
                     </ul>

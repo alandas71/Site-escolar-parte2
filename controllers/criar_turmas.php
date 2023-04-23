@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Erro ao atualizar registro: " . mysqli_error($conn);
     }
 }
-echo '<h1 class="title">Atribuir turma</h1>';
+echo '<h1 class="title">Trocar de turma</h1>';
 echo '<br>';
 echo '<form method="post" action="turma.php">';
 echo 'Nome:';

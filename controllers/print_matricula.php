@@ -24,6 +24,7 @@ echo "<table>";
 echo "<thead>";
 echo "<tr>";
 echo "<th>Situação</th>";
+echo "<th>Excluir</th>"; // Adiciona uma coluna para exclusão
 echo "<th>Turma</th>";
 echo "<th>Turno</th>";
 echo "<th>Nome</th>";
@@ -99,6 +100,8 @@ if ($result->num_rows > 0) {
         echo "<tr>";
         $email = $row['email1'];
         $nome = $row['nome'];
+        $turma = $row['turma'];
+        $turno = $row['turno'];
         // Verificar se o usuário já existe
         $sql = "SELECT * FROM users WHERE email = '$email'";
         $result2 = $conn->query($sql);
@@ -107,8 +110,9 @@ if ($result->num_rows > 0) {
             echo "<td id='situacao_aluno'>Aluno</td>";
         } else {
             // User does not exist
-            echo "<td><a href='add_user.php?email=$email&nome=$nome'>Cadastrar</a></td>";
+            echo "<td><a href='add_user.php?email=$email&nome=$nome&turma=$turma&turno=$turno'>Cadastrar</a></td>";
         }
+        echo "<td><a href='excluir_mtr.php?id=" . $row['id'] . "' onclick='return confirm(\"Tem certeza de que deseja excluir o pré-registro?\")'>Excluir</a></td>";
         echo "<td>" . $row['turma'] . "</td>";
         echo "<td>" . $row['turno'] . "</td>";
         echo "<td>" . $row['nome'] . "</td>";
