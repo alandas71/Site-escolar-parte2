@@ -1,10 +1,14 @@
 <?php
+if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
+    require("configImages.php");
+
+    $adm  = $_SESSION["usuario"][1];
+    $nome = $_SESSION["usuario"][0];
+} else {
+    echo "<script>window.location = 'login.php'</script>";
+}
 // Conexão com o banco de dados
-$dbHost = 'localhost';
-$dbUserName = 'root';
-$dbPassword = '';
-$dbName = 'banco-dados';
-$conn = mysqli_connect($dbHost, $dbUserName, $dbPassword, $dbName);
+include('configServer.php');
 
 // Verificar se o formulário foi enviado
 if (isset($_POST['id_album'])) {

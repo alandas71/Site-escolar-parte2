@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="..\assets\css\mobile.css" />
     <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="../assets/js/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/login.js"></script>
 </head>
 
 <body>
@@ -71,13 +73,14 @@
     <div class="header">
         <div class="login-container">
             <div class="telalogin">
+                <div id="mensagem"></div>
                 <h1>Login</h1>
-                <form method="POST" action="conexao_login.php">
+                <form id="formularioLogin">
                     <input class=inputlogin name="email" type="email" placeholder="Email" id="email">
                     <br><br>
-                    <input class=inputlogin name="senha" type="password" placeholder="Senha" id="pass">
+                    <input class=inputlogin name="senha" type="password" placeholder="Senha" id="senha">
                     <br><br>
-                    <button class=loginbtn value="entrar" type="submit" id="btnLogin">Entrar</button>
+                    <button class=loginbtn id="btnLogin">Entrar</button>
                 </form>
             </div>
         </div>
@@ -106,5 +109,3 @@
 </body>
 
 </html>
-<script src="../assets/js/jquery-3.6.1.min.js"></script>
-<script src="../assets/js/login.js"></script>

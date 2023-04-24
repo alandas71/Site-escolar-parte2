@@ -1,42 +1,36 @@
-$(document).ready(function () {
-    $("#btnLogin").click(function () {
-        // Somente quando tiver com o laravel instalado localmente na sua maquina.
-        var dados = {
-            email: $("#email").val(),
-            password: $("#pass").val()
-        }
-        $.ajax({
-            url: 'http://localhost:8000/api/centro-educar-arco-iris/auth/login',
-            type: 'POST',
-            data: dados,
-            statusCode: {
-                401: function () {
-                    alert('Não autorizado');
-                },
-                200: function (dados) {
-                    alert('Autorizado');
-                    getDataUser(dados.access_token)
-                }
-            }
-        }).done(function () {
-            alert('Tudo finalizado');
-        });
-    });
+$(function () {
+    $("button#btnLogin").on("click", function (e) {
+        e.preventDefault();
 
-    function getDataUser (token) {
-        $.ajax({
-            url: 'http://localhost:8000/api/centro-educar-arco-iris/auth/me',
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Bearer ' + token);
-            },
-            type: 'POST'
-        }).done(function (data) {
-            dadosLogin = {
-                name: data.name,
-                email: data.email
-            }
-            localStorage.setItem('user', JSON.stringify(dadosLogin));
-            window.location.href = 'https://www.globo.com/';
-        })
-    }
+        var campoEmail = $("form#formularioLogin #email").val();
+        var campoSenha = $("form#formularioLogin #senha").val();
+
+        if (campoEmail.trim() == "" || campoSenha.trim() == "") {
+            $("div#mensagem").html("Preencha todos os campos.");
+        } else {
+            $.ajax({
+                url: "conexao_login.php",
+                type: "POST",
+                data: {
+                    email: campoEmail,
+                    senha: campoSenha
+                },
+
+                success: function (retorno) {
+                    retorno = JSON.parse(retorno);
+                    if (retorno["erro"]) {
+                        $("div#mensagem")
+                            .html(retorno["mensagem"])
+                            .addClass(retorno["classe"]);
+                    } else {
+                        window.location = "dashboard.php";
+                    }
+                },
+
+                error: function () {
+                    $("div#mensagem").html(retorno["mensagem"]).addClass("mensagem-erro");
+                }
+            });
+        }
+    });
 });

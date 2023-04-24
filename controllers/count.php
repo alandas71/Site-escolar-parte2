@@ -1,3 +1,13 @@
+<?php
+if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
+    require("configImages.php");
+
+    $adm  = $_SESSION["usuario"][1];
+    $nome = $_SESSION["usuario"][0];
+} else {
+    echo "<script>window.location = 'login.php'</script>";
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +17,6 @@
 </head>
 
 <body>
-    <div class='container-grafico'><?= include('grafico.php'); ?></div>
     <div class="container-count">
         <div class="top-left">
             <p class="count-title">TOTAL DE ALUNOS</p>

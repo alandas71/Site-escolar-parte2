@@ -1,11 +1,14 @@
 <?php
-// Conexão com o banco de dados
-$dbHost = 'localhost';
-$dbUserName = 'root';
-$dbPassword = '';
-$dbName = 'banco-dados';
+if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
+    require("configImages.php");
 
-$conn = mysqli_connect($dbHost, $dbUserName, $dbPassword, $dbName);
+    $adm  = $_SESSION["usuario"][1];
+    $nome = $_SESSION["usuario"][0];
+} else {
+    echo "<script>window.location = 'login.php'</script>";
+}
+// Conexão com o banco de dados
+include('configServer.php');
 
 if (isset($_POST['excluir_fotos'])) {
     $id = $_POST['id'];

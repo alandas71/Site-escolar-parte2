@@ -1,3 +1,13 @@
+<?php
+if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
+    require("configImages.php");
+
+    $adm  = $_SESSION["usuario"][1];
+    $nome = $_SESSION["usuario"][0];
+} else {
+    echo "<script>window.location = 'login.php'</script>";
+}
+?>
 <html>
 
 <head>
@@ -65,7 +75,7 @@
 </head>
 
 <body>
-    <div id="piechart" style="width: 600px; height:300px;"></div>
+    <div id="piechart" style="width: 600px; height:300px;  text-align: center;"></div>
 </body>
 
 </html>

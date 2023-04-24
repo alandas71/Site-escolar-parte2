@@ -1,5 +1,5 @@
 <?php
-require("configImages.php");
+require("connLogin.php");
 
 if (isset($_POST["email"]) && isset($_POST["senha"]) && $conn != null) {
     $query = $conn->prepare("SELECT * FROM users WHERE email = ? AND senha = ?");
@@ -11,10 +11,14 @@ if (isset($_POST["email"]) && isset($_POST["senha"]) && $conn != null) {
         session_start();
         $_SESSION["usuario"] = array($user["nome"], $user["adm"]);
 
-        echo "<script>window.location = 'dashboard.php'</script>";
+        echo json_encode(array("erro" => 0));
     } else {
-        echo "<script>window.location = 'login.php'</script>";
+        echo json_encode(array(
+            "erro" => 1,
+            "mensagem" =>
+            "<span class='mensagem-erro'>Email ou senha incorretos.</span>"
+        ));
     }
 } else {
-    echo "<script>window.location = 'login.php'</script>";
+    echo json_encode(array("erro" => 1, "mensagem" => "Ocorreu um erro interno nos servidor."));
 }

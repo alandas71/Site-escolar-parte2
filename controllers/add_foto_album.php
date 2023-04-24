@@ -1,11 +1,14 @@
 <?php
-// Conexão com o banco de dados
-$dbHost = 'localhost';
-$dbUsername = 'root';
-$dbPassword = '';
-$dbName = 'banco-dados';
+if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
+    require("configImages.php");
 
-$conn = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+    $adm  = $_SESSION["usuario"][1];
+    $nome = $_SESSION["usuario"][0];
+} else {
+    echo "<script>window.location = 'login.php'</script>";
+}
+// Conexão com o banco de dados
+include('configServer.php');
 
 // Verifica se a conexão é bem-sucedida
 if ($conn->connect_error) {

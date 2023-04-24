@@ -1273,13 +1273,7 @@ tbody {
     color: #16d70b;
 }
 
-.container-count {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    height: 100vh;
 
-}
 
 .container-count>div {
     position: relative;
@@ -1289,12 +1283,16 @@ tbody {
     border-radius: 20px;
 }
 
-.container-count>div:not(:last-child) {
-    margin-right: 10px;
+.top-left {
+    background-color: #FFA07A;
 }
 
-.container-count>div:not(:first-child) {
-    margin-left: 10px;
+.top-right {
+    background-color: #40E0D0;
+}
+
+.bottom-left {
+    background-color: #F08080;
 }
 
 .top-left,
@@ -1303,7 +1301,6 @@ tbody {
 .bottom-right {
     height: 50vh;
     width: 50vw;
-    background-color: whitesmoke;
 }
 
 .dsh-count {
@@ -1346,4 +1343,8 @@ tbody {
 
 .whatsapp-link:hover {
     background-color: darkgreen;
+}
+
+.mensagem-erro {
+    color: rgb(201, 4, 4);
 }
