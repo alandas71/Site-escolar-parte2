@@ -23,6 +23,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
     <script src="../assets/js/dashboard.js" defer></script>
     <script src="../assets/js/sidebar_optionActive.js" defer></script>
+    <script src="../assets/js/sidebar_hide.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -31,6 +32,10 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     <?php if ($adm) : ?>
         <div class="topo_dashboard">
             <div class="topointerior">
+                <div class="hide-sidebar">
+                    <i class="fas fa-bars"></i>
+                    <input type="checkbox" id="checkbox-sidebar">
+                </div>
                 <div class="menu-hamburguer">
                     <input type="checkbox" id=checkbox-menu>
                     <label id="labelMenu" for="checkbox-menu">
@@ -84,6 +89,21 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                     <h1>Centro Educar Arco-íris</h1>
                     <div class="sidebar-header"></div>
                     <ul class="sidebar-menu">
+                        <form action="foto_cliente.php" method="post" enctype="multipart/form-data">
+                            <div class='img_dashboard'>
+                                <label for="foto"></label>
+                                <input type="file" id="foto" name="foto" accept="image/*" style="display: none" onchange="submitForm()">
+                                <?php
+                                // Busca o caminho da imagem na tabela "users"
+                                $stmt = $conn->prepare("SELECT foto FROM users WHERE id = ?");
+                                $stmt->execute(array($adm));
+                                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                                $caminho_imagem = $row['foto'];
+                                ?>
+                                <img class='client_foto' src='<?php echo isset($caminho_imagem) ? $caminho_imagem : '' ?>' width='100px' height='100px' id='foto-preview'>
+                            </div>
+                        </form>
+                        <p class='img_dashboard'><?php echo $nome ?></p>
                         <hr>
                         <br>
                         <li>
@@ -177,3 +197,25 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
 </html>
 <script src="../assets/js/jquery-3.6.1.min.js"></script>
 <script src="../assets/js/login.js"></script>
+<script>
+    const fotoInput = document.querySelector('#foto');
+    const fotoPreview = document.querySelector('#foto-preview');
+
+    fotoPreview.addEventListener('click', () => {
+        fotoInput.click();
+    });
+
+    fotoInput.addEventListener('change', () => {
+        const file = fotoInput.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            fotoPreview.src = reader.result;
+        };
+    });
+</script>
+<script>
+    function submitForm() {
+        document.forms[0].submit();
+    }
+</script>

@@ -12,24 +12,36 @@ require_once('configImages.php');
 
 // verificar se foi feita uma requisição para salvar um evento
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
     // obter os dados do evento
     $title = $_POST['title'];
-    $start = $_POST['start'];
-    $end = $_POST['end'];
+    $startLocal = $_POST['start'];
+    $startUTC = new DateTime($startLocal, new DateTimeZone('UTC'));
+    $start = $startUTC->format('Y-m-d H:i:s');
+
+    $endLocal = $_POST['end'];
+    $endUTC = new DateTime($endLocal, new DateTimeZone('UTC'));
+    $end = $endUTC->format('Y-m-d H:i:s');
 
     // inserir o evento no banco de dados
     $stmt = $conn->prepare('INSERT INTO events (title, start, end) VALUES (?, ?, ?)');
-    $stmt->execute([$title, date('Y-m-d H:i:s'), $end]);
+    $stmt->execute([$title, $start, $end]);
 
 
     // redirecionar de volta para a página inicial
-    header('Location: index.php');
+    header('Location: dashboard.php?view=dashboard');
     exit();
 }
 
 // obter os eventos do banco de dados
 $stmt = $conn->query('SELECT * FROM events');
-$events = $stmt->fetchAll();
+$events = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// adicionar a hora automática no início do evento
+foreach ($events as &$event) {
+    $start = new DateTime($event['start']);
+    $event['start'] = $start->format('Y-m-d H:i:s');
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,6 +49,7 @@ $events = $stmt->fetchAll();
 
 <head>
     <meta charset='utf-8' />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/2.3.1/luxon.min.js"></script>
     <script src='../assets/js/fullCalendar/dist/index.global.js'></script>
     <script src='../assets/js/fullCalendar/packages/core/locales/pt-br.global.js'></script>
 
@@ -45,14 +58,19 @@ $events = $stmt->fetchAll();
             var calendarEl = document.getElementById('calendar');
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
+                timeZone: 'America/Sao_Paulo',
+                slotLabelFormat: {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    omitZeroMinute: false,
+                    meridiem: 'short'
+                },
                 locale: 'pt-br',
-                initialDate: '<?= date('Y-m-d') ?>',
+                initialDate: '<?= date('Y-m-d H:i:s') ?>',
                 editable: true,
                 selectable: true,
                 businessHours: true,
                 dayMaxEvents: true,
-                timeFormat: 'H(:mm)', // definindo o formato de exibição do horário
-
                 events: [
                     <?php foreach ($events as $event) : ?> {
                             title: '<?= $event['title'] ?>',
@@ -108,6 +126,7 @@ $events = $stmt->fetchAll();
         #calendar {
             max-width: 900px;
             margin: 0 auto;
+            font-size: 14px;
         }
     </style>
 </head>
