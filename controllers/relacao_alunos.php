@@ -67,7 +67,7 @@ if (!$result_turma2) {
 
 // exibir os resultados da turma2 em uma tabela HTML
 echo "<h2>Vespertino</h2>";
-echo "<table style='box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5); width: 95%;'>";
+echo "<table class='overflow-on' style='box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5); width: 95%;'>";
 echo '<thead><tr><th>Nome</th><th>Turma</th><th>E-mail</th><th>Senha</th><th>Ações</th></tr></thead>';
 while ($row_turma2 = $result_turma2->fetch_assoc()) {
     echo "<tbody><tr>";
@@ -86,6 +86,10 @@ $result_turma2->free();
 $mysqli->close();
 
 include('add_aluno.php');
+
+echo '<footer style="margin-top: 50px; padding: 0; width: 100%; height: 100px; text-align:center;">';
+echo '<p>&copy; 2022 Centro Educar Arco-íris</p>';
+echo '</footer>';
 
 echo '<script>'; // selecionar todas as tags <span> com a classe "senha"
 echo "var spansSenha = document.querySelectorAll('.senha');";

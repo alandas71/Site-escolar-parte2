@@ -14,10 +14,12 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
 <head>
     <title>Contagem Progressiva</title>
     <link rel="stylesheet" href="..\assets\css\style.css" />
+    <link rel="stylesheet" href="..\assets\css\tablet.css" />
+    <link rel="stylesheet" href="..\assets\css\mobile.css" />
 </head>
 
 <body>
-    <div style=" background-color: white; display: flex; justify-content: center; align-items: center; margin-left:20px; padding-bottom:50px; box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5);">
+    <div class='container-dash' id="container-dash">
         <div style="display: inline-block; float: left; margin-left:50px;">
             <?php include('count.php'); ?>
         </div>
@@ -26,14 +28,15 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
         </div>
         <div style="clear: both;"></div>
     </div>
-    <div style=" background-color: white; margin-top: 50px; margin-left:20px; padding-bottom:50px; box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5);">
+    <div class='container-dash' style=" background-color: white; margin-top: 50px; padding-bottom:50px; margin-right:40px; box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5);">
         <br>
         <div>
             <?php include('agenda.php'); ?>
         </div>
     </div>
-    <br>
-
+    <footer style="margin: 0; padding: 0; width: 100%; height: 100px; text-align:center;">
+        <p>&copy; 2022 Centro Educar Arco-íris</p>
+    </footer>
 </body>
 
 </html>

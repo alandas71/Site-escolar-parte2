@@ -14,6 +14,8 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
 <head>
     <title>Contagem Progressiva</title>
     <link rel="stylesheet" href="..\assets\css\style.css" />
+    <link rel="stylesheet" href="..\assets\css\tablet.css" />
+    <link rel="stylesheet" href="..\assets\css\mobile.css" />
 </head>
 
 <body>

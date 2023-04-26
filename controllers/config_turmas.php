@@ -112,7 +112,7 @@ $sql = "SELECT * FROM turmas";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
-    echo "<table>";
+    echo "<table style='box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5); width: 95%;'>";
     echo "<tr><th>ID</th><th>Turma</th><th>Turno</th><th>Vagas</th><th>Ações</th></tr>";
     // Consulta para contar valores repetidos em 'turma1'
     $sql_quantidade_turma1 = "SELECT turma1, COUNT(*) as quantidade FROM users WHERE tipo = 'aluno' GROUP BY turma1";

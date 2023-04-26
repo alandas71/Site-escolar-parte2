@@ -38,6 +38,9 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
             ?>
         </div>
         <br>
+        <br>
+        <br>
+        <br>
         <form action="prof_upload.php" method="post" enctype="multipart/form-data">
             <h1 class="title">Nossa equipe</h1>
             <input type="text" name="nome" placeholder="Nome ">
@@ -69,6 +72,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
             ?>
         </div>
     </div>
+
 </body>
 
 </html>

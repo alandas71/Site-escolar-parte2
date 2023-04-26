@@ -714,6 +714,14 @@ hr {
 
 }
 
+#calendar .fc-event-time {
+    display: none;
+}
+
+#calendar .fc-event-title {
+    text-overflow: ellipsis;
+}
+
 .modalMtr {
     display: flex;
     flex-direction: column;
@@ -1086,6 +1094,18 @@ span {
     z-index: 9999;
 }
 
+#calendar {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 14px;
+}
+
+#piechart {
+    width: 600px;
+    height: 300px;
+    text-align: center;
+}
+
 .containerSucess {
     width: 100vw;
     height: 100%;
@@ -1119,10 +1139,9 @@ span {
 
 .delete {
     height: 200px;
-    max-width: 80vw;
+    max-width: 100vw;
     display: flex;
     gap: 10px;
-
     flex-wrap: wrap;
 }
 
@@ -1145,7 +1164,7 @@ span {
     top: 0;
     left: 0;
     bottom: 0;
-    width: 300px;
+    width: 70px;
     background-color: #133d6d;
     color: #fff;
     padding-left: 0px;
@@ -1172,16 +1191,29 @@ span {
 }
 
 .sidebar-menu li a p {
-    display: block;
+    display: none;
     margin: 0;
+}
+
+.sidebar h1 {
+    display: none;
+}
+
+hr {
+    display: none;
+}
+
+.img_dashboard,
+.custom-submit-button {
+    display: none;
 }
 
 .topo_dashboard {
     position: fixed;
     box-sizing: border-box;
     top: 0;
-    left: 300px;
-    width: calc(100% - 300px);
+    left: 70px;
+    width: calc(100% - 70px);
     height: 49px;
     background-color: white;
     z-index: 1;
@@ -1189,20 +1221,31 @@ span {
 }
 
 .topo_dashboard.collapsed {
-    left: 70px;
-    width: calc(100% - 70px);
+    left: 300px;
+    width: calc(100% - 300px);
 }
 
 .view {
     position: relative;
     top: 49px;
-    left: 300px;
-    width: calc(100% - 300px);
+    left: 70px;
+    width: calc(100% - 70px);
     background-color: #f2f2f2;
     padding: 20px;
     z-index: 0;
     height: auto;
     transition: all .5s ease;
+}
+
+.view-cell {
+    left: 0;
+    width: 100%;
+}
+
+
+.view-pc {
+    left: 300px;
+    width: calc(100% - 300px);
 }
 
 .sidebar-menu {
@@ -1327,6 +1370,15 @@ tbody {
 }
 
 
+#container-dash {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 40px;
+    padding-bottom: 50px;
+    box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5);
+}
 
 .container-count>div {
     position: relative;

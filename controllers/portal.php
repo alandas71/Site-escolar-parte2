@@ -25,6 +25,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     <link rel="stylesheet" href="..\assets\css\mobile.css" />
     <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
     <script src="../assets/js/dashboard.js" defer></script>
+    <script src="../assets/js/sidebar_optionActive.js" defer></script>
     <script src="../assets/js/sidebar_hide.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -35,7 +36,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
         <div class="topo_dashboard">
             <div class="topointerior">
                 <div class="hide-sidebar">
-                    <i style="color: #133d6d;" class="fas fa-angle-right"></i>
+                    <i class="fas fa-bars"></i>
                     <input type="checkbox" id="checkbox-sidebar">
                 </div>
                 <div class="menu-hamburguer">
@@ -46,9 +47,6 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                         <span class="spanMenu"></span>
                     </label>
                     <ul>
-                        <a href="logout.php">
-                            <li>SAIR</li>
-                        </a>
                         <a href="sobre.php">
                             <li>SOBRE</li>
                         </a>
@@ -68,9 +66,6 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                 </div>
                 <div class="menu">
                     <ul>
-                        <a href="logout.php">
-                            <li>SAIR</li>
-                        </a>
                         <a href="sobre.php">
                             <li>SOBRE</li>
                         </a>
@@ -113,6 +108,10 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                             <input type="hidden" id="cropped-image" name="cropped-image">
                         </form>
                         <p class='img_dashboard'><?php echo $nome ?></p>
+                        <br>
+                        <div>
+                            <a href="logout.php">Sair</a>
+                        </div>
                         <hr>
                         <br>
                         <li>

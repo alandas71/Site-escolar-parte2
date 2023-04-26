@@ -86,6 +86,10 @@ $mysqli->close();
 
 include('add_prof.php');
 
+echo '<footer style="margin-top: 50px; padding: 0; width: 100%; height: 100px; text-align:center;">';
+echo '<p>&copy; 2022 Centro Educar Arco-íris</p>';
+echo '</footer>';
+
 echo '<script>'; // selecionar todas as tags <span> com a classe "senha"
 echo "var spansSenha = document.querySelectorAll('.senha');";
 

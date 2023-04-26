@@ -1,5 +1,13 @@
 @media screen and (max-width: 600px) {
 
+    #calendar {
+        max-width: 350px;
+    }
+
+    /*.fc-daygrid-day {
+        width: 70px;
+    }*/
+
     .profa img {
         width: 120px;
         height: 120px;

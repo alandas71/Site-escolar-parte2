@@ -12,6 +12,8 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
 
 <head>
     <link rel="stylesheet" href="..\assets\css\style.css" />
+    <link rel="stylesheet" href="..\assets\css\tablet.css" />
+    <link rel="stylesheet" href="..\assets\css\mobile.css" />
     <?php
     include('configImages.php');
 
@@ -75,7 +77,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
 </head>
 
 <body>
-    <div id="piechart" style="width: 600px; height:300px;  text-align: center;"></div>
+    <div id="piechart"></div>
 </body>
 
 </html>

@@ -32,6 +32,15 @@
 }
 
 @media screen and (max-width: 1144px) {
+    #calendar {
+        max-width: 650px;
+    }
+
+    #piechart {
+        width: 400px;
+        height: 200px;
+        text-align: center;
+    }
 
     .imgRowBelow {
         width: 250px;
@@ -110,6 +119,41 @@
 }
 
 @media screen and (max-width: 976px) {
+
+    #calendar .fc-button {
+        font-size: 12px;
+        padding: 2px 5px;
+        line-height: 1.5;
+    }
+
+    #calendar .fc-header-toolbar button {
+        font-size: 12px;
+        padding: 2px 5px;
+        line-height: 1.5;
+    }
+
+    #calendar .fc-toolbar-title {
+        font-size: 18px;
+    }
+
+    #calendar .fc-daygrid-day-number {
+        font-size: 12px;
+    }
+
+    #calendar {
+        max-width: 500px;
+    }
+
+    .container-count>div {
+        height: 120px;
+        width: 170px;
+    }
+
+    .view-cell {
+        left: 0;
+        width: 100%;
+    }
+
 
     #bloco1,
     #bloco2,
@@ -322,6 +366,53 @@
 }
 
 @media screen and (max-width: 720px) {
+
+    #calendar .fc-event-time,
+    #calendar .fc-event-title {
+        font-size: 12px;
+    }
+
+    table td,
+    table th {
+        overflow: hidden;
+    }
+
+    .view {
+        overflow-x: auto;
+    }
+
+    .container-dash {
+        width: 100%;
+    }
+
+    #calendar {
+        max-width: 450px;
+    }
+
+    .count-title {
+        font-size: 12px;
+    }
+
+    .container-count>div {
+        height: 120px;
+        width: 170px;
+
+    }
+
+    #piechart {
+        display: none;
+    }
+
+    .container-count {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .container-count>div {
+        display: inline-block;
+        margin: 10px;
+    }
 
     #bloco1,
     #bloco2,
