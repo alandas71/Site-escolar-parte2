@@ -9,17 +9,18 @@ const icon = document.querySelector('.hide-sidebar');
 // adiciona um listener de mudança no checkbox
 checkbox.addEventListener('change', function () {
     if (checkbox.checked) {
-        sidebar.style.width = '300px';
-        dashboard.style.left = '300px';
-        dashboard.style.width = 'calc(100% - 300px)';
         if (window.innerWidth < 976) {
-            view.style.left = '';
-            view.style.width = '';
-            view.classList.add('view-cell');
+            view.style.left = '0';
+            view.style.width = '100%';
+            sidebar.style.width = '250px';
+            dashboard.style.left = '250px';
+            dashboard.style.width = 'calc(100% - 250px)';
         } else {
             view.style.left = '300px';
             view.style.width = 'calc(100% - 300px)';
-            view.classList.remove('view-cell');
+            sidebar.style.width = '300px';
+            dashboard.style.left = '300px';
+            dashboard.style.width = 'calc(100% - 300px)';
         }
         dashboard.classList.remove('collapsed');
         sidebarLinks.forEach(link => {
@@ -33,12 +34,20 @@ checkbox.addEventListener('change', function () {
         });
         sidebar.querySelector('h1').style.display = 'block';
     } else {
-        sidebar.style.width = '70px';
         icon.style.left = '0';
-        dashboard.style.left = '70px';
-        dashboard.style.width = 'calc(100% - 70px)';
-        view.style.left = '70px';
-        view.style.width = 'calc(100% - 70px)';
+        if (window.innerWidth < 976) {
+            view.style.left = '27px';
+            view.style.width = 'calc(100% - 40px)';
+            dashboard.style.left = '40px';
+            dashboard.style.width = 'calc(100% - 40px)';
+            sidebar.style.width = '40px';
+        } else {
+            view.style.left = '70px';
+            view.style.width = 'calc(100% - 70px)';
+            dashboard.style.left = '70px';
+            dashboard.style.width = 'calc(100% - 70px)';
+            sidebar.style.width = '70px';
+        }
         dashboard.classList.add('collapsed');
         sidebarLinks.forEach(link => {
             link.classList.add('hide-text');

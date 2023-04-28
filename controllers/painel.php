@@ -32,7 +32,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
             <input type="submit" name="submit" value="Enviar">
         </form>
         <br>
-        <div class="delete">
+        <div class="delete mgn">
             <?php
             include_once('delete_banners.php');
             ?>

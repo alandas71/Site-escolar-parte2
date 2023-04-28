@@ -1157,6 +1157,7 @@ span {
     display: flex;
     flex-direction: row;
     height: 100vh;
+    overflow-x: hidden;
 }
 
 .sidebar {
@@ -1165,6 +1166,7 @@ span {
     left: 0;
     bottom: 0;
     width: 70px;
+    height: 100vh;
     background-color: #133d6d;
     color: #fff;
     padding-left: 0px;
@@ -1173,6 +1175,8 @@ span {
     align-items: center;
     z-index: 1;
     transition: all .5s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .sidebar ul li a {
@@ -1208,6 +1212,12 @@ hr {
     display: none;
 }
 
+.items-dash {
+    display: inline-block;
+    float: left;
+    margin-left: 50px;
+}
+
 .topo_dashboard {
     position: fixed;
     box-sizing: border-box;
@@ -1215,7 +1225,7 @@ hr {
     left: 70px;
     width: calc(100% - 70px);
     height: 49px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.5);
     z-index: 1;
     transition: all .5s ease;
 }
@@ -1230,7 +1240,6 @@ hr {
     top: 49px;
     left: 70px;
     width: calc(100% - 70px);
-    background-color: #f2f2f2;
     padding: 20px;
     z-index: 0;
     height: auto;
@@ -1250,6 +1259,7 @@ hr {
 
 .sidebar-menu {
     list-style: none;
+    z-index: 9998;
     margin-top: 60px;
 }
 
@@ -1319,19 +1329,20 @@ th {
     position: absolute;
     top: 0;
     left: 0;
-    margin-left: 5px;
+    margin-left: 3px;
 }
 
 .hide-sidebar i {
-    z-index: 999;
+    z-index: 9999;
     width: 60px;
     height: 60px;
     position: absolute;
     font-size: 40px;
+    margin-left: 1px;
 }
 
 #checkbox-sidebar {
-    z-index: 1000;
+    z-index: 9999;
     width: 40px;
     height: 40px;
     position: absolute;
@@ -1370,7 +1381,7 @@ tbody {
 }
 
 
-#container-dash {
+.cont-dash {
     background-color: white;
     display: flex;
     justify-content: center;

@@ -1,5 +1,32 @@
 @media screen and (max-width: 600px) {
 
+    .view {
+        left: 27px;
+    }
+
+    .sidebar ul li a i {
+        font-size: 17px;
+    }
+
+    .sidebar ul li a p {
+        font-size: 12px;
+    }
+
+    .topo_dashboard {
+        top: 0;
+        left: 40px;
+        width: calc(100% - 40px);
+    }
+
+    .sidebar {
+        width: 40px;
+    }
+
+    .items-dash {
+        box-shadow: none;
+    }
+
+
     #calendar {
         max-width: 350px;
     }

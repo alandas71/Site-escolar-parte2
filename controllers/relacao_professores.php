@@ -38,7 +38,8 @@ if (!$result_turma1) {
 }
 
 echo "<h2>Matutino</h2>";
-echo "<table style='box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5); width: 95%;'>";
+echo "<div style=' box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5); width: 95%; overflow-x: auto; box-sizing:'>";
+echo "<table>";
 echo '<thead><tr><th>Nome</th><th>Turma</th><th>E-mail</th><th>Senha</th><th>Ações</th></tr></thead>';
 while ($row_turma1 = $result_turma1->fetch_assoc()) {
     echo "<tbody><tr>";
@@ -51,6 +52,7 @@ while ($row_turma1 = $result_turma1->fetch_assoc()) {
     echo "</tr></tbody>";
 }
 echo '</table>';
+echo '</div>';
 
 // liberar os resultados da turma1
 $result_turma1->free();
@@ -66,7 +68,8 @@ if (!$result_turma2) {
 
 // exibir os resultados da turma2 em uma tabela HTML
 echo "<h2>Vespertino</h2>";
-echo "<table style='box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5); width: 95%;'>";
+echo "<div style=' box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5); width: 95%; overflow-x: auto; box-sizing:'>";
+echo "<table>";
 echo '<thead><tr><th>Nome</th><th>Turma</th><th>E-mail</th><th>Senha</th><th>Ações</th></tr></thead>';
 while ($row_turma2 = $result_turma2->fetch_assoc()) {
     echo "<tbody><tr>";
@@ -79,6 +82,7 @@ while ($row_turma2 = $result_turma2->fetch_assoc()) {
     echo "</tr></tbody>";
 }
 echo '</table>';
+echo "</div>";
 
 // liberar os resultados da turma2 e fechar a conexão
 $result_turma2->free();

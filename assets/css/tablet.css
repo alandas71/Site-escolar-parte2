@@ -367,6 +367,10 @@
 
 @media screen and (max-width: 720px) {
 
+    .mgn {
+        margin-bottom: 170px;
+    }
+
     #calendar .fc-event-time,
     #calendar .fc-event-title {
         font-size: 12px;
@@ -375,10 +379,6 @@
     table td,
     table th {
         overflow: hidden;
-    }
-
-    .view {
-        overflow-x: auto;
     }
 
     .container-dash {

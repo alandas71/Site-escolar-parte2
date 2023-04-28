@@ -46,23 +46,23 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                         <span class="spanMenu"></span>
                     </label>
                     <ul>
-                        <a href="logout.php">
-                            <li>SAIR</li>
-                        </a>
-                        <a href="sobre.php">
-                            <li>SOBRE</li>
-                        </a>
-                        <a href="album.php">
-                            <li>ALBUM</li>
-                        </a>
-                        <a href="login.php">
-                            <li>ALUNO</li>
+                        <a href="../">
+                            <li>INÍCIO</li>
                         </a>
                         <a href="matricula.php">
                             <li>MATRÍCULA</li>
                         </a>
-                        <a href="../">
-                            <li>INÍCIO</li>
+                        <a href="login.php">
+                            <li>ALUNO</li>
+                        </a>
+                        <a href="album.php">
+                            <li>ALBUM</li>
+                        </a>
+                        <a href="sobre.php">
+                            <li>SOBRE</li>
+                        </a>
+                        <a href="logout.php">
+                            <li>SAIR</li>
                         </a>
                     </ul>
                 </div>

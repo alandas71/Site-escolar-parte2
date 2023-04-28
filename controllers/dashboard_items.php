@@ -19,16 +19,16 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
 </head>
 
 <body>
-    <div class='container-dash' id="container-dash">
-        <div style="display: inline-block; float: left; margin-left:50px;">
+    <div class='container-dash cont-dash'>
+        <div class="items-dash">
             <?php include('count.php'); ?>
         </div>
-        <div style="display: inline-block; float: left; margin-left:50px;">
+        <div class="items-dash">
             <?php include('grafico.php'); ?>
         </div>
         <div style="clear: both;"></div>
     </div>
-    <div class='container-dash' style=" background-color: white; margin-top: 50px; padding-bottom:50px; margin-right:40px; box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5);">
+    <div class='container-dash ' style=" background-color: white; margin-top: 50px; padding-bottom:50px; margin-right:40px; box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5);">
         <br>
         <div>
             <?php include('agenda.php'); ?>
