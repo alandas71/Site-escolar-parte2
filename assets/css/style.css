@@ -56,42 +56,60 @@ button {
 }
 
 .menu {
-    line-height: 50px;
-    top: 0;
-    right: 0;
-    position: absolute;
-}
-
-.menu ul,
-.menu li {
-    margin: 0;
-    padding-left: 10px;
-    list-style: none;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 16px;
-    color: black;
-}
-
-.menu li {
+    padding: 20px;
     float: right;
-    padding-left: 5px;
-    padding-right: 10px;
+}
+
+.menu ul {
     margin: 0;
-    user-select: none;
+    padding: 0;
+    list-style: none;
 }
 
-.menu li:hover {
-    background-color: #FFD700;
+.menu li {
+    display: inline-block;
+    margin-right: 20px;
+    position: relative;
 }
 
-.menu li a {
-    color: black;
+.menu a {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
     text-decoration: none;
 }
 
-.menu li a:active {
+.menu .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    padding: 10px;
+    display: none;
+    z-index: 9999;
+}
+
+.menu .submenu li {
+    display: block;
+    margin: 10px 0;
+}
+
+.menu .submenu a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.menu .submenu a:hover {
+    background-color: #f0f0f0;
+}
+
+.menu .submenu li:hover a {
     background-color: #FFD700;
+    color: #fff;
+    border: 1px solid #FFD700;
+    cursor: pointer;
 }
 
 .div1 {
@@ -1158,6 +1176,7 @@ span {
     flex-direction: row;
     height: 100vh;
     overflow-x: hidden;
+    width: 100vw;
 }
 
 .sidebar {
@@ -1298,10 +1317,6 @@ hr {
 
 .sidebar-menu li.active i {
     color: #ffbb00;
-}
-
-.dashboard {
-    position: relative;
 }
 
 table {

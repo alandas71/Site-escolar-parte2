@@ -20,6 +20,7 @@ include_once('controllers/configImages.php');
     <link rel="shortcut icon" href="assets/images/icone.ico" type="image/x-icon">
     <script src="assets/js/adicionar_imagem.js" defer></script>
     <script src="assets/js/script1.js" defer></script>
+    <script src="assets/js/submenu_login.js" defer></script>
 </head>
 
 <body>
@@ -61,21 +62,25 @@ include_once('controllers/configImages.php');
         <img class="textLogo" data-aos="fade-right" data-aos-delay="1600" src="assets\images\logoText.png"></a>
         <div class="menu">
             <ul>
-                <a href="controllers/sobre.php">
-                    <li>SOBRE</li>
-                </a>
-                <a href="controllers/album.php">
-                    <li>ALBUM</li>
-                </a>
-                <a href="controllers/login.php">
-                    <li>ALUNO</li>
-                </a>
-                <a href="controllers/matricula.php">
-                    <li>MATRÍCULA</li>
-                </a>
-                <a href="./">
-                    <li>INÍCIO</li>
-                </a>
+                <li>
+                    <a href="./">INÍCIO</a>
+                </li>
+                <li data-submenu>
+                    <a href="#">LOGIN</a>
+                    <ul class="submenu">
+                        <li><a href="controllers/portal_aluno.php">ALUNO</a></li>
+                        <li><a href="controllers/dashboard.php?view=dashboard">PROFESSOR</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="controllers/album.php">ALBUM</a>
+                </li>
+                <li>
+                    <a href="controllers/matricula.php">MATRÍCULA</a>
+                </li>
+                <li>
+                    <a href="controllers/sobre.php">SOBRE</a>
+                </li>
             </ul>
         </div>
     </div>

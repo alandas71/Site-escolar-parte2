@@ -9,8 +9,14 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
 
     $adm  = $_SESSION["usuario"][1];
     $nome = $_SESSION["usuario"][0];
+
+    if ($adm != 1) {
+        header("Location: login.php");
+        exit();
+    }
 } else {
-    echo "<script>window.location = 'login.php'</script>";
+    header("Location: login.php");
+    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -66,26 +72,23 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                         </a>
                     </ul>
                 </div>
-                <div class="menu">
+                <div class="menu" style="padding: 0;">
                     <ul>
-                        <a href="logout.php">
-                            <li>SAIR</li>
-                        </a>
-                        <a href="sobre.php">
-                            <li>SOBRE</li>
-                        </a>
-                        <a href="album.php">
-                            <li>ALBUM</li>
-                        </a>
-                        <a href="login.php">
-                            <li>ALUNO</li>
-                        </a>
-                        <a href="matricula.php">
-                            <li>MATRÍCULA</li>
-                        </a>
-                        <a href="../">
-                            <li>INÍCIO</li>
-                        </a>
+                        <li>
+                            <a href="../">INÍCIO</a>
+                        </li>
+                        <li>
+                            <a href="album.php">ALBUM</a>
+                        </li>
+                        <li>
+                            <a href="matricula.php">MATRÍCULA</a>
+                        </li>
+                        <li>
+                            <a href="sobre.php">SOBRE</a>
+                        </li>
+                        <li>
+                            <a href="logout.php">SAIR</a>
+                        </li>
                     </ul>
                 </div>
             </div>

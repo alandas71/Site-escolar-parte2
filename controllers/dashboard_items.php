@@ -28,7 +28,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
         </div>
         <div style="clear: both;"></div>
     </div>
-    <div class='container-dash ' style=" background-color: white; margin-top: 50px; padding-bottom:50px; margin-right:40px; box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5);">
+    <div class='container-dash'>
         <br>
         <div>
             <?php include('agenda.php'); ?>

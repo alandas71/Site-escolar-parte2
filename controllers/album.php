@@ -15,6 +15,7 @@ include_once('configImages.php');
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <script src="../assets/js/album.js" defer></script>
     <script src="../assets/js/zoom_image.js" defer></script>
+    <script src="../assets/js/submenu_login.js" defer></script>
 </head>
 
 <body>
@@ -47,23 +48,27 @@ include_once('configImages.php');
             </div>
             <a href="../">
                 <img class="logotopo" src="../assets\images\iconetopo.png" title="Ir para início" width="74 px"></a>
-            <div class="menu">
+            <div class="menu" style="padding: 0;">
                 <ul>
-                    <a href="sobre.php">
-                        <li>SOBRE</li>
-                    </a>
-                    <a href="album.php">
-                        <li style="background-color: #FFD700;">ALBUM</li>
-                    </a>
-                    <a href="login.php">
-                        <li>ALUNO</li>
-                    </a>
-                    <a href="matricula.php">
-                        <li>MATRÍCULA</li>
-                    </a>
-                    <a href="../">
-                        <li>INÍCIO</li>
-                    </a>
+                    <li>
+                        <a href="../">INÍCIO</a>
+                    </li>
+                    <li data-submenu>
+                        <a href="#">LOGIN</a>
+                        <ul class="submenu">
+                            <li><a href="portal_aluno.php">ALUNO</a></li>
+                            <li><a href="#">PROFESSOR</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="album.php">ALBUM</a>
+                    </li>
+                    <li>
+                        <a href="matricula.php">MATRÍCULA</a>
+                    </li>
+                    <li>
+                        <a href="sobre.php">SOBRE</a>
+                    </li>
                 </ul>
             </div>
         </div>
