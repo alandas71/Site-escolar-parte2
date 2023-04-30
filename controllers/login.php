@@ -1,3 +1,6 @@
+<?php
+include_once('config_recaptcha.php');
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -13,6 +16,7 @@
     <script type="text/javascript" src="../assets/js/jquery-3.6.1.min.js"></script>
     <script type="text/javascript" src="../assets/js/login.js"></script>
     <script src="../assets/js/submenu_login.js" defer></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -85,6 +89,8 @@
                     <br><br>
                     <input class=inputlogin name="senha" type="password" placeholder="Senha" id="senha">
                     <br><br>
+                    <div class="g-recaptcha" data-sitekey="<?php echo SITE_KEY; ?>"></div>
+                    <br>
                     <button class=loginbtn id="btnLogin">Entrar</button>
                 </form>
             </div>

@@ -117,19 +117,13 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                                     $row = $stmt->fetch(PDO::FETCH_ASSOC);
                                     $caminho_imagem = $row['foto'];
                                     ?>
-                                    <img class='client_foto' src='<?php echo isset($caminho_imagem) ? $caminho_imagem : '' ?>' width='100px' height='100px' id='foto-preview'>
+                                    <img class='client_foto' src='<?php echo isset($caminho_imagem) ? $caminho_imagem : '../assets/images/user.jpg' ?>' width='100px' height='100px' id='foto-preview'>
                                 </div>
                                 <input type="hidden" id="cropped-image" name="cropped-image">
                             </form>
                             <p class='img_dashboard'><?php echo $nome ?></p>
                             <hr>
                             <br>
-                            <li>
-                                <a href="#" id="menu-dashboard">
-                                    <i class="fas fa-tachometer-alt"></i>
-                                    <p>MEU PERFIL</p>
-                                </a>
-                            </li>
                             <li>
                                 <a href="#">
                                     <i class="fas fa-users"></i>

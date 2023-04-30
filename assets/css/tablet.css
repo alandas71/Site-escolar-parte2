@@ -323,6 +323,10 @@
         height: 200px;
     }
 
+    #wallpaper4 {
+        height: 450px;
+    }
+
 }
 
 
@@ -362,6 +366,10 @@
 
     .conteudo {
         margin-left: 100px;
+    }
+
+    #wallpaper4 {
+        height: 480px;
     }
 }
 
@@ -457,7 +465,7 @@
     }
 
     #wallpaper4 {
-        height: 530px;
+        height: 650px;
 
     }
 
@@ -469,5 +477,6 @@
     .imgRowBelow {
         left: 120px;
     }
+
 
 }

@@ -1,6 +1,6 @@
 <?php
 require("connLogin.php");
-
+include("config_recaptcha.php");
 class Login
 {
 
@@ -17,12 +17,35 @@ class Login
             return;
         }
 
+        // Verify reCAPTCHA response
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = array(
+            'secret' => SECRET_KEY, // Replace with your own reCAPTCHA secret key
+            'response' => $_POST['recaptchaResponse']
+        );
+        $options = array(
+            'http' => array(
+                'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($data)
+            )
+        );
+        $context  = stream_context_create($options);
+        $verify = file_get_contents($url, false, $context);
+        $captcha_success = json_decode($verify);
+
+        if (!$captcha_success->success) {
+            echo json_encode(array("erro" => 1, "mensagem" => "Por favor, verifique que você não é um robô."));
+            return;
+        }
+
         switch (true) {
             case (isset($_POST["email"]) && isset($_POST["senha"])):
                 echo $this->login($_POST["email"], $_POST["senha"]);
                 break;
         }
     }
+
 
     public function login($email, $senha)
     {

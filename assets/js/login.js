@@ -4,16 +4,20 @@ $(function () {
 
         var campoEmail = $("form#formularioLogin #email").val();
         var campoSenha = $("form#formularioLogin #senha").val();
+        var recaptchaResponse = grecaptcha.getResponse();
 
         if (campoEmail.trim() == "" || campoSenha.trim() == "") {
             $("div#mensagem").html("Preencha todos os campos.");
+        } else if (recaptchaResponse == "") {
+            $("div#mensagem").html("Por favor, verifique que você não é um robô.");
         } else {
             $.ajax({
                 url: "conexao_login.php",
                 type: "POST",
                 data: {
                     email: campoEmail,
-                    senha: campoSenha
+                    senha: campoSenha,
+                    recaptchaResponse: recaptchaResponse // Include the reCAPTCHA response
                 },
 
                 success: function (retorno) {

@@ -116,14 +116,18 @@ include_once('controllers/configImages.php');
             <div class="row textRow">
                 <h1 class="rowTitle">Centro Educar Arco-íris</h1>
                 <p class=mural>
-                    ( Texto improviso) aliada no processo de aprendizagem. Nossas crianças
-                    contam com aulas em slide, vídeos, aplicativos e jogos educacionais, pois eles
-                    incentivam a participação dos alunos nas atividades propostas.
+                    O Centro Educacional Arco-Íris foi criado por Luciane, uma educadora apaixonada
+                    pelo ensino e comprometida em oferecer uma educação de qualidade para crianças e
+                    jovens em sua comunidade. Ela queria criar uma escola que valorizasse a
+                    individualidade de cada aluno, ajudando-os a descobrir seus talentos e habilidades
+                    únicas.
                 </p>
                 <p class=mural>
-                    O ballet auxilia na concentração, postura e ritmo, que são importantes para
-                    muitas outras atividades, pois combina atividades físicas com musicalidade,
-                    flexibilidade, coordenação motora e um pouco de teatro.
+                    A escola cresceu rapidamente e é reconhecida por sua excelência acadêmica
+                    e preocupação com o bem-estar emocional e social de seus alunos. Luciane continua
+                    liderando a escola, com projetos para expansão e buscando sempre novas maneiras
+                    de melhorar a experiência de aprendizagem das suas crianças e tornar o Arco-Íris
+                    uma escola ainda mais inclusiva e acolhedora.
                 </p>
             </div>
         </div>

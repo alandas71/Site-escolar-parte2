@@ -64,7 +64,7 @@ include('parametros_matricula.php');
                         <a href="#">LOGIN</a>
                         <ul class="submenu">
                             <li><a href="portal_aluno.php">ALUNO</a></li>
-                            <li><a href="#">PROFESSOR</a></li>
+                            <li><a href="dashboard.php?view=dashboard">PROFESSOR</a></li>
                         </ul>
                     </li>
                     <li>

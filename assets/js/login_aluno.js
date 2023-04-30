@@ -21,6 +21,7 @@ $(function () {
                         $("div#mensagem")
                             .html(retorno["mensagem"])
                             .addClass(retorno["classe"]);
+                        $("form#formularioLoginAluno #senha").val("");
                     } else {
                         window.location = "portal_aluno.php";
                     }
