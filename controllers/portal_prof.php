@@ -10,16 +10,17 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     $id = $_SESSION["usuario"][2];
     $tipo = $_SESSION["usuario"][1];
     $nome = $_SESSION["usuario"][0];
+    var_dump($id);
 
-    if ($tipo !== "aluno") {
-        // Redireciona para página de login se não for aluno
-        header("Location: login_aluno.php");
+    if ($tipo !== "prof") {
+        // Redireciona para página de login se não for prof
+        header("Location: login_prof.php");
         exit();
     }
 } else {
 
     // Redireciona para página de login se não estiver logado
-    header("Location: login_aluno.php");
+    header("Location: login_prof.php");
     exit();
 }
 
@@ -43,7 +44,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
 </head>
 
 <body style="overflow-x: hidden;">
-    <?php if ($tipo == "aluno") : ?>
+    <?php if ($tipo == "prof") : ?>
         <div class="topo_dashboard">
             <div class="topointerior">
                 <div class="hide-sidebar">
@@ -105,7 +106,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                         <h1>Centro Educar Arco-íris</h1>
                         <div class="sidebar-header"></div>
                         <ul class="sidebar-menu">
-                            <form action="foto_cliente_aluno.php" method="post" enctype="multipart/form-data" id="myForm">
+                            <form action="foto_cliente_prof.php" method="post" enctype="multipart/form-data" id="myForm">
                                 <div class='img_dashboard'>
                                     <label for="foto"></label>
                                     <input type="file" id="foto" name="foto" accept="image/*" style="display: none" onchange="submitForm()">
@@ -131,29 +132,21 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                                 </a>
                             </li>
                             <li>
+                                <a href="portal_prof.php?view=mturmas">
+                                    <i class="fas fa-clipboard"></i>
+                                    <p>MINHAS TURMAS</p>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="#">
                                     <i class="fas fa-chalkboard-teacher"></i>
-                                    <p>NOTAS</p>
+                                    <p>FREQUÊNCIA</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <i class="fas fa-door-open"></i>
-                                    <p>DESCRIÇÃO</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="portal_aluno.php?view=calendario">
+                                <a href="portal_prof.php?view=calendario">
                                     <i class="fas fa-clipboard"></i>
                                     <p>CALENDÁRIO</p>
-                                </a>
-                            </li>
-                            <hr>
-                            <br>
-                            <li>
-                                <a href="#">
-                                    <i class="fas fa-book"></i>
-                                    <p>FINANCEIRO</p>
                                 </a>
                             </li>
                         </ul>
@@ -164,6 +157,9 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                         if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["view"])) {
                             $view = $_GET["view"];
                             switch ($view) {
+                                case "mturmas":
+                                    include('minhas_turmas.php');
+                                    break;
                                 case "calendario":
                                     include('agendaView-item.php');
                                     break;
@@ -178,7 +174,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
 
 </html>
 <script src="../assets/js/jquery-3.6.1.min.js"></script>
-<script src="../assets/js/login_aluno.js"></script>
+<script src="../assets/js/login_prof.js"></script>
 <script>
     const fotoInput = document.querySelector('#foto');
     const fotoPreview = document.querySelector('#foto-preview');

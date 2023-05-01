@@ -52,7 +52,7 @@ class LoginSecond
     {
         $conn = $this->con;
 
-        $query = $conn->prepare("SELECT * FROM users WHERE email = ? AND senha = ? AND tipo = 'aluno'");
+        $query = $conn->prepare("SELECT * FROM users WHERE email = ? AND senha = ? AND tipo = 'prof'");
         $query->execute(array($email, $senha));
 
         if ($query->rowCount()) {
@@ -60,6 +60,7 @@ class LoginSecond
 
             session_start();
             $_SESSION["usuario"] = array($user["nome"], $user["tipo"], $user["id"]);
+
 
             return json_encode(array("erro" => 0));
         } else {

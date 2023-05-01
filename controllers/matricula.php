@@ -32,7 +32,7 @@ include('parametros_matricula.php');
                         <li>SOBRE</li>
                     </a>
                     <a href="album.php">
-                        <li>ALBUM</li>
+                        <li>ÁLBUM</li>
                     </a>
                     <a href="login.php">
                         <li>ALUNO</li>
@@ -64,11 +64,12 @@ include('parametros_matricula.php');
                         <a href="#">LOGIN</a>
                         <ul class="submenu">
                             <li><a href="portal_aluno.php">ALUNO</a></li>
-                            <li><a href="dashboard.php?view=dashboard">PROFESSOR</a></li>
+                            <li><a href="portal_prof.php">PROFESSOR</a></li>
+                            <li><a href="dashboard.php?view=dashboard">DIREÇÃO</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="album.php">ALBUM</a>
+                        <a href="album.php">ÁLBUM</a>
                     </li>
                     <li>
                         <a href="matricula.php">MATRÍCULA</a>
@@ -506,6 +507,11 @@ include('parametros_matricula.php');
             </a></div>
     </footer>
     <script src="../assets/js/formulario.js"></script>
+    <script>
+        window.onbeforeunload = function() {
+            return "Tem certeza de que deseja sair?";
+        };
+    </script>
 </body>
 
 </html>

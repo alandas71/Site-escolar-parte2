@@ -1,9 +1,9 @@
 $(function () {
-    $("button#btnLoginAluno").on("click", function (e) {
+    $("button#btnLoginProf").on("click", function (e) {
         e.preventDefault();
 
-        var campoEmail = $("form#formularioLoginAluno #email").val();
-        var campoSenha = $("form#formularioLoginAluno #senha").val();
+        var campoEmail = $("form#formularioLoginProf #email").val();
+        var campoSenha = $("form#formularioLoginProf #senha").val();
         var recaptchaResponse = grecaptcha.getResponse();
 
         if (campoEmail.trim() == "" || campoSenha.trim() == "") {
@@ -12,7 +12,7 @@ $(function () {
             $("div#mensagem").html("Por favor, verifique que você não é um robô.");
         } else {
             $.ajax({
-                url: "conexao_loginAluno.php",
+                url: "conexao_loginProf.php",
                 type: "POST",
                 data: {
                     email: campoEmail,
@@ -26,9 +26,9 @@ $(function () {
                         $("div#mensagem")
                             .html(retorno["mensagem"])
                             .addClass(retorno["classe"]);
-                        $("form#formularioLoginAluno #senha").val("");
+                        $("form#formularioLoginProf #senha").val("");
                     } else {
-                        window.location = "portal_aluno.php";
+                        window.location = "portal_prof.php";
                     }
                 },
 

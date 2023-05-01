@@ -36,6 +36,12 @@
         max-width: 650px;
     }
 
+    .icones {
+        width: calc(100% - 200px);
+        margin-left: 200px;
+        z-index: 9998;
+    }
+
     #piechart {
         width: 400px;
         height: 200px;
@@ -181,6 +187,7 @@
         right: 0;
         float: right;
         margin-right: 5px;
+        z-index: 9999;
     }
 
     .menu {
@@ -190,7 +197,7 @@
     #checkbox-menu {
         opacity: 0;
         position: absolute;
-        z-index: 1000;
+        z-index: 9999;
         height: 22px;
         width: 30px;
     }

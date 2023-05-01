@@ -14,7 +14,7 @@ include_once('config_recaptcha.php');
     <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <script type="text/javascript" src="../assets/js/jquery-3.6.1.min.js"></script>
-    <script type="text/javascript" src="../assets/js/login_aluno.js"></script>
+    <script type="text/javascript" src="../assets/js/login_prof.js"></script>
     <script src="../assets/js/submenu_login.js" defer></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
@@ -84,15 +84,15 @@ include_once('config_recaptcha.php');
         <div class="login-container">
             <div class="telalogin">
                 <div id="mensagem"></div>
-                <h1>ALUNO</h1>
-                <form id="formularioLoginAluno">
+                <h1>PROFESSOR</h1>
+                <form id="formularioLoginProf">
                     <input class=inputlogin name="email" type="email" placeholder="Email" id="email">
                     <br><br>
                     <input class=inputlogin name="senha" type="password" placeholder="Senha" id="senha">
                     <br><br>
                     <div class="g-recaptcha" data-sitekey="<?php echo SITE_KEY; ?>"></div>
                     <br>
-                    <button class=loginbtn id="btnLoginAluno">Entrar</button>
+                    <button class=loginbtn id="btnLoginProf">Entrar</button>
                 </form>
             </div>
         </div>

@@ -62,7 +62,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                             <li>ALUNO</li>
                         </a>
                         <a href="album.php">
-                            <li>ALBUM</li>
+                            <li>ÁLBUM</li>
                         </a>
                         <a href="sobre.php">
                             <li>SOBRE</li>
@@ -78,7 +78,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                             <a href="../">INÍCIO</a>
                         </li>
                         <li>
-                            <a href="album.php">ALBUM</a>
+                            <a href="album.php">ÁLBUM</a>
                         </li>
                         <li>
                             <a href="matricula.php">MATRÍCULA</a>

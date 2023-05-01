@@ -27,7 +27,7 @@ $(function () {
                             .html(retorno["mensagem"])
                             .addClass(retorno["classe"]);
                     } else {
-                        window.location = "dashboard.php";
+                        window.location = "dashboard.php?view=dashboard";
                     }
                 },
 

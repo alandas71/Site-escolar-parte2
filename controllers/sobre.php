@@ -28,7 +28,7 @@
                         <li>SOBRE</li>
                     </a>
                     <a href="album.php">
-                        <li>ALBUM</li>
+                        <li>ÁLBUM</li>
                     </a>
                     <a href="login.php">
                         <li>ALUNO</li>
@@ -52,11 +52,12 @@
                         <a href="#">LOGIN</a>
                         <ul class="submenu">
                             <li><a href="portal_aluno.php">ALUNO</a></li>
-                            <li><a href="#">PROFESSOR</a></li>
+                            <li><a href="portal_prof.php">PROFESSOR</a></li>
+                            <li><a href="dashboard.php?view=dashboard">DIREÇÃO</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="album.php">ALBUM</a>
+                        <a href="album.php">ÁLBUM</a>
                     </li>
                     <li>
                         <a href="matricula.php">MATRÍCULA</a>

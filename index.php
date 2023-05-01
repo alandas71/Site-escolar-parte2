@@ -16,6 +16,8 @@ include_once('controllers/configImages.php');
     <link rel="stylesheet" href="assets\css\owl.carousel.default.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <link rel="shortcut icon" href="assets/images/icone.ico" type="image/x-icon">
     <script src="assets/js/adicionar_imagem.js" defer></script>
@@ -26,6 +28,11 @@ include_once('controllers/configImages.php');
 <body>
     <div class="topoHome">
         <div class="topointerior">
+            <div class="icones">
+                <a href="https://wa.me/557182662374" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://instagram.com/centroeduc.arcoiris?igshid=YmMyMTA2M2Y=" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:centroeducacionalarcoiris2021@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+            </div>
             <div class="menu-hamburguer">
                 <input type="checkbox" id=checkbox-menu>
                 <label id="labelMenu" for="checkbox-menu">
@@ -47,7 +54,7 @@ include_once('controllers/configImages.php');
                     </a>
                     <hr>
                     <a href="controllers/album.php">
-                        <li>ALBUM</li>
+                        <li>ÁLBUM</li>
                     </a>
                     <hr>
                     <a href="controllers/sobre.php">
@@ -62,18 +69,16 @@ include_once('controllers/configImages.php');
         <img class="textLogo" data-aos="fade-right" data-aos-delay="1600" src="assets\images\logoText.png"></a>
         <div class="menu">
             <ul>
-                <li>
-                    <a href="./">INÍCIO</a>
-                </li>
                 <li data-submenu>
                     <a href="#">LOGIN</a>
                     <ul class="submenu">
                         <li><a href="controllers/portal_aluno.php">ALUNO</a></li>
-                        <li><a href="controllers/dashboard.php?view=dashboard">PROFESSOR</a></li>
+                        <li><a href="controllers/portal_prof.php">PROFESSOR</a></li>
+                        <li><a href="controllers/dashboard.php?view=dashboard">DIREÇÃO</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="controllers/album.php">ALBUM</a>
+                    <a href="controllers/album.php">ÁLBUM</a>
                 </li>
                 <li>
                     <a href="controllers/matricula.php">MATRÍCULA</a>
@@ -125,7 +130,7 @@ include_once('controllers/configImages.php');
                 <p class=mural>
                     A escola cresceu rapidamente e é reconhecida por sua excelência acadêmica
                     e preocupação com o bem-estar emocional e social de seus alunos. Luciane continua
-                    liderando a escola, com projetos para expansão e buscando sempre novas maneiras
+                    liderando a escola, com projetos para expansão, buscando sempre novas maneiras
                     de melhorar a experiência de aprendizagem das suas crianças e tornar o Arco-Íris
                     uma escola ainda mais inclusiva e acolhedora.
                 </p>

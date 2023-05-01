@@ -544,7 +544,6 @@ legend {
 }
 
 .login-container {
-    width: 100vw;
     height: 80vh;
     display: flex;
     flex-direction: row;
@@ -1482,4 +1481,44 @@ tbody {
 
 .sidebar h1 {
     text-align: right;
+}
+
+.icones {
+    position: absolute;
+    display: flex;
+    margin-top: 10px;
+    width: calc(100% - 250px);
+    margin-left: 250px;
+}
+
+.icones a {
+    display: inline-block;
+    margin-right: 50px;
+    color: #000;
+    font-size: 25px;
+}
+
+.icones i {
+    font-size: 25px;
+}
+
+.icones a:hover {
+    color: #FFD700;
+    border-radius: 50%;
+    transition: all 0.3s ease-in-out;
+}
+
+.fa-whatsapp:before {
+    content: "\f232";
+    /* código Unicode do ícone do WhatsApp */
+}
+
+.fa-instagram:before {
+    content: "\f16d";
+    /* código Unicode do ícone do Instagram */
+}
+
+.fa-envelope:before {
+    content: "\f0e0";
+    /* código Unicode do ícone de e-mail */
 }
