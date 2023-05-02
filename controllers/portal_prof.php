@@ -10,7 +10,6 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     $id = $_SESSION["usuario"][2];
     $tipo = $_SESSION["usuario"][1];
     $nome = $_SESSION["usuario"][0];
-    var_dump($id);
 
     if ($tipo !== "prof") {
         // Redireciona para página de login se não for prof
