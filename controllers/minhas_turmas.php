@@ -139,7 +139,6 @@
         $('.edit-notas').click(function(event) {
             event.preventDefault();
             var alunoId = $(this).data('aluno');
-            console.log('Aluno selecionado:', alunoId);
 
             // salva o valor do id_aluno no localStorage
             localStorage.setItem('id_aluno', alunoId);

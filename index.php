@@ -113,6 +113,12 @@ include_once('controllers/configImages.php');
     </div>
     </div>
     <div id="wallpaper4">
+        <div class="flutuante">
+            <i class="fa fa-star"></i>
+        </div>
+        <div class="flutuante2">
+            <i class="fa fa-heart"></i>
+        </div>
         <div class="container5">
             <img class="imgRowBelow" src="assets/images/abc21.jpg" />
             <div class="row">

@@ -45,6 +45,7 @@ button {
 }
 
 .sunLogo {
+    border-radius: 50%;
     width: 80px;
     position: absolute;
 }
@@ -1561,4 +1562,49 @@ tbody {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+.flutuante {
+    position: absolute;
+    top: 90%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    animation: flutuar 5s infinite ease-in-out alternate;
+}
+
+.flutuante i {
+    font-size: 40px;
+    color: #FFD700;
+}
+
+@keyframes flutuar {
+    from {
+        transform: translate(-50%, -50%) translateY(0);
+    }
+
+    to {
+        transform: translate(-50%, -50%) translateY(-20px);
+    }
+}
+
+.flutuante2 {
+    position: absolute;
+    top: 10%;
+    left: 85%;
+}
+
+.flutuante2 i {
+    font-size: 40px;
+    animation: pulsar 1s infinite alternate;
+    color: red;
+}
+
+@keyframes pulsar {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.2);
+    }
 }

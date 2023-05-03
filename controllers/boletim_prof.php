@@ -11,29 +11,47 @@
         <thead>
             <tr>
                 <th>Matéria</th>
-                <th>Nota 1</th>
-                <th>Nota 2</th>
-                <th>Nota 3</th>
-                <th>Faltas</th>
-                <th>Resultado Final</th>
+                <th colspan="2">1° unidade</th>
+                <th colspan="2">2° unidade</th>
+                <th colspan="2">3° unidade</th>
+                <th colspan="2">4° unidade</th>
+            </tr>
+        </thead>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Nota</th>
+                <th>Falta</th>
+                <th>Nota</th>
+                <th>Falta</th>
+                <th>Nota</th>
+                <th>Falta</th>
+                <th>Nota</th>
+                <th>Falta</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>Matemática</td>
-                <td><input type="number" name="matematica_nota1"></td>
-                <td><input type="number" name="matematica_nota2"></td>
-                <td><input type="number" name="matematica_nota3"></td>
-                <td><input type="number" name="matematica_faltas"></td>
-                <td><input type="text" name="matematica_resultado"></td>
+                <td><input type="number" name="matematica_nota1" style="width:50px; -moz-appearance: textfield; appearance: textfield;"></td>
+                <td><input type="number" name="matematica_falta1" style="width:50px; -moz-appearance: textfield; appearance: textfield;"></td>
+                <td><input type="number" name="matematica_nota2" style="width:50px; -moz-appearance: textfield; appearance: textfield;"></td>
+                <td><input type="number" name="matematica_falta2" style="width:50px; -moz-appearance: textfield; appearance: textfield;"></td>
+                <td><input type="number" name="matematica_nota3" style="width:50px; -moz-appearance: textfield; appearance: textfield;"></td>
+                <td><input type="number" name="matematica_falta3" style="width:50px; -moz-appearance: textfield; appearance: textfield;"></td>
+                <td><input type="number" name="matematica_nota4" style="width:50px; -moz-appearance: textfield; appearance: textfield;"></td>
+                <td><input type="number" name="matematica_falta4" style="width:50px; -moz-appearance: textfield; appearance: textfield;"></td>
             </tr>
             <tr>
                 <td>Português</td>
-                <td><input type="number" name="portugues_nota1"></td>
-                <td><input type="number" name="portugues_nota2"></td>
-                <td><input type="number" name="portugues_nota3"></td>
-                <td><input type="number" name="portugues_faltas"></td>
-                <td><input type="text" name="portugues_resultado"></td>
+                <td><input type="number" name="portugues_nota1" style="width:50px; -moz-appearance: textfield; appearance: textfield;"></td>
+                <td><input type="number" name="portugues_falta1" style="width:50px; -moz-appearance: textfield; appearance: textfield;"></td>
+                <td><input type="number" name="portugues_nota2" style="width:50px; -moz-appearance: textfield; appearance: textfield;"></td>
+                <td><input type="number" name="portugues_falta2" style="width:50px; -moz-appearance: textfield; appearance: textfield;"></td>
+                <td><input type="number" name="portugues_nota3" style="width:50px; -moz-appearance: textfield; appearance: textfield;"></td>
+                <td><input type="number" name="portugues_falta3" style="width:50px; -moz-appearance: textfield; appearance: textfield;"></td>
+                <td><input type="number" name="portugues_nota4" style="width:50px; -moz-appearance: textfield; appearance: textfield;"></td>
+                <td><input type="number" name="portugues_falta4" style="width:50px; -moz-appearance: textfield; appearance: textfield;"></td>
             </tr>
             <!-- adicione as demais matérias -->
         </tbody>
