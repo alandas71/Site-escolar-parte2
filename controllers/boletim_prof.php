@@ -9,13 +9,13 @@ $query = "SELECT materia, nota1, nota2, nota3, nota4, falta1, falta2, falta3, fa
 $result = mysqli_query($conn, $query);
 
 $notas_materias = [
-    ['nome' => 'Matemática', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => ''],
-    ['nome' => 'Português', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => ''],
-    ['nome' => 'História', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => ''],
-    ['nome' => 'Ciências', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => ''],
-    ['nome' => 'Geografia', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => ''],
-    ['nome' => 'Artes', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => ''],
-    ['nome' => 'Inglês', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => ''],
+    ['nome' => 'Matemática', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
+    ['nome' => 'Português', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
+    ['nome' => 'História', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
+    ['nome' => 'Ciências', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
+    ['nome' => 'Geografia', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
+    ['nome' => 'Artes', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
+    ['nome' => 'Inglês', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
 ];
 
 while ($row = mysqli_fetch_assoc($result)) {
@@ -28,8 +28,9 @@ while ($row = mysqli_fetch_assoc($result)) {
     $falta2 = $row['falta2'];
     $falta3 = $row['falta3'];
     $falta4 = $row['falta4'];
-    $faltas = $row['faltas'];
     $media = $row['media'];
+    $faltas = $row['faltas'];
+    $resultado = $row['resultado'];
 
     foreach ($notas_materias as &$materia_atual) {
         if ($materia_atual['nome'] == $materia) {
@@ -41,6 +42,9 @@ while ($row = mysqli_fetch_assoc($result)) {
             $materia_atual['falta2'] = $falta2;
             $materia_atual['falta3'] = $falta3;
             $materia_atual['falta4'] = $falta4;
+            $materia_atual['media'] = $media;
+            $materia_atual['faltas'] = $faltas;
+            $materia_atual['resultado'] = $resultado;
             break;
         }
     }
@@ -56,13 +60,15 @@ while ($row = mysqli_fetch_assoc($result)) {
 </script>
 
 <script>
-    // Seleciona todos os elementos com o atributo placeholder
     var placeholders = document.querySelectorAll('[placeholder]');
 
-    // Para cada elemento, define o valor do campo de entrada com o valor do placeholder
     placeholders.forEach((placeholder) => {
         const input = placeholder.parentElement.querySelector('input, textarea, select');
-        input.value = placeholder.getAttribute('placeholder');
+        const placeholderValue = placeholder.getAttribute('placeholder');
+
+        if (placeholderValue !== null && placeholderValue !== "") {
+            input.value = placeholderValue;
+        }
     });
 </script>
 
@@ -76,11 +82,16 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <th colspan="2">2° unidade</th>
                 <th colspan="2">3° unidade</th>
                 <th colspan="2">4° unidade</th>
+                <th>Média</th>
+                <th>Faltas</th>
+                <th>Resultado final</th>
             </tr>
         </thead>
         <thead>
             <tr>
                 <th></th>
+                <th>Nota</th>
+                <th>Falta</th>
                 <th>Nota</th>
                 <th>Falta</th>
                 <th>Nota</th>
@@ -95,14 +106,17 @@ while ($row = mysqli_fetch_assoc($result)) {
             <?php foreach ($notas_materias as $materia) : ?>
                 <tr>
                     <td><?php echo $materia['nome']; ?></td>
-                    <td><input type="number" placeholder="<?php echo $materia['nota1']; ?>" name="<?php echo $materia['nome']; ?>_nota1" style="width:60px;"></td>
-                    <td><input type="number" placeholder="<?php echo $materia['falta1']; ?>" name="<?php echo $materia['nome']; ?>_falta1" style="width:60px;"></td>
-                    <td><input type="number" placeholder="<?php echo $materia['nota2']; ?>" name="<?php echo $materia['nome']; ?>_nota2" style="width:60px;"></td>
-                    <td><input type="number" placeholder="<?php echo $materia['falta2']; ?>" name="<?php echo $materia['nome']; ?>_falta2" style="width:60px;"></td>
-                    <td><input type="number" placeholder="<?php echo $materia['nota3']; ?>" name="<?php echo $materia['nome']; ?>_nota3" style="width:60px;"></td>
-                    <td><input type="number" placeholder="<?php echo $materia['falta3']; ?>" name="<?php echo $materia['nome']; ?>_falta3" style="width:60px;"></td>
-                    <td><input type="number" placeholder="<?php echo $materia['nota4']; ?>" name="<?php echo $materia['nome']; ?>_nota4" style="width:60px;"></td>
-                    <td><input type="number" placeholder="<?php echo $materia['falta4']; ?>" name="<?php echo $materia['nome']; ?>_falta4" style="width:60px;"></td>
+                    <td><input type="number" placeholder="<?php echo $materia['nota1'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_nota1" style="width:60px;"></td>
+                    <td><input type="number" placeholder="<?php echo $materia['falta1'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_falta1" style="width:60px;"></td>
+                    <td><input type="number" placeholder="<?php echo $materia['nota2'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_nota2" style="width:60px;"></td>
+                    <td><input type="number" placeholder="<?php echo $materia['falta2'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_falta2" style="width:60px;"></td>
+                    <td><input type="number" placeholder="<?php echo $materia['nota3'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_nota3" style="width:60px;"></td>
+                    <td><input type="number" placeholder="<?php echo $materia['falta3'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_falta3" style="width:60px;"></td>
+                    <td><input type="number" placeholder="<?php echo $materia['nota4'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_nota4" style="width:60px;"></td>
+                    <td><input type="number" placeholder="<?php echo $materia['falta4'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_falta4" style="width:60px;"></td>
+                    <td style="width:60px;"><?php echo $materia['media']; ?></td>
+                    <td style="width:60px;"><?php echo $materia['faltas']; ?></td>
+                    <td style="width:60px;"><?php echo $materia['resultado']; ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

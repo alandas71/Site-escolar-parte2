@@ -9,6 +9,9 @@ if (!isset($_POST['id_aluno']) || $_POST['id_aluno'] === '') {
 
 $id_aluno = $_POST['id_aluno'];
 
+$notas = [];
+$faltas = [];
+
 // percorre as notas e faltas enviadas pelo formulário
 foreach ($_POST as $key => $value) {
     // verifica se é uma nota de alguma matéria
@@ -16,33 +19,38 @@ foreach ($_POST as $key => $value) {
         // extrai o nome da matéria a partir do nome do campo
         $materia = str_replace('_nota1', '', $key);
 
-        // pega os valores das notas e faltas correspondentes
-        $notas = [
+        // pega os valores das notas e faltas correspondentes, ignorando os valores vazios
+        $notas = array_filter([
             $_POST[$key],
             $_POST[str_replace('_nota1', '_nota2', $key)],
             $_POST[str_replace('_nota1', '_nota3', $key)],
             $_POST[str_replace('_nota1', '_nota4', $key)],
-        ];
-        $faltas = [
+        ]);
+        $faltas = array_filter([
             $_POST[str_replace('_nota1', '_falta1', $key)],
             $_POST[str_replace('_nota1', '_falta2', $key)],
             $_POST[str_replace('_nota1', '_falta3', $key)],
             $_POST[str_replace('_nota1', '_falta4', $key)],
-        ];
+        ]);
 
         // calcula a média das notas
         $media = number_format(array_sum($notas) / count($notas), 1);
 
-        // verifica se a média é maior ou igual a 6 e define o resultado
-        $resultado = $media >= 6 ? 'aprovado' : 'reprovado';
-
         // soma as faltas
         $total_faltas = array_sum($faltas);
 
-        // verifica se o aluno tem mais de 50 faltas e define o resultado como 'reprovado' se tiver
-        if ($total_faltas > 50) {
-            $resultado = 'reprovado';
+        if (!empty($notas) && !empty($faltas) && count($notas) == 4) {
+            // verifica se a média é maior ou igual a 6 e define o resultado
+            $resultado = $media >= 6 ? 'Aprovado' : 'Reprovado';
+
+            // verifica se o aluno tem mais de 50 faltas e define o resultado como 'reprovado' se tiver
+            if ($total_faltas > 50) {
+                $resultado = 'Reprovado';
+            }
+        } else {
+            $resultado = null;
         }
+
 
         // verifica se já existe um registro para o aluno e matéria correspondentes
         $sql = "SELECT * FROM notas WHERE id_aluno = ? AND materia = ?";
