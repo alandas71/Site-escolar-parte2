@@ -34,8 +34,16 @@ include('parametros_matricula.php');
                     <a href="album.php">
                         <li>ÁLBUM</li>
                     </a>
-                    <a href="login.php">
+                    <a href="portal_aluno.php">
                         <li>ALUNO</li>
+                    </a>
+                    <hr>
+                    <a href="portal_prof.php">
+                        <li>PROFESSOR</li>
+                    </a>
+                    <hr>
+                    <a href="dashboard.php?view=dashboard">
+                        <li>DIREÇÃO</li>
                     </a>
                     <a href="matricula.php">
                         <li>MATRÍCULA</li>

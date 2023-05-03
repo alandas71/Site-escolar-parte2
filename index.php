@@ -49,8 +49,16 @@ include_once('controllers/configImages.php');
                         <li>MATRÍCULA</li>
                     </a>
                     <hr>
-                    <a href="controllers/login.php">
+                    <a href="controllers/portal_aluno.php">
                         <li>ALUNO</li>
+                    </a>
+                    <hr>
+                    <a href="controllers/portal_prof.php">
+                        <li>PROFESSOR</li>
+                    </a>
+                    <hr>
+                    <a href="controllers/dashboard.php?view=dashboard">
+                        <li>DIREÇÃO</li>
                     </a>
                     <hr>
                     <a href="controllers/album.php">

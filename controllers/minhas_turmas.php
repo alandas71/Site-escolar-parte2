@@ -69,7 +69,7 @@
                 echo "<td><img src='../assets/images/user.jpg' width='50px'></td>";
             }
             echo "<td>{$aluno['nome']}</td>";
-            echo "<td><a href='boletim_prof.php' data-toggle='modal' data-target='#notasModal{$aluno['id']}' class='edit-notas fas fa-edit' data-aluno='{$aluno['id']}'></a></td>";
+            echo "<td><a href='boletim_prof.php?id_aluno={$aluno['id']}' data-toggle='modal' data-target='#notasModal{$aluno['id']}' class='edit-notas fas fa-edit' data-aluno='{$aluno['id']}'></a></td>";
             echo "</tr>";
         }
         echo "</table>";
@@ -87,7 +87,7 @@
                 echo "<td><img src='../assets/images/user.jpg' width='50px'></td>";
             }
             echo "<td>{$aluno['nome']}</td>";
-            echo "<td><a href='boletim_prof.php' data-toggle='modal' data-target='#notasModal{$aluno['id']}' class='edit-notas fas fa-edit' data-aluno='{$aluno['id']}'></a></td>";
+            echo "<td><a href='boletim_prof.php?id_aluno={$aluno['id']}' data-toggle='modal' data-target='#notasModal{$aluno['id']}' class='edit-notas fas fa-edit' data-aluno='{$aluno['id']}'></a></td>";
             echo "</tr>";
         }
         echo "</table>";
