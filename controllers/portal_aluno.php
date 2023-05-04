@@ -7,6 +7,8 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     $conexaoClass = new Conexao();
     $conn = $conexaoClass->conectar();
 
+    $turma2 = $_SESSION["usuario"][4];
+    $turma1 = $_SESSION["usuario"][3];
     $id = $_SESSION["usuario"][2];
     $tipo = $_SESSION["usuario"][1];
     $nome = $_SESSION["usuario"][0];
@@ -40,6 +42,11 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     <script src="../assets/js/sidebar_hide.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .view {
+            position: inherit;
+        }
+    </style>
 </head>
 
 <body style="overflow-x: hidden;">
@@ -126,25 +133,19 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                             <br>
                             <li>
                                 <a href="#">
-                                    <i class="fas fa-users"></i>
+                                    <i class="fas fa-comment"></i>
                                     <p>CHAT</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <i class="fas fa-chalkboard-teacher"></i>
+                                <a href="portal_aluno.php?view=notas">
+                                    <i class="fas fa-graduation-cap"></i>
                                     <p>NOTAS</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <i class="fas fa-door-open"></i>
-                                    <p>DESCRIÇÃO</p>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="portal_aluno.php?view=calendario">
-                                    <i class="fas fa-clipboard"></i>
+                                    <i class="fas fa-calendar"></i>
                                     <p>CALENDÁRIO</p>
                                 </a>
                             </li>
@@ -152,18 +153,20 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                             <br>
                             <li>
                                 <a href="#">
-                                    <i class="fas fa-book"></i>
+                                    <i class="fas fa-credit-card"></i>
                                     <p>FINANCEIRO</p>
                                 </a>
                             </li>
                         </ul>
                     </div>
-
                     <div class="view">
                         <?php
                         if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["view"])) {
                             $view = $_GET["view"];
                             switch ($view) {
+                                case "notas":
+                                    include('boletim_view.php');
+                                    break;
                                 case "calendario":
                                     include('agendaView-item.php');
                                     break;

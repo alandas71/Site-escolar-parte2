@@ -135,9 +135,8 @@ include_once('controllers/configImages.php');
             <div class="row textRow">
                 <h1 class="rowTitle">Centro Educar Arco-íris</h1>
                 <p class=mural>
-                    O Centro Educacional Arco-Íris foi criado por Luciane, uma educadora apaixonada
-                    pelo ensino e comprometida em oferecer uma educação de qualidade para crianças e
-                    jovens em sua comunidade. Ela queria criar uma escola que valorizasse a
+                    O Centro Educacional Arco-Íris foi fundado em 2022 pela psicopedagoga Luciane, uma educadora apaixonada
+                    pelo ensino e comprometida em oferecer uma educação de qualidade para as crianças de sua comunidade. Ela queria criar uma escola que valorizasse a
                     individualidade de cada aluno, ajudando-os a descobrir seus talentos e habilidades
                     únicas.
                 </p>

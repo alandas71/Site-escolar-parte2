@@ -59,7 +59,7 @@ class LoginSecond
             $user = $query->fetchAll(PDO::FETCH_ASSOC)[0];
 
             session_start();
-            $_SESSION["usuario"] = array($user["nome"], $user["tipo"], $user["id"]);
+            $_SESSION["usuario"] = array($user["nome"], $user["tipo"], $user["id"], $user["turma1"], $user["turma2"]);
 
             return json_encode(array("erro" => 0));
         } else {

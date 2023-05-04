@@ -1,32 +1,11 @@
-body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #f2f2f2;
-}
-
-.boletim {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-    border-radius: 5px;
-    padding: 30px;
-    margin-bottom: 30px;
-}
-
-.boletim h1 {
-    text-align: center;
-    font-size: 36px;
-    margin-bottom: 40px;
-    color: #333;
-    text-transform: uppercase;
-}
-
 table {
     border-collapse: collapse;
-    margin: 20px 0;
-    width: 100%;
-    table-layout: fixed;
+    width: calc(100% - 50px);
+    text-align: center;
+}
+
+#tabelaView {
+    overflow-x: auto;
 }
 
 th,
@@ -50,56 +29,53 @@ th {
     padding-bottom: 20px;
 }
 
-.nota {
-    font-weight: bold;
-    color: #28a745;
-}
-
-.falta {
-    font-weight: bold;
-    color: #dc3545;
-}
-
 .resultado {
     font-weight: bold;
-    font-size: 24px;
+    font-size: 14px;
     margin-top: 20px;
     text-align: center;
     text-transform: uppercase;
 }
 
-.aprovado {
-    color: #28a745;
+.bbnone {
+    border: 1px solid #ccc;
+    border-bottom: none;
 }
 
-.reprovado {
-    color: #dc3545;
+.btnone {
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+@media (max-width: 1052px) {
+    #tabelaView {
+        width: 95%;
+    }
 }
 
 /* Estilos adicionais para dispositivos móveis */
 @media (max-width: 767px) {
-    .boletim {
-        padding: 20px;
-    }
-
-    .boletim h1 {
-        font-size: 28px;
-        margin-bottom: 30px;
-    }
 
     th,
     td {
-        padding: 10px;
-        font-size: 16px;
+        padding: 8px;
+        /* decrease padding */
+        font-size: 14px;
+        /* decrease font size */
+        text-align: center;
+        /* center text */
     }
 
     th:first-child,
     td:first-child {
-        padding-left: 10px;
+        padding-left: 5px;
+        /* decrease left padding */
     }
 
     th:last-child,
     td:last-child {
-        padding-right: 10px;
+        padding-right: 5px;
+        /* decrease right padding */
     }
+
 }

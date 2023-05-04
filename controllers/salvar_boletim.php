@@ -41,11 +41,11 @@ foreach ($_POST as $key => $value) {
 
         if (!empty($notas) && !empty($faltas) && count($notas) == 4) {
             // verifica se a média é maior ou igual a 6 e define o resultado
-            $resultado = $media >= 6 ? 'Aprovado' : 'Reprovado';
+            $resultado = $media >= 6 ? 'Aprovado' : 'Recuperação';
 
             // verifica se o aluno tem mais de 50 faltas e define o resultado como 'reprovado' se tiver
             if ($total_faltas > 50) {
-                $resultado = 'Reprovado';
+                $resultado = 'Recuperação';
             }
         } else {
             $resultado = null;

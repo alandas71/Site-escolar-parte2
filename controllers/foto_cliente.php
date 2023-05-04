@@ -52,6 +52,6 @@ if (isset($_FILES['foto'])) {
             echo "Ocorreu um erro ao enviar a imagem.";
         }
     } else {
-        echo "O arquivo enviado não é uma imagem.";
+        header("location: dashboard.php?view=dashboard");
     }
 }
