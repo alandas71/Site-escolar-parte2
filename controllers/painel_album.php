@@ -84,7 +84,7 @@ include_once('configImages.php');
         </form>
         <br>
         <h1 class="title">Excluir fotos</h1>
-        <div class="delete">
+        <div class="deleteft">
             <form method="post" action="delete_all_photos_album.php">
                 <select id="album" name="id_album" required>
                     <option selected disabled value="">Escolha um álbum</option>
@@ -112,14 +112,18 @@ include_once('configImages.php');
                 </select>
                 <input type="submit" value="Excluir fotos" onclick="return confirm('Tem certeza de que deseja excluir todas as fotos desse álbum?')">
             </form>
-            <br>
-            <div class="delete">
-                <?php
-                include('delete_fotos.php');
-                ?>
-            </div>
-        </div>
 
+        </div>
+        <div class="delete">
+            <?php
+            include('delete_fotos.php');
+            ?>
+        </div>
+        <div>
+            <footer style="margin-top: 50px; padding: 50px; width: 100%; text-align:center;">
+                <p>&copy; 2022 Centro Educar Arco-íris</p>
+            </footer>
+        </div>
     </div>
 </body>
 

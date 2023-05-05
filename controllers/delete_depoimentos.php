@@ -44,7 +44,7 @@ $resultado = mysqli_query($conn, $sql);
 
 while ($row = mysqli_fetch_assoc($resultado)) {
     echo '<div>';
-    echo '<img style="height: 200px; width: 250px;" src="../assets/images/depoimentos/' . $row['depoimento'] . '">';
+    echo '<img style="height: 100px; width: 125px;" src="../assets/images/depoimentos/' . $row['depoimento'] . '">';
     echo '<form method="post" action="delete_depoimentos.php">';
     echo '<input type="hidden" name="id" value="' . $row['id'] . '">';
     echo '<input type="hidden" name="situacao" value="' . $row['situacao'] . '">';
@@ -53,9 +53,6 @@ while ($row = mysqli_fetch_assoc($resultado)) {
     echo '</form>';
     echo '</div>';
 }
-echo '<footer style="margin-top: 50px; padding: 0; width: 100%; height: 100px; text-align:center;">';
-echo '<p>&copy; 2022 Centro Educar Arco-íris</p>';
-echo '</footer>';
 
 // Fecha a conexão com o banco de dados
 mysqli_close($conn);

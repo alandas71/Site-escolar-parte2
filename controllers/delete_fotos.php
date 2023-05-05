@@ -51,8 +51,5 @@ while ($row = mysqli_fetch_assoc($resultado)) {
     echo '</form>';
     echo '</div>';
 }
-echo '<footer style="margin-top: 50px; padding: 0; width: 100%; height: 100px; text-align:center;">';
-echo '<p>&copy; 2022 Centro Educar Arco-íris</p>';
-echo '</footer>';
 // Fecha a conexão com o banco de dados
 mysqli_close($conn);

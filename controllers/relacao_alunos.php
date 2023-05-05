@@ -69,7 +69,7 @@ if (!$result_turma2) {
 
 // exibir os resultados da turma2 em uma tabela HTML
 echo "<h2>Vespertino</h2>";
-echo "<div style=' box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5); width: 95%; overflow-x: auto; box-sizing:'>";
+echo "<div style=' box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5); width: 100%; overflow-x: auto; box-sizing:'>";
 echo "<table>";
 echo '<thead><tr><th>Nome</th><th>Turma</th><th>E-mail</th><th>Senha</th><th>Ações</th></tr></thead>';
 while ($row_turma2 = $result_turma2->fetch_assoc()) {

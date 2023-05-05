@@ -32,7 +32,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
             <input type="submit" name="submit" value="Enviar">
         </form>
         <br>
-        <div class="delete mgn">
+        <div class="delete">
             <?php
             include_once('delete_banners.php');
             ?>
@@ -70,6 +70,11 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
             <?php
             include_once('delete_depoimentos.php');
             ?>
+        </div>
+        <div>
+            <footer style="margin-top: 50px; padding: 50px; width: 100%; text-align:center;">
+                <p>&copy; 2022 Centro Educar Arco-íris</p>
+            </footer>
         </div>
     </div>
 

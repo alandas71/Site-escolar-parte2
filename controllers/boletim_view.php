@@ -59,6 +59,11 @@ while ($row = mysqli_fetch_assoc($result)) {
 <head>
     <link rel="stylesheet" href="..\assets\css\viewNotas.css" />
     <title>Boletim Escolar</title>
+    <style>
+        .view {
+            position: relative;
+        }
+    </style>
 </head>
 
 <body>
@@ -70,62 +75,63 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <p>BOLETIM DO ALUNO</p>
             </div>
         </div>
-        <br>
         <p style="margin-bottom: 0;"><?php echo $nome; ?><?php echo ' - ' . $turma1 . $turma2; ?></p>
         <p style="font-size:12px; margin-top: 0;"><?php echo 'Registro acadêmico - ' . $id; ?></p>
         <div id="tabelaView">
-            <table>
-                <thead>
-                    <tr>
-                        <th class="bbnone">Matéria</th>
-                        <th class='fullborder' colspan="2">1° unidade</th>
-                        <th class='fullborder' colspan="2">2° unidade</th>
-                        <th class='fullborder' colspan="2">3° unidade</th>
-                        <th class='fullborder' colspan="2">4° unidade</th>
-                        <th class="bbnone">Média</th>
-                        <th class="bbnone">Total de Faltas</th>
-                        <th class="bbnone">Resultado Final</th>
-                        <th class="bbnone">Recuperação</th>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <th class='btnone'></th>
-                        <th class='fullborder'>Nota</th>
-                        <th class='fullborder'>Falta</th>
-                        <th class='fullborder'>Nota</th>
-                        <th class='fullborder'>Falta</th>
-                        <th class='fullborder'>Nota</th>
-                        <th class='fullborder'>Falta</th>
-                        <th class='fullborder'>Nota</th>
-                        <th class='fullborder'>Falta</th>
-                        <th class='btnone'></th>
-                        <th class='btnone'></th>
-                        <th class='btnone'></th>
-                        <th class='btnone'></th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <?php foreach ($notas_materias as $materia) : ?>
+            <div>
+                <table>
+                    <thead>
                         <tr>
-                            <td class="fullborder"><?php echo $materia['nome']; ?></td>
-                            <td name="<?php echo $materia['nome']; ?>_nota1" class="fullborder nota"> <?php echo $materia['nota1']; ?></td>
-                            <td name="<?php echo $materia['nome']; ?>_falta1" class="fullborder falta"><?php echo $materia['falta1']; ?></td>
-                            <td name="<?php echo $materia['nome']; ?>_nota2" class="fullborder nota"><?php echo $materia['nota2']; ?></td>
-                            <td name="<?php echo $materia['nome']; ?>_falta2" class="fullborder falta"><?php echo $materia['falta2']; ?></td>
-                            <td name="<?php echo $materia['nome']; ?>_nota3" class="fullborder nota"><?php echo $materia['nota3']; ?></td>
-                            <td name="<?php echo $materia['nome']; ?>_falta3" class="fullborder falta"><?php echo $materia['falta3']; ?></td>
-                            <td name="<?php echo $materia['nome']; ?>_nota4" class="fullborder nota"><?php echo $materia['nota4']; ?></td>
-                            <td name="<?php echo $materia['nome']; ?>_falta4" class="fullborder falta"><?php echo $materia['falta4']; ?></td>
-                            <td class="fullborder media"><?php echo $materia['media']; ?></td>
-                            <td class="fullborder total-faltas"><?php echo $materia['faltas']; ?></td>
-                            <td class="fullborder resultado"><?php echo $materia['resultado']; ?></td>
-                            <td class="fullborder recuperacao"></td>
+                            <th class="bbnone">Matéria</th>
+                            <th class='fullborder' colspan="2">1° unidade</th>
+                            <th class='fullborder' colspan="2">2° unidade</th>
+                            <th class='fullborder' colspan="2">3° unidade</th>
+                            <th class='fullborder' colspan="2">4° unidade</th>
+                            <th class="bbnone">Média</th>
+                            <th class="bbnone">Total de Faltas</th>
+                            <th class="bbnone">Resultado Final</th>
+                            <th class="bbnone">Recuperação</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <thead>
+                        <tr>
+                            <th class='btnone'></th>
+                            <th class='fullborder'>Nota</th>
+                            <th class='fullborder'>Falta</th>
+                            <th class='fullborder'>Nota</th>
+                            <th class='fullborder'>Falta</th>
+                            <th class='fullborder'>Nota</th>
+                            <th class='fullborder'>Falta</th>
+                            <th class='fullborder'>Nota</th>
+                            <th class='fullborder'>Falta</th>
+                            <th class='btnone'></th>
+                            <th class='btnone'></th>
+                            <th class='btnone'></th>
+                            <th class='btnone'></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php foreach ($notas_materias as $materia) : ?>
+                            <tr>
+                                <td class="fullborder"><?php echo $materia['nome']; ?></td>
+                                <td name="<?php echo $materia['nome']; ?>_nota1" class="fullborder nota"> <?php echo $materia['nota1']; ?></td>
+                                <td name="<?php echo $materia['nome']; ?>_falta1" class="fullborder falta"><?php echo $materia['falta1']; ?></td>
+                                <td name="<?php echo $materia['nome']; ?>_nota2" class="fullborder nota"><?php echo $materia['nota2']; ?></td>
+                                <td name="<?php echo $materia['nome']; ?>_falta2" class="fullborder falta"><?php echo $materia['falta2']; ?></td>
+                                <td name="<?php echo $materia['nome']; ?>_nota3" class="fullborder nota"><?php echo $materia['nota3']; ?></td>
+                                <td name="<?php echo $materia['nome']; ?>_falta3" class="fullborder falta"><?php echo $materia['falta3']; ?></td>
+                                <td name="<?php echo $materia['nome']; ?>_nota4" class="fullborder nota"><?php echo $materia['nota4']; ?></td>
+                                <td name="<?php echo $materia['nome']; ?>_falta4" class="fullborder falta"><?php echo $materia['falta4']; ?></td>
+                                <td class="fullborder media"><?php echo $materia['media']; ?></td>
+                                <td class="fullborder total-faltas"><?php echo $materia['faltas']; ?></td>
+                                <td class="fullborder resultado"><?php echo $materia['resultado']; ?></td>
+                                <td class="fullborder recuperacao"></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <br>
@@ -137,13 +143,13 @@ while ($row = mysqli_fetch_assoc($result)) {
         btn_imp.addEventListener("click", (evt) => {
             let estilo = "<style>";
             estilo += "@media print { @page {size: A4;margin: 0;padding:0;}}";
-            estilo += ".print-boletim img {transform: rotate(90deg);}";
+            estilo += ".print-boletim img {transform: rotate(90deg); width: 110px;}";
             estilo += "table {border-collapse: collapse; width: 100%; height: 100%; text-align: center;}";
-            estilo += "th, td {padding: 15px;text-align: center;font-size: 18px;vertical-align: middle;}";
-            estilo += ".btnone {border: 1px solid #ccc; border-top: none;}";
-            estilo += ".bbnone {border: 1px solid #ccc; border-bottom: none;}";
-            estilo += ".fullborder {border: 1px solid #ccc;}";
-            estilo += ".print-boletim {writing-mode: vertical-rl;transform: rotate(180deg); width: 100vw; height: 122vh;";
+            estilo += "th, td {padding: 16.5px; text-align: center;font-size: 18px;vertical-align: middle; box-sizing: border-box;}";
+            estilo += ".btnone {border: 1px solid #000; border-right: none;}";
+            estilo += ".bbnone {border: 1px solid #000; border-left: none;}";
+            estilo += ".fullborder {border: 1px solid #000;}";
+            estilo += ".print-boletim {writing-mode: vertical-rl; transform: rotate(180deg) scale(0.78);  transform-origin: 45% 50%;}";
             estilo += "</style>";
 
             const newWindow = window.open('', '', 'height=1000,width=1000');
@@ -160,7 +166,6 @@ while ($row = mysqli_fetch_assoc($result)) {
             newWindow.close();
         })
     </script>
-
 </body>
 
 </html>

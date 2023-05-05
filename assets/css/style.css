@@ -1160,13 +1160,17 @@ span {
     max-width: 100vw;
     display: flex;
     gap: 10px;
-    flex-wrap: wrap;
+    overflow-x: auto;
+}
+
+.deleteft {
+    height: 50px;
 }
 
 .delete img {
     height: auto;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
     flex: 1;
 }
 
@@ -1300,6 +1304,10 @@ hr {
 }
 
 .fas {
+    width: 60px;
+}
+
+.far {
     width: 60px;
 }
 
@@ -1591,6 +1599,7 @@ tbody {
     position: absolute;
     top: 10%;
     left: 85%;
+    z-index: -1;
 }
 
 .flutuante2 i {

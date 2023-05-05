@@ -1,5 +1,9 @@
 @media screen and (max-width: 600px) {
 
+    .fc-daygrid-day {
+        height: 45px;
+    }
+
     .view {
         left: 27px;
     }
@@ -435,6 +439,10 @@
     }
 }
 
+.telalogin {
+    padding: 40px;
+}
+
 @media screen and (max-width: 400px) {
 
     #prof1,
@@ -447,10 +455,20 @@
         margin-left: 150px;
     }
 
+    .telalogin {
+        padding: 25px;
+    }
+
+
 
 }
 
 @media screen and (max-width: 360px) {
+
+    .gallery-items2 {
+        width: 250px;
+        height: 250px;
+    }
 
 
     #bloco1,
@@ -464,8 +482,9 @@
         width: 85%;
     }
 
+
     .telalogin {
-        padding: 40px;
+        padding: 10px;
     }
 
     .inputlogin {
@@ -481,7 +500,12 @@
 
 @media screen and (max-width: 330px) {
     .telalogin {
-        padding: 30px;
+        padding: 0;
+    }
+
+    .gallery-items2 {
+        width: 200px;
+        height: 200px;
     }
 
     .inputlogin {

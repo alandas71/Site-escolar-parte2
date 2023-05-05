@@ -98,77 +98,77 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                     </ul>
                 </div>
             </div>
+        </div>
+        <div class="dashboard">
+            <div class="wrapper">
+                <div class="sidebar">
+                    <h1 style="font-size: 20px; font-weight:bold;">Centro Educar Arco-íris</h1>
+                    <div class="sidebar-header"></div>
+                    <ul class="sidebar-menu">
+                        <form action="foto_cliente_prof.php" method="post" enctype="multipart/form-data" id="myForm">
+                            <div class='img_dashboard'>
+                                <label for="foto"></label>
+                                <input type="file" id="foto" name="foto" accept="image/*" style="display: none" onchange="submitForm()">
+                                <?php
 
-            <div class="dashboard">
-                <div class="wrapper">
-                    <div class="sidebar">
-                        <h1>Centro Educar Arco-íris</h1>
-                        <div class="sidebar-header"></div>
-                        <ul class="sidebar-menu">
-                            <form action="foto_cliente_prof.php" method="post" enctype="multipart/form-data" id="myForm">
-                                <div class='img_dashboard'>
-                                    <label for="foto"></label>
-                                    <input type="file" id="foto" name="foto" accept="image/*" style="display: none" onchange="submitForm()">
-                                    <?php
+                                // Busca o caminho da imagem na tabela "users"
+                                $stmt = $conn->prepare("SELECT foto FROM users WHERE id = ?");
+                                $stmt->execute(array($id)); // alteração aqui
+                                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                                $caminho_imagem = $row['foto'];
+                                ?>
+                                <img class='client_foto' src='<?php echo isset($caminho_imagem) ? $caminho_imagem : '../assets/images/user.jpg' ?>' width='100px' height='100px' id='foto-preview'>
+                            </div>
+                            <input type="hidden" id="cropped-image" name="cropped-image">
+                        </form>
+                        <p class='img_dashboard'><?php echo $nome ?></p>
+                        <hr>
+                        <br>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-comment"></i>
+                                <p>CHAT</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="portal_prof.php?view=mturmas">
+                                <i class="fas fa-users"></i>
+                                <p>MINHAS TURMAS</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="far fa-calendar-alt"></i>
+                                <p>FREQUÊNCIA</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="portal_prof.php?view=calendario">
+                                <i class="fas fa-calendar"></i>
+                                <p>CALENDÁRIO</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
 
-                                    // Busca o caminho da imagem na tabela "users"
-                                    $stmt = $conn->prepare("SELECT foto FROM users WHERE id = ?");
-                                    $stmt->execute(array($id)); // alteração aqui
-                                    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                                    $caminho_imagem = $row['foto'];
-                                    ?>
-                                    <img class='client_foto' src='<?php echo isset($caminho_imagem) ? $caminho_imagem : '../assets/images/user.jpg' ?>' width='100px' height='100px' id='foto-preview'>
-                                </div>
-                                <input type="hidden" id="cropped-image" name="cropped-image">
-                            </form>
-                            <p class='img_dashboard'><?php echo $nome ?></p>
-                            <hr>
-                            <br>
-                            <li>
-                                <a href="#">
-                                    <i class="fas fa-users"></i>
-                                    <p>CHAT</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="portal_prof.php?view=mturmas">
-                                    <i class="fas fa-clipboard"></i>
-                                    <p>MINHAS TURMAS</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fas fa-chalkboard-teacher"></i>
-                                    <p>FREQUÊNCIA</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="portal_prof.php?view=calendario">
-                                    <i class="fas fa-clipboard"></i>
-                                    <p>CALENDÁRIO</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="view">
-                        <?php
-                        if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["view"])) {
-                            $view = $_GET["view"];
-                            switch ($view) {
-                                case "mturmas":
-                                    include('minhas_turmas.php');
-                                    break;
-                                case "calendario":
-                                    include('agendaView-item.php');
-                                    break;
-                            }
+                <div class="view">
+                    <?php
+                    if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["view"])) {
+                        $view = $_GET["view"];
+                        switch ($view) {
+                            case "mturmas":
+                                include('minhas_turmas.php');
+                                break;
+                            case "calendario":
+                                include('agendaView-item.php');
+                                break;
                         }
-                        ?>
-                    </div>
+                    }
+                    ?>
                 </div>
             </div>
-        <?php endif; ?>
+        </div>
+    <?php endif; ?>
 </body>
 
 </html>

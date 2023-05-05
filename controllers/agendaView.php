@@ -46,7 +46,6 @@ $events = $stmt->fetchAll();
                 ],
 
             });
-
             calendar.on('eventClick', function(info) {
                 // Obter o título do evento clicado pelo usuário
                 var title = info.event.title;
