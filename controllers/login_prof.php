@@ -13,6 +13,7 @@ include_once('config_recaptcha.php');
     <link rel="stylesheet" href="..\assets\css\mobile.css" />
     <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script type="text/javascript" src="../assets/js/jquery-3.6.1.min.js"></script>
     <script type="text/javascript" src="../assets/js/login_prof.js"></script>
     <script src="../assets/js/submenu_login.js" defer></script>
@@ -30,28 +31,33 @@ include_once('config_recaptcha.php');
                     <span class="spanMenu"></span>
                 </label>
                 <ul>
-                    <a href="sobre.php">
-                        <li>SOBRE</li>
-                    </a>
-                    <a href="album.php">
-                        <li>ÁLBUM</li>
-                    </a>
-                    <a href="portal_aluno.php">
-                        <li>ALUNO</li>
+                    <a href="./">
+                        <li>INÍCIO</li>
                     </a>
                     <hr>
-                    <a href="portal_prof.php">
-                        <li>PROFESSOR</li>
-                    </a>
-                    <hr>
-                    <a href="dashboard.php?view=dashboard">
-                        <li>DIREÇÃO</li>
-                    </a>
                     <a href="matricula.php">
                         <li>MATRÍCULA</li>
                     </a>
-                    <a href="../">
-                        <li>INÍCIO</li>
+                    <hr>
+                    <a href="#" class="login-menu">
+                        <li>LOGIN <i class="fas fa-caret-down"></i></li>
+                    </a>
+                    <div class="sub-menu">
+                        <br>
+                        <a href="#" class="aluno-login" style="font-size:18px;">ALUNO</a>
+                        <br><br>
+                        <a href="#" class="professor-login" style="font-size:18px;">PROFESSOR</a>
+                        <br><br>
+                        <a href="#" class="diretor-login" style="font-size:18px;">DIREÇÃO</a>
+                        <br><br>
+                    </div>
+                    <hr>
+                    <a href="album.php">
+                        <li>ÁLBUM</li>
+                    </a>
+                    <hr>
+                    <a href="sobre.php">
+                        <li>SOBRE</li>
                     </a>
                 </ul>
             </div>
@@ -126,6 +132,30 @@ include_once('config_recaptcha.php');
         <div class="center" id="whats"><a href="https://wa.me/557182662374" target="_blank"><img src="../assets/images/whats.png" width="30px" height="30px" />
             </a></div>
     </footer>
+    <script>
+        $(document).ready(function() {
+            $('.aluno-login').click(function() {
+                window.location.href = 'login_aluno.php';
+            });
+
+            $('.professor-login').click(function() {
+                window.location.href = 'login_prof.php';
+            });
+
+            $('.diretor-login').click(function() {
+                window.location.href = 'login.php';
+            });
+
+            $('.login-menu').click(function() {
+                $('.sub-menu').toggle();
+                if ($('.sub-menu').is(':visible')) {
+                    $('.login-menu i').removeClass('fa-caret-down').addClass('fa-caret-up');
+                } else {
+                    $('.login-menu i').removeClass('fa-caret-up').addClass('fa-caret-down');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -1578,6 +1578,7 @@ tbody {
     left: 10%;
     transform: translate(-50%, -50%);
     animation: flutuar 5s infinite ease-in-out alternate;
+    z-index: -1;
 }
 
 .flutuante i {

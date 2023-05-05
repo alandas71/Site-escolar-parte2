@@ -190,6 +190,78 @@
         z-index: 9999;
     }
 
+    .fa-caret-up {
+        display: none;
+    }
+
+    .sub-menu.open {
+        display: block;
+    }
+
+    .login-menu .fa-caret-down {
+        display: inline-block;
+    }
+
+    .login-menu.open .fa-caret-down {
+        display: none;
+    }
+
+    .login-menu.open .fa-caret-up {
+        display: inline-block;
+    }
+
+
+    .sub-menu a:before {
+        content: "\2022";
+        /* código do bullet point */
+        color: #000;
+        /* cor do ícone */
+        margin-right: 10px;
+        /* espaço entre o ícone e o texto */
+    }
+
+    .sub-menu a {
+        padding-left: 10px;
+    }
+
+
+
+    .menu-hamburguer .sub-menu {
+        display: none;
+    }
+
+    .menu-hamburguer .login-menu:hover .sub-menu {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #2ECC40;
+        width: 150px;
+        z-index: 999;
+    }
+
+    .menu-hamburguer .sub-menu li {
+        padding: 10px 0px;
+        text-align: left;
+        text-decoration: none;
+    }
+
+    .menu-hamburguer .sub-menu a {
+        text-decoration: none;
+        color: white;
+        font-size: 22px;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    .menu-hamburguer .sub-menu a:hover {
+        color: #999;
+    }
+
+    .menu-hamburguer .sub-menu a:active {
+        color: #999;
+    }
+
     .menu {
         display: none;
     }
@@ -216,7 +288,7 @@
         height: 5px;
         width: 30px;
         border-radius: 30px;
-        background: #FFD700;
+        background: #000;
         transition: 0.2s ease;
     }
 
@@ -253,13 +325,13 @@
         z-index: 998;
         right: -150px;
         width: 0px;
-        background-color: #FFD700;
+        background-color: #2ECC40;
         height: 100%;
         margin-top: 53px;
         font-weight: bold;
         transition: all ease .2s;
         padding: 30px 10px;
-
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
     }
 
     .menu-hamburguer #checkbox-menu:checked~ul {
@@ -284,11 +356,11 @@
     }
 
     .menu-hamburguer ul a:hover {
-        color: #999;
+        color: #000;
     }
 
     .menu-hamburguer ul a:active {
-        color: #999;
+        color: #000;
     }
 
     .wid {

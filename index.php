@@ -49,17 +49,18 @@ include_once('controllers/configImages.php');
                         <li>MATRÍCULA</li>
                     </a>
                     <hr>
-                    <a href="controllers/portal_aluno.php">
-                        <li>ALUNO</li>
+                    <a href="#" class="login-menu">
+                        <li>LOGIN <i class="fas fa-caret-down"></i></li>
                     </a>
-                    <hr>
-                    <a href="controllers/portal_prof.php">
-                        <li>PROFESSOR</li>
-                    </a>
-                    <hr>
-                    <a href="controllers/dashboard.php?view=dashboard">
-                        <li>DIREÇÃO</li>
-                    </a>
+                    <div class="sub-menu">
+                        <br>
+                        <a href="#" class="aluno-login" style="font-size:18px;">ALUNO</a>
+                        <br><br>
+                        <a href="#" class="professor-login" style="font-size:18px;">PROFESSOR</a>
+                        <br><br>
+                        <a href="#" class="diretor-login" style="font-size:18px;">DIREÇÃO</a>
+                        <br><br>
+                    </div>
                     <hr>
                     <a href="controllers/album.php">
                         <li>ÁLBUM</li>
@@ -70,33 +71,34 @@ include_once('controllers/configImages.php');
                     </a>
                 </ul>
             </div>
-        </div>
 
-        <img class="bodyLogo" data-aos="fade-right" src="assets\images\bodyLogo.png">
-        <img class="sunLogo" data-aos="fade-right" data-aos-delay="1000" src="assets\images\sunLogo.png"></a>
-        <img class="textLogo" data-aos="fade-right" data-aos-delay="1600" src="assets\images\logoText.png"></a>
-        <div class="menu">
-            <ul>
-                <li data-submenu>
-                    <a href="#">LOGIN</a>
-                    <ul class="submenu">
-                        <li><a href="controllers/portal_aluno.php">ALUNO</a></li>
-                        <li><a href="controllers/portal_prof.php">PROFESSOR</a></li>
-                        <li><a href="controllers/dashboard.php?view=dashboard">DIREÇÃO</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="controllers/album.php">ÁLBUM</a>
-                </li>
-                <li>
-                    <a href="controllers/matricula.php">MATRÍCULA</a>
-                </li>
-                <li>
-                    <a href="controllers/sobre.php">SOBRE</a>
-                </li>
-            </ul>
+
+
+            <img class="bodyLogo" data-aos="fade-right" src="assets\images\bodyLogo.png">
+            <img class="sunLogo" data-aos="fade-right" data-aos-delay="1000" src="assets\images\sunLogo.png"></a>
+            <img class="textLogo" data-aos="fade-right" data-aos-delay="1600" src="assets\images\logoText.png"></a>
+            <div class="menu">
+                <ul>
+                    <li data-submenu>
+                        <a href="#">LOGIN</a>
+                        <ul class="submenu">
+                            <li><a href="controllers/portal_aluno.php">ALUNO</a></li>
+                            <li><a href="controllers/portal_prof.php">PROFESSOR</a></li>
+                            <li><a href="controllers/dashboard.php?view=dashboard">DIREÇÃO</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="controllers/album.php">ÁLBUM</a>
+                    </li>
+                    <li>
+                        <a href="controllers/matricula.php">MATRÍCULA</a>
+                    </li>
+                    <li>
+                        <a href="controllers/sobre.php">SOBRE</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
     </div>
 
     <?php
@@ -270,6 +272,30 @@ include_once('controllers/configImages.php');
     <script src="assets/js/jquery-3.6.1.min.js"></script>
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.aluno-login').click(function() {
+                window.location.href = 'controllers/login_aluno.php';
+            });
+
+            $('.professor-login').click(function() {
+                window.location.href = 'controllers/login_prof.php';
+            });
+
+            $('.diretor-login').click(function() {
+                window.location.href = 'controllers/login.php';
+            });
+
+            $('.login-menu').click(function() {
+                $('.sub-menu').toggle();
+                if ($('.sub-menu').is(':visible')) {
+                    $('.login-menu i').removeClass('fa-caret-down').addClass('fa-caret-up');
+                } else {
+                    $('.login-menu i').removeClass('fa-caret-up').addClass('fa-caret-down');
+                }
+            });
+        });
+    </script>
     <script>
         AOS.init({
             duration: 1000,
