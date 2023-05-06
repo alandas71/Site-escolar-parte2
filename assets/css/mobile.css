@@ -1,5 +1,9 @@
 @media screen and (max-width: 600px) {
 
+    #btn_imp {
+        display: none;
+    }
+
     .fc-daygrid-day {
         height: 45px;
     }

@@ -144,6 +144,7 @@ button {
 }
 
 #wallpaper2 {
+    position: relative;
     width: 100%;
     text-align: center;
     margin: auto;
@@ -396,7 +397,7 @@ button {
 .title {
     font-size: 20px;
     text-transform: uppercase;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Comic Sans MS';
 }
 
 
@@ -1621,6 +1622,71 @@ tbody {
         transform: scale(1.2);
     }
 }
+
+
+
+
+.flutuantes,
+.flutuantes2 {
+    position: absolute;
+    font-size: 40px;
+
+}
+
+.flutuantes {
+    top: 10%;
+    left: 10%;
+    animation: flutuar 5s infinite ease-in-out alternate;
+    color: #FFD700;
+}
+
+.flutuantes2 {
+    top: 70%;
+    right: 10%;
+    animation: flutuar 5s infinite ease-in-out alternate;
+    color: green;
+}
+
+@keyframes flutuar {
+    from {
+        transform: translate(-50%, -50%) translateY(0);
+    }
+
+    to {
+        transform: translate(-50%, -50%) translateY(-20px);
+    }
+}
+
+@keyframes pulsar {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes giro {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes crescer {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.5);
+    }
+}
+
 
 
 .contact-container,

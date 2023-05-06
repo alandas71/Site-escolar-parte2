@@ -11,7 +11,7 @@ include_once('configImages.php');
     <link rel="stylesheet" href="..\assets\css\style.css" />
     <link rel="stylesheet" href="..\assets\css\tablet.css" />
     <link rel="stylesheet" href="..\assets\css\mobile.css" />
-    <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/images/icone.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="../assets/js/album.js" defer></script>

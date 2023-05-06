@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="..\assets\css\style.css" />
     <link rel="stylesheet" href="..\assets\css\tablet.css" />
     <link rel="stylesheet" href="..\assets\css\mobile.css" />
-    <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/images/icone.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <script src="../assets/js/submenu_login.js" defer></script>
@@ -102,7 +102,7 @@
                     <p class="sobretext"> O Arco-Íris começou modesto, com apenas algumas salas de aula e um pequeno número de alunos. No entanto, a
                         dedicação e o trabalho árduo de Luciane e sua equipe foram recompensados e a escola cresceu rapidamente.
                     </p>
-                    <p class="sobretext"> Hoje, o Centro Educacional Arco-Íris é uma das escolas mais procuradas do bairro, reconhecida por sua excelência
+                    <p class="sobretext"> Hoje, o Centro Educar Arco-Íris é uma das escolas mais procuradas do bairro, reconhecida por sua excelência
                         acadêmica e sua preocupação com o bem-estar emocional e social de seus alunos. Luciane continua a liderar a escola, sempre em busca de novas
                         maneiras de melhorar a experiência de aprendizagem de seus alunos e tornar o Arco-Íris uma escola ainda mais inclusiva e acolhedora.
                     </p>

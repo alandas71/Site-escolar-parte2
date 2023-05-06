@@ -7,6 +7,8 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     $conexaoClass = new Conexao();
     $conn = $conexaoClass->conectar();
 
+    $turma2prof = $_SESSION["usuario"][4];
+    $turma1prof = $_SESSION["usuario"][3];
     $id = $_SESSION["usuario"][2];
     $tipo = $_SESSION["usuario"][1];
     $nome = $_SESSION["usuario"][0];
@@ -35,7 +37,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     <link rel="stylesheet" href="..\assets\css\style.css" />
     <link rel="stylesheet" href="..\assets\css\tablet.css" />
     <link rel="stylesheet" href="..\assets\css\mobile.css" />
-    <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/images/icone.ico" type="image/x-icon">
     <script src="../assets/js/dashboard.js" defer></script>
     <script src="../assets/js/sidebar_hide.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
@@ -122,21 +124,9 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                         <hr>
                         <br>
                         <li>
-                            <a href="#">
-                                <i class="fas fa-comment"></i>
-                                <p>CHAT</p>
-                            </a>
-                        </li>
-                        <li>
                             <a href="portal_prof.php?view=mturmas">
                                 <i class="fas fa-users"></i>
                                 <p>MINHAS TURMAS</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-calendar-alt"></i>
-                                <p>FREQUÊNCIA</p>
                             </a>
                         </li>
                         <li>

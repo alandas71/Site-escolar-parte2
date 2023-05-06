@@ -140,6 +140,12 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                             </a>
                         </li>
                         <li>
+                            <a href="dashboard.php?view=horarios">
+                                <i class="far fa-clock"></i>
+                                <p>HORÁRIOS</p>
+                            </a>
+                        </li>
+                        <li>
                             <a href="dashboard.php?view=matricula">
                                 <i class="fas fa-clipboard"></i>
                                 <p>PRÉ-MATRICULAS</p>
@@ -184,6 +190,9 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                                 break;
                             case "turma":
                                 include('turma.php');
+                                break;
+                            case "horarios":
+                                include('set_horario.php');
                                 break;
                             case "album":
                                 include('painel_album.php');

@@ -17,8 +17,6 @@ include_once('controllers/configImages.php');
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
     <link rel="shortcut icon" href="assets/images/icone.ico" type="image/x-icon">
     <script src="assets/js/adicionar_imagem.js" defer></script>
     <script src="assets/js/script1.js" defer></script>
@@ -137,7 +135,7 @@ include_once('controllers/configImages.php');
             <div class="row textRow">
                 <h1 class="rowTitle">Centro Educar Arco-íris</h1>
                 <p class=mural>
-                    O Centro Educacional Arco-Íris foi fundado em 2022 pela psicopedagoga Luciane, uma educadora apaixonada
+                    O Centro Educar Arco-Íris foi fundado em 2022 pela psicopedagoga Luciane, uma educadora apaixonada
                     pelo ensino e comprometida em oferecer uma educação de qualidade para as crianças de sua comunidade. Ela queria criar uma escola que valorizasse a
                     individualidade de cada aluno, ajudando-os a descobrir seus talentos e habilidades
                     únicas.
@@ -218,6 +216,8 @@ include_once('controllers/configImages.php');
         </div>
     </div>
     <div id="wallpaper2">
+        <i class="flutuantes fa fa-fish"></i>
+        <i class="flutuantes2 fa fa-fish"></i>
         <div class="container3" data-aos="fade-up">
             <div class="album">
                 <?php
@@ -242,7 +242,6 @@ include_once('controllers/configImages.php');
                 </div>
             </div>
             <br>
-
         </div>
 
         <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
@@ -281,7 +280,7 @@ include_once('controllers/configImages.php');
                     <img src="assets/images/rifabot.jpg" alt="Rifa bot" style="width: 100px;">
                 </a>
             </div>
-            <p style="text-align:justify; display: block;">Imagine só, você cria um grupo no WhatsApp para a sua
+            <p style="text-align:justify; display: block;">Imagine só: você cria um grupo no WhatsApp para a sua
                 rifa e adiciona o RIFA BOT como um dos membros. Em seguida, basta enviar algumas mensagens
                 simples para configurar as regras da rifa e pronto! O RIFA BOT vai cuidar de tudo para você,
                 você economiza tempo e dinheiro, além de garantir que sua rifa seja justa e transparente.
@@ -289,7 +288,7 @@ include_once('controllers/configImages.php');
             </p>
         </div>
         <div style="position:inherit; bottom:0;" class="copyright">
-            <p>&copy; 2023 Centro Educacional Arc-Íris. Todos os direitos reservados.</p>
+            <p>&copy; 2023 Centro Educar Arco-Íris. Todos os direitos reservados.</p>
         </div>
     </footer>
     </div>
