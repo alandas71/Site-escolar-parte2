@@ -49,7 +49,7 @@ while ($row = mysqli_fetch_assoc($resultado)) {
     echo '<input type="hidden" name="id" value="' . $row['id'] . '">';
     echo '<input type="hidden" name="situacao" value="' . $row['situacao'] . '">';
     echo '<button type="submit" name="alterar-situacao_depoimentos">' . (($row['situacao'] == 1) ? 'Desativar' : 'Ativar') . '</button>';
-    echo '<input type="submit" name="excluir_depoimentos" value="Excluir">';
+    echo '<input type="submit" name="excluir_depoimentos" value="Excluir" onclick="return confirm(\'Tem certeza de que deseja remover este depoimento?\')">';
     echo '</form>';
     echo '</div>';
 }

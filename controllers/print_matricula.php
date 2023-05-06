@@ -27,7 +27,7 @@ $sql = "SELECT * FROM matricula";
 $result = $conn->query($sql);
 
 // Crie a tabela HTML
-echo "<div style='overflow-x: auto;'>";
+echo "<div style='overflow-x: auto; overflow-y: auto;'>";
 echo "<table>";
 echo "<thead>";
 echo "<tr>";
@@ -90,6 +90,7 @@ echo "<th>P16</th>";
 echo "<th>Vacinas</th>";
 echo "<th>Doenças</th>";
 echo "<th>Saúde</th>";
+echo "<th>Médico</th>";
 echo "<th>Medicamento</th>";
 echo "<th>Tipo Sanguíneo</th>";
 echo "<th>Alergia</th>";
@@ -194,4 +195,5 @@ if ($result->num_rows > 0) {
 }
 echo "</tbody>";
 echo "</table>";
+
 $conn->close();

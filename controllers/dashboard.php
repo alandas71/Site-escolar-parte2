@@ -58,9 +58,6 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                         <a href="matricula.php">
                             <li>MATRÍCULA</li>
                         </a>
-                        <a href="login.php">
-                            <li>ALUNO</li>
-                        </a>
                         <a href="album.php">
                             <li>ÁLBUM</li>
                         </a>

@@ -44,7 +44,7 @@
     }
 
     #bloco1 {
-        padding: 10px;
+        padding-top: 10px;
     }
 
     #bloco1,
@@ -359,7 +359,7 @@
     }
 
     #wallpaper4 {
-        height: 640px;
+        height: 600px;
 
     }
 
@@ -459,6 +459,10 @@
         padding: 25px;
     }
 
+    #wallpaper4 {
+        height: 650px;
+
+    }
 
 
 }
@@ -475,7 +479,7 @@
     #bloco2,
     #bloco3,
     #bloco4 {
-        max-width: 250px;
+        max-width: 230px;
     }
 
     .container-map {
@@ -496,9 +500,12 @@
     .loginbtn {
         padding: 10px;
     }
+
+
 }
 
 @media screen and (max-width: 330px) {
+
     .telalogin {
         padding: 0;
     }
@@ -532,5 +539,10 @@
     #prof4 {
         margin-left: 0%;
         margin-right: 0;
+    }
+
+    #wallpaper4 {
+        height: 700px;
+
     }
 }

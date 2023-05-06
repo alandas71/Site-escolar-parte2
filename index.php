@@ -154,7 +154,7 @@ include_once('controllers/configImages.php');
     </div>
     <div id=wallpaper1>
         <div class=container>
-            <div id=bloco1 data-aos="fade-right">
+            <div id='bloco1' data-aos="fade-right">
                 <img src="assets/images/bloco1.png" class="imgbloco">
                 <h1><b>EDUCAÇÃO TECNOLÓGICA</b></h1>
                 <p class="mural">
@@ -242,12 +242,7 @@ include_once('controllers/configImages.php');
                 </div>
             </div>
             <br>
-            <h1 class="title">LOCALIZAÇÃO</h1>
-            <div class="container-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d420.
-                903186875285!2d-38.47927497791088!3d-12.821739913311044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.
-                1!3m3!1m2!1s0x71613a1ae99de1b%3A0xe7178b7fff4303f!2sCentro%20Educar%20Arco-%C3%8Dris!5e0!3m2!1spt-BR!2sbr!4v1677480753527!5m2!1spt-BR!2sbr
-                " class="map" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+
         </div>
 
         <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
@@ -263,10 +258,39 @@ include_once('controllers/configImages.php');
         </svg>
     </div>
     <footer class="main-footer">
-        <div class="center" id="insta"><a href="https://instagram.com/centroeduc.arcoiris?igshid=YmMyMTA2M2Y=" target="_blank"><img src="assets/images/insta.png" width="30px" height="30px" />
-            </a></div>
-        <div class="center" id="whats"><a href="https://wa.me/557182662374" target="_blank"><img src="assets/images/whats.png" width="30px" height="30px" />
-            </a></div>
+        <div class="contact-container">
+            <h3>Contato</h3>
+            <ul>
+                <li>Endereço: Rua Santa Filomena, N° 04, São Tomé de Paripe</li>
+                <li>Telefone: (71) 98266-2374</li>
+                <li>E-mail: <br>centroeducacionalarcoiris2021<br>@gmail.com</li>
+            </ul>
+        </div>
+        <div class="links-container">
+            <h1>LOCALIZAÇÃO</h1>
+            <div class="container-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d420.
+                903186875285!2d-38.47927497791088!3d-12.821739913311044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.
+                1!3m3!1m2!1s0x71613a1ae99de1b%3A0xe7178b7fff4303f!2sCentro%20Educar%20Arco-%C3%8Dris!5e0!3m2!1spt-BR!2sbr!4v1677480753527!5m2!1spt-BR!2sbr
+                " class="map" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <div class="image-container">
+            <h3>Parceria:</h3>
+            <div>
+                <a href="#">
+                    <img src="assets/images/rifabot.jpg" alt="Rifa bot" style="width: 100px;">
+                </a>
+            </div>
+            <p style="text-align:justify; display: block;">Imagine só, você cria um grupo no WhatsApp para a sua
+                rifa e adiciona o RIFA BOT como um dos membros. Em seguida, basta enviar algumas mensagens
+                simples para configurar as regras da rifa e pronto! O RIFA BOT vai cuidar de tudo para você,
+                você economiza tempo e dinheiro, além de garantir que sua rifa seja justa e transparente.
+                Você nunca mais precisará se preocupar em organizar manualmente as suas rifas.
+            </p>
+        </div>
+        <div style="position:inherit; bottom:0;" class="copyright">
+            <p>&copy; 2023 Centro Educacional Arc-Íris. Todos os direitos reservados.</p>
+        </div>
     </footer>
     </div>
     <script src="assets/js/jquery-3.6.1.min.js"></script>

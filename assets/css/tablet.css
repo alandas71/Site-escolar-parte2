@@ -4,6 +4,30 @@
     }
 }
 
+@media screen and (max-width: 1566px) {
+    .container-map {
+        width: 350px;
+    }
+
+    .map {
+        height: 210px;
+    }
+
+}
+
+@media screen and (max-width: 1474px) {
+    .container-map {
+        width: 500px;
+    }
+
+    .map {
+        height: 310px;
+    }
+
+
+}
+
+
 @media screen and (max-width: 1544px) {
     .modal {
         height: 80vh;
@@ -21,9 +45,6 @@
 
     }
 
-    .container-map {
-        width: 35%;
-    }
 
     .modal {
         height: 80vh;
@@ -66,9 +87,6 @@
         margin-left: 30px;
     }
 
-    .container-map {
-        width: 30%;
-    }
 
     .map {
         height: 280px;
@@ -104,6 +122,15 @@
 
 @media screen and (max-width: 1052px) {
 
+    .container-map {
+        width: 400px;
+    }
+
+    .map {
+        height: 310px;
+    }
+
+
     #bloco1,
     #bloco2,
     #bloco3,
@@ -111,9 +138,6 @@
         width: 900px;
     }
 
-    .container-map {
-        width: 30%;
-    }
 
     .map {
         height: 260px;
@@ -169,9 +193,6 @@
 
     }
 
-    .container-map {
-        width: 30%;
-    }
 
     .map {
         height: 260px;
@@ -370,9 +391,6 @@
 
 @media screen and (max-width: 920px) {
 
-    .container-map {
-        width: 30%;
-    }
 
     .map {
         height: 260px;
@@ -423,18 +441,9 @@
         margin-top: 0;
     }
 
-    .container-map {
-        width: 35%;
-        margin-right: 60px;
-    }
 
     .map {
         height: 240px;
-    }
-
-    .album {
-        width: 40%;
-        margin-left: 80px;
     }
 
     #botao {
@@ -526,11 +535,6 @@
         width: 30%;
     }
 
-    .container-map {
-        width: 35%;
-        margin-right: 40px;
-    }
-
     .map {
         height: 220px;
     }
@@ -544,7 +548,7 @@
     }
 
     #wallpaper4 {
-        height: 650px;
+        height: 670px;
 
     }
 
