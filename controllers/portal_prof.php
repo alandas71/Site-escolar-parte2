@@ -7,8 +7,8 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     $conexaoClass = new Conexao();
     $conn = $conexaoClass->conectar();
 
-    $turma2prof = $_SESSION["usuario"][4];
-    $turma1prof = $_SESSION["usuario"][3];
+    $turma2 = $_SESSION["usuario"][4];
+    $turma1 = $_SESSION["usuario"][3];
     $id = $_SESSION["usuario"][2];
     $tipo = $_SESSION["usuario"][1];
     $nome = $_SESSION["usuario"][0];
@@ -35,10 +35,10 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ARCO-ÍRIS</title>
     <link rel="stylesheet" href="..\assets\css\style.css" />
+    <link rel="stylesheet" href="..\assets\css\viewNotas.css" />
     <link rel="stylesheet" href="..\assets\css\tablet.css" />
     <link rel="stylesheet" href="..\assets\css\mobile.css" />
     <link rel="shortcut icon" href="../assets/images/icone.ico" type="image/x-icon">
-    <script src="../assets/js/dashboard.js" defer></script>
     <script src="../assets/js/sidebar_hide.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -124,6 +124,12 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                         <hr>
                         <br>
                         <li>
+                            <a href="portal_prof.php?view=horario">
+                                <i class="far fa-clock"></i>
+                                <p>HORÁRIOS</p>
+                            </a>
+                        </li>
+                        <li>
                             <a href="portal_prof.php?view=mturmas">
                                 <i class="fas fa-users"></i>
                                 <p>MINHAS TURMAS</p>
@@ -143,6 +149,9 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                     if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["view"])) {
                         $view = $_GET["view"];
                         switch ($view) {
+                            case "horario":
+                                include('horario.php');
+                                break;
                             case "mturmas":
                                 include('minhas_turmas.php');
                                 break;

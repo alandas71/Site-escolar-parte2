@@ -20,6 +20,10 @@ td {
     border: 1px solid #ccc;
 }
 
+.modal-backdrop {
+    display: none;
+}
+
 th {
     background-color: #f1f1f1;
     color: #333;

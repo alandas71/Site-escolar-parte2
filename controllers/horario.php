@@ -1,34 +1,34 @@
 <?php
-// Faz a conexão com o banco de dados
 include('configServer.php');
 
 // Obtém os valores das sessões
-$turma1 = isset($_SESSION["usuario"][3]) ? $_SESSION["usuario"][3] : null;
-$turma2 = isset($_SESSION["usuario"][4]) ? $_SESSION["usuario"][4] : null;
+$turmas = isset($_SESSION["usuario"]) ? $_SESSION["usuario"] : array();
 
-// Monta a consulta SQL para obter a linha da tabela 'horarios' correspondente à turma
-if (!is_null($turma1)) {
-    $query = "SELECT * FROM horarios WHERE turma = '$turma1' AND turno = 'Matutino'";
-} else if (!is_null($turma2)) {
-    $query = "SELECT * FROM horarios WHERE turma = '$turma2' AND turno = 'Vespertino'";
-}
-
-// Executa a consulta SQL
-$resultado = mysqli_query($conn, $query);
-
-// Verifica se a consulta retornou algum resultado
-if (mysqli_num_rows($resultado) > 0) {
-    // Obtém o resultado da consulta em forma de array associativo
-    $linha = mysqli_fetch_assoc($resultado);
-
-    // Obtém a imagem da coluna 'horario'
-    $imagem = $linha['horario'];
-
-    // Imprime a imagem
-    echo "<div style='text-align: center;'>";
-    echo "<img style='width: 50vw;' src='../assets/images/horarios/$imagem'>";
-    echo "</div>";
+// Verifica se foram definidas pelo menos duas turmas
+if (count($turmas) < 2) {
+    // Retorna uma mensagem de erro indicando que pelo menos duas turmas devem ser definidas
+    echo "Erro: pelo menos duas turmas devem ser definidas.";
 } else {
-    // Não há nenhum resultado para essa turma e turno
-    echo "Nenhum horário encontrado para essa turma e turno.";
+    // Monta a consulta SQL para obter as linhas da tabela 'horarios' correspondentes a cada turma
+    $query = "SELECT * FROM horarios WHERE turma IN ('" . implode("', '", $turmas) . "')";
+
+    // Executa a consulta SQL
+    $resultado = mysqli_query($conn, $query);
+
+    // Verifica se a consulta retornou algum resultado
+    if (mysqli_num_rows($resultado) > 0) {
+        // Imprime a imagem correspondente a cada turma
+        while ($linha = mysqli_fetch_assoc($resultado)) {
+            $turma = $linha['turma'];
+            $horario = $linha['horario'];
+
+            echo "<div style='text-align: center;'>";
+            echo "<h2>Horário da Turma $turma</h2>";
+            echo "<img style='width: 50vw;' src='../assets/images/horarios/$horario'>";
+            echo "</div>";
+        }
+    } else {
+        // Não há nenhum resultado para essas turmas
+        echo "Nenhum horário encontrado para essas turmas.";
+    }
 }

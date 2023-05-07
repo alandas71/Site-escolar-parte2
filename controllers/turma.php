@@ -27,7 +27,7 @@ include_once('configImages.php');
         <?php include('criar_turmas.php'); ?>
     </div>
     <footer style="margin: 0; padding: 0; width: 100%; height: 100px; text-align:center;">
-        <p>&copy; 2022 Centro Educar Arco-íris</p>
+        <p>&copy; 2023 Centro Educar Arco-íris</p>
     </footer>
 </body>
 

@@ -38,7 +38,6 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     <link rel="stylesheet" href="..\assets\css\tablet.css" />
     <link rel="stylesheet" href="..\assets\css\mobile.css" />
     <link rel="shortcut icon" href="../assets/images/icone.ico" type="image/x-icon">
-    <script src="../assets/js/dashboard.js" defer></script>
     <script src="../assets/js/sidebar_hide.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">

@@ -98,8 +98,9 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <th>Falta</th>
                 <th>Nota</th>
                 <th>Falta</th>
-                <th>Nota</th>
-                <th>Falta</th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>

@@ -121,7 +121,7 @@ include_once('configImages.php');
         </div>
         <div>
             <footer style="margin-top: 50px; padding: 50px; width: 100%; text-align:center;">
-                <p>&copy; 2022 Centro Educar Arco-íris</p>
+                <p>&copy; 2023 Centro Educar Arco-íris</p>
             </footer>
         </div>
     </div>
