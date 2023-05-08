@@ -276,7 +276,7 @@ include_once('controllers/configImages.php');
         <div class="image-container">
             <h3>Parceria:</h3>
             <div>
-                <a href="#">
+                <a href="https://wa.me/557194116610" target="_blank">
                     <img src="assets/images/rifabot.jpg" alt="Rifa bot" style="width: 100px;">
                 </a>
             </div>

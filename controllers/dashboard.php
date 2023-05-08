@@ -153,12 +153,6 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                         <hr>
                         <br>
                         <li>
-                            <a href="dashboard.php?view=assuntos">
-                                <i class="fas fa-book"></i>
-                                <p>SUPORTE</p>
-                            </a>
-                        </li>
-                        <li>
                             <a href="dashboard.php?view=album">
                                 <i class="fas fa-images"></i>
                                 <p>EDITAR ÁLBUM</p>

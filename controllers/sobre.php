@@ -86,29 +86,27 @@
             <div class="div1">
                 <div class="conteudo-sobre">
                     <p class=sobretext><b>Centro Educar Arco-Íris<b></p>
-                    <p class="sobretext"> O Centro Educar Arco-Íris foi fundado pela psicopedagoga Luciane, uma educadora apaixonada
-                        pelo ensino e comprometida em oferecer uma educação de qualidade para crianças e jovens em sua comunidade.
-                        Luciane tinha um sonho de criar uma escola diferente, que fosse mais do que um lugar para aprender, mas que
-                        fosse um ambiente acolhedor e inspirador, onde os alunos pudessem se desenvolver plenamente, tanto academicamente
-                        quanto emocionalmente e socialmente.
+                    <p class="sobretext">Somos uma escola comprometida em oferecer uma educação inclusiva e de qualidade para todos os nossos alunos. Fundada em 2022,
+                        nossa escola tem sido um modelo de excelência em educação.
                     </p>
-                    <p class="sobretext"> Luciane acredita que a educação deve ser acessível a todos, independentemente de sua origem ou
-                        condição financeira. Ela queria criar uma escola que valorizasse a individualidade de cada aluno, ajudando-os a descobrir
-                        seus talentos e habilidades únicas. Assim, ela começou a trabalhar incansavelmente para tornar seu sonho realidade.
+                    <p class="sobretext"> Nosso currículo é personalizado para atender às necessidades de cada aluno. Nossos educadores incentivam a criatividade,
+                        a colaboração e o pensamento crítico em todos os aspectos do aprendizado. Com uma abordagem holística, buscamos não apenas desenvolver habilidades
+                        acadêmicas, mas também sociais e emocionais.
+
                     </p>
-                    <p class="sobretext"> No início, Luciane enfrentou muitos desafios, como a falta de recursos financeiros e a resistência de alguns
-                        membros da comunidade. Mas ela não desistiu e fundou o Centro Educar Arco-Íris.
+                    <p class="sobretext"> No Centro Educar Arco-Íris, nossos alunos têm acesso a aulas informatizadas com slides, jogos digitais e físicos exclusivos feitos
+                        pela própria instituição. Acreditamos que o uso da tecnologia pode ser uma ferramenta poderosa para melhorar a aprendizagem, estimulando a interatividade
+                        e a imersão nas aulas. Além disso, temos uma brinquedoteca equipada com jogos educativos, televisão e brinquedos para estimular o desenvolvimento cognitivo
+                        e social das crianças mais novas. Todas as salas possuem um sistema de climatização eficiente, com ventiladores industriais de alta qualidade, que não apenas
+                        garantem a temperatura agradável em dias quentes, mas também proporcionam um visual elegante e moderno ao ambiente.
                     </p>
-                    <p class="sobretext"> O Arco-Íris começou modesto, com apenas algumas salas de aula e um pequeno número de alunos. No entanto, a
-                        dedicação e o trabalho árduo de Luciane e sua equipe foram recompensados e a escola cresceu rapidamente.
+                    <p class="sobretext">Estamos orgulhosos de ter uma equipe de educadores altamente qualificados e apaixonados. Eles são nossos principais ativos e estão comprometidos
+                        em garantir que cada aluno alcance todo o seu potencial.
+
                     </p>
-                    <p class="sobretext"> Hoje, o Centro Educar Arco-Íris é uma das escolas mais procuradas do bairro, reconhecida por sua excelência
-                        acadêmica e sua preocupação com o bem-estar emocional e social de seus alunos. Luciane continua a liderar a escola, sempre em busca de novas
-                        maneiras de melhorar a experiência de aprendizagem de seus alunos e tornar o Arco-Íris uma escola ainda mais inclusiva e acolhedora.
-                    </p>
-                    <p class="sobretext"> Luciane é uma inspiração para muitos educadores e para todos aqueles que acreditam no poder da educação para transformar vidas
-                        e comunidades. Ela é uma verdadeira líder, que mostra que é possível criar mudanças significativas a partir de uma paixão pelo ensino e
-                        um compromisso com a excelência.
+                    <p class="sobretext"> Estamos comprometidos em fornecer um ambiente acolhedor, seguro e estimulante para todos os nossos alunos. Nossa equipe de profissionais dedicados
+                        e apaixonados está sempre trabalhando para garantir que cada aluno alcance todo o seu potencial e tenha a melhor experiência educacional possível no Centro Educar Arco-Íris.
+                        Venha nos visitar e conheça nosso espaço!
                     </p>
                     <p class=sobretext><b>Endereço: Rua Santa Filomena, N° 04, São Tomé de Paripe.</b></p>
                     <br>
