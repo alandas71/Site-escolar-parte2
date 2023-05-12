@@ -1,5 +1,4 @@
 <?php
-// incluir o arquivo de conexão com o banco de dados
 require_once('configImages.php');
 
 // verificar se foi feita uma requisição para salvar um evento

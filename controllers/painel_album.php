@@ -24,6 +24,12 @@ include_once('configImages.php');
 </head>
 
 <body>
+    <?php
+    if (isset($_SESSION['mensagem'])) {
+        echo '<div class="mensagem">' . $_SESSION['mensagem'] . '</div>';
+        unset($_SESSION['mensagem']);
+    }
+    ?>
     <div class="header" style="text-align: left; padding-left: 20px; background: none;">
         <br>
         <h1 class="title">Criar álbum</h1>
@@ -114,7 +120,7 @@ include_once('configImages.php');
             </form>
 
         </div>
-        <div class="delete">
+        <div class="delete" style="direction: rtl; width:95%;">
             <?php
             include('delete_fotos.php');
             ?>

@@ -11,12 +11,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
 if (isset($_POST['submit'])) {
 
     // Conexão com o banco de dados
-    $dbHost = 'localhost';
-    $dbUserName = 'root';
-    $dbPassword = '';
-    $dbName = 'banco-dados';
-
-    $conn = mysqli_connect($dbHost, $dbUserName, $dbPassword, $dbName);
+    include('configServer.php');
 
     // Verifica se a conexão foi estabelecida com sucesso
     if (!$conn) {
@@ -38,7 +33,9 @@ if (isset($_POST['submit'])) {
     // Verifica se a extensão é permitida
     if ($extensao != 'png' && $extensao != 'jpg') {
         // Se a extensão não for permitida, redireciona o usuário para a página de erro
-        header('Location: erro.php');
+        session_start();
+        $_SESSION['mensagem'] = "Erro, só é permitido adicionar imagens PNG ou JPG.";
+        header("location: dashboard.php?view=site");
         exit();
     }
 
@@ -60,6 +57,9 @@ if (isset($_POST['submit'])) {
         if (mysqli_query($conn, $sql)) {
             session_start();
             $_SESSION['mensagem'] = "Professor adicionado com sucesso.";
+        } else {
+            session_start();
+            $_SESSION['mensagem'] = "Erro ao adicionar professor.";
         }
     }
     // Redireciona o usuário para a página de painel

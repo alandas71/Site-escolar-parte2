@@ -141,14 +141,6 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                                 <p>CALENDÁRIO</p>
                             </a>
                         </li>
-                        <hr>
-                        <br>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-credit-card"></i>
-                                <p>FINANCEIRO</p>
-                            </a>
-                        </li>
                     </ul>
                 </div>
                 <div class="view">

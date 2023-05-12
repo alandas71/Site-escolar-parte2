@@ -107,14 +107,14 @@ while ($row = mysqli_fetch_assoc($result)) {
             <?php foreach ($notas_materias as $materia) : ?>
                 <tr>
                     <td><?php echo $materia['nome']; ?></td>
-                    <td><input type="number" placeholder="<?php echo $materia['nota1'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_nota1" style="width:60px;"></td>
-                    <td><input type="number" placeholder="<?php echo $materia['falta1'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_falta1" style="width:60px;"></td>
-                    <td><input type="number" placeholder="<?php echo $materia['nota2'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_nota2" style="width:60px;"></td>
-                    <td><input type="number" placeholder="<?php echo $materia['falta2'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_falta2" style="width:60px;"></td>
-                    <td><input type="number" placeholder="<?php echo $materia['nota3'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_nota3" style="width:60px;"></td>
-                    <td><input type="number" placeholder="<?php echo $materia['falta3'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_falta3" style="width:60px;"></td>
-                    <td><input type="number" placeholder="<?php echo $materia['nota4'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_nota4" style="width:60px;"></td>
-                    <td><input type="number" placeholder="<?php echo $materia['falta4'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_falta4" style="width:60px;"></td>
+                    <td><input type="text" pattern="[0-9]+([,\.][0-9]+)?" placeholder="<?php echo $materia['nota1'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_nota1" style="width:60px;"></td>
+                    <td><input type="text" pattern="[0-9]+([,\.][0-9]+)?" placeholder="<?php echo $materia['falta1'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_falta1" style="width:60px;"></td>
+                    <td><input type="text" pattern="[0-9]+([,\.][0-9]+)?" placeholder="<?php echo $materia['nota2'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_nota2" style="width:60px;"></td>
+                    <td><input type="text" pattern="[0-9]+([,\.][0-9]+)?" placeholder="<?php echo $materia['falta2'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_falta2" style="width:60px;"></td>
+                    <td><input type="text" pattern="[0-9]+([,\.][0-9]+)?" placeholder="<?php echo $materia['nota3'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_nota3" style="width:60px;"></td>
+                    <td><input type="text" pattern="[0-9]+([,\.][0-9]+)?" placeholder="<?php echo $materia['falta3'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_falta3" style="width:60px;"></td>
+                    <td><input type="text" pattern="[0-9]+([,\.][0-9]+)?" placeholder="<?php echo $materia['nota4'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_nota4" style="width:60px;"></td>
+                    <td><input type="text" pattern="[0-9]+([,\.][0-9]+)?" placeholder="<?php echo $materia['falta4'] ?? ''; ?>" name="<?php echo $materia['nome']; ?>_falta4" style="width:60px;"></td>
                     <td style="width:60px;"><?php echo $materia['media']; ?></td>
                     <td style="width:60px;"><?php echo $materia['faltas']; ?></td>
                     <td style="width:60px;"><?php echo $materia['resultado']; ?></td>

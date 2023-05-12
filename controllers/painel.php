@@ -23,6 +23,12 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
 </head>
 
 <body>
+    <?php
+    if (isset($_SESSION['mensagem'])) {
+        echo '<div class="mensagem">' . $_SESSION['mensagem'] . '</div>';
+        unset($_SESSION['mensagem']);
+    }
+    ?>
     <br>
     <div class="header" style="text-align: left; padding-left: 20px; background: none;">
         <form action="banners_upload.php" method="post" enctype="multipart/form-data">

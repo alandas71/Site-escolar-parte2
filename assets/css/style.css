@@ -1490,6 +1490,11 @@ tbody {
 
 .mensagem-erro {
     color: rgb(201, 4, 4);
+
+}
+
+.mensagem {
+    font-weight: bold;
 }
 
 .sidebar h1 {

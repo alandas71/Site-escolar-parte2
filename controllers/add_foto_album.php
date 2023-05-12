@@ -33,7 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verifica se a extensão é permitida
         if ($extensao != 'png' && $extensao != 'jpg') {
             // Se a extensão não for permitida, redireciona o usuário para a página de erro
-            header('Location: erro.php');
+            session_start();
+            $_SESSION['mensagem'] = "Erro, só é permitido adicionar imagens PNG ou JPG.";
+            header('Location: dashboard.php?view=album');
             exit();
         }
 
@@ -56,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['mensagem'] = "Foto adicionada com sucesso.";
         } else {
             session_start();
-            $_SESSION['mensagem'] = "Erro ao adicionar foto: " . $conn->error;
+            $_SESSION['mensagem'] = "Erro ao adicionar foto.";
         }
     }
 
