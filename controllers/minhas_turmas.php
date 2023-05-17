@@ -32,17 +32,7 @@
     if (isset($id_professor)) {
 
         // Conexão com o banco de dados
-        $dbHost = 'localhost';
-        $dbUserName = 'root';
-        $dbPassword = '';
-        $dbName = 'banco-dados';
-
-        try {
-            $db = new PDO("mysql:host=$dbHost;dbname=" . $dbName, $dbUserName, $dbPassword);
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
-        }
+        include('configImages.php');
 
         // Consulta SQL para buscar todos os alunos da turma1 do professor logado
         $sql_turma1 = "SELECT * FROM users WHERE tipo = 'aluno' AND turma1 IN (SELECT turma1 FROM users WHERE tipo = 'prof' AND id = $id_professor)";
@@ -52,8 +42,8 @@
 
 
         // Executa as consultas SQL
-        $alunos_turma1 = $db->query($sql_turma1)->fetchAll(PDO::FETCH_ASSOC);
-        $alunos_turma2 = $db->query($sql_turma2)->fetchAll(PDO::FETCH_ASSOC);
+        $alunos_turma1 = $conn->query($sql_turma1)->fetchAll(PDO::FETCH_ASSOC);
+        $alunos_turma2 = $conn->query($sql_turma2)->fetchAll(PDO::FETCH_ASSOC);
         echo "<p class='title'>Minhas turmas</p>";
         echo "<br>";
         // Exibe os resultados em tabelas HTML

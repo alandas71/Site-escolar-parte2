@@ -145,11 +145,11 @@ while ($row = mysqli_fetch_assoc($result)) {
             estilo += "@media print { @page {size: A4;margin: 0;padding:0;}}";
             estilo += ".print-boletim img {transform: rotate(90deg); width: 110px;}";
             estilo += "table {border-collapse: collapse; width: 100%; height: 100%; text-align: center;}";
-            estilo += "th, td {padding: 16.5px; text-align: center;font-size: 18px;vertical-align: middle; box-sizing: border-box;}";
+            estilo += "th, td {padding: 15px; text-align: center;font-size: 18px;vertical-align: middle; box-sizing: border-box;}";
             estilo += ".btnone {border: 1px solid #000; border-right: none;}";
             estilo += ".bbnone {border: 1px solid #000; border-left: none;}";
             estilo += ".fullborder {border: 1px solid #000;}";
-            estilo += ".print-boletim {writing-mode: vertical-rl; transform: rotate(180deg) scale(0.78);  transform-origin: 45% 50%;}";
+            estilo += ".print-boletim {writing-mode: vertical-rl; transform: rotate(180deg) scale(0.72, 0.9);  transform-origin: 45% 50%;}";
             estilo += "</style>";
 
             const newWindow = window.open('', '', 'height=1000,width=1000');

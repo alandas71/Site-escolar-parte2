@@ -8,11 +8,11 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     echo "<script>window.location = 'login.php'</script>";
 }
 // fazer a conexão com o banco de dados
-$mysqli = new mysqli('localhost', 'root', '', 'banco-dados');
+include('configServer.php');
 
 // verificar se ocorreu algum erro na conexão
-if ($mysqli->connect_error) {
-    die("Erro ao conectar ao banco de dados: " . $mysqli->connect_error);
+if ($conn->connect_error) {
+    die("Erro ao conectar ao banco de dados: " . $conn->connect_error);
 }
 
 echo ' <br>';
@@ -37,7 +37,7 @@ echo '<option selected disabled value="">Selecione</option>';
 
 // Consulta a tabela turmas para obter os valores únicos da coluna "turma"
 $sql_turmas = "SELECT DISTINCT turma FROM turmas";
-$result_turmas = $mysqli->query($sql_turmas);
+$result_turmas = $conn->query($sql_turmas);
 
 if ($result_turmas->num_rows > 0) {
     while ($row = $result_turmas->fetch_assoc()) {
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome']) && isset($_PO
 
     // inserir o professor no banco de dados
     $sql_inserir = "INSERT INTO users (nome, email, senha, tipo, turma1, turma2) VALUES (?, ?, ?, 'prof', ?, ?)";
-    $stmt = $mysqli->prepare($sql_inserir);
+    $stmt = $conn->prepare($sql_inserir);
     $stmt->bind_param('sssss', $nome, $email, $senha, $turma1, $turma2);
     $stmt->execute();
     $stmt->close();
@@ -96,4 +96,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome']) && isset($_PO
 }
 
 // fechar a conexão com o banco de dados
-$mysqli->close();
+$conn->close();

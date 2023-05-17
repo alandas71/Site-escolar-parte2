@@ -10,12 +10,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
 include('criar_vagas.php');
 echo "<br>";
 // Conecte-se ao banco de dados
-$dbHost = 'localhost';
-$dbUsername = 'root';
-$dbPassword = '';
-$dbName = 'banco-dados';
-
-$conn = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+include('configServer.php');
 
 // Verifique a conexão
 if ($conn->connect_error) {

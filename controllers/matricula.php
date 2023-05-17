@@ -1,6 +1,5 @@
 <?php
 include('configServer.php');
-include('parametros_matricula.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -106,7 +105,7 @@ include('parametros_matricula.php');
             <p class="titulo title">Formulário de pré-matrícula</p>
             <div class="conteudo2">
                 <div class="box">
-                    <form action="matricula.php" id="formMatr" class="formMatr" type="post" method="post">
+                    <form action="parametros_matricula.php" id="formMatr" class="formMatr" type="post" method="post">
                         <fieldset class=full>
                             <div>O preenchimento do formulário não garante a matrícula,
                                 para saber sobre disponibilidades de vagas entre em contato pelo nosso
@@ -123,12 +122,6 @@ include('parametros_matricula.php');
                                 <?php
                                 // Conectar ao banco de dados
                                 include('configServer.php');
-
-                                // Checar a conexão
-                                if (mysqli_connect_errno()) {
-                                    echo "Falha ao conectar ao MySQL: " . mysqli_connect_error();
-                                    exit();
-                                }
 
                                 // Consultar a tabela 'vagas'
                                 $query = "SELECT vaga FROM vagas";
@@ -498,7 +491,7 @@ include('parametros_matricula.php');
                     </fieldset>
                 </div>
             </div>
-            <button class="botao" id="submit" name="submit" type="submit" type="button" onclick="return confirm('Enviar o formulário? após o envio entraremos em contato.')">Enviar</button>
+            <button class="botao" id="submit" name="submit" type="submit" onclick="removerMensagemSair(); return confirm('Enviar o formulário? Após o envio, entraremos em contato.');">Enviar</button>
             </form>
         </div>
     </div>
@@ -522,9 +515,9 @@ include('parametros_matricula.php');
     </footer>
     <script src="../assets/js/formulario.js"></script>
     <script>
-        window.onbeforeunload = function() {
-            return "Tem certeza de que deseja sair?";
-        };
+        function removerMensagemSair() {
+            window.onbeforeunload = null;
+        }
     </script>
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <script>
