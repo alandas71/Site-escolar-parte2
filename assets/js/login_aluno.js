@@ -12,7 +12,7 @@ $(function () {
             $("div#mensagem").html("Por favor, verifique que você não é um robô.");
         } else {
             $.ajax({
-                url: "conexao_loginAluno.php",
+                url: "app/login/conexao_loginAluno.php",
                 type: "POST",
                 data: {
                     email: campoEmail,
@@ -21,19 +21,22 @@ $(function () {
                 },
 
                 success: function (retorno) {
-                    retorno = JSON.parse(retorno);
-                    if (retorno["erro"]) {
-                        $("div#mensagem")
-                            .html(retorno["mensagem"])
-                            .addClass(retorno["classe"]);
-                        $("form#formularioLoginAluno #senha").val("");
-                    } else {
-                        window.location = "portal_aluno.php";
+                    try {
+                        retorno = JSON.parse(retorno);
+                        if (retorno["erro"]) {
+                            $("div#mensagem")
+                                .html(retorno["mensagem"])
+                                .addClass(retorno["classe"]);
+                        } else {
+                            window.location = "portalAluno";
+                        }
+                    } catch (error) {
+                        $("div#mensagem").html("Erro ao processar a resposta.").addClass("mensagem-erro");
                     }
                 },
 
                 error: function () {
-                    $("div#mensagem").html(retorno["mensagem"]).addClass("mensagem-erro");
+                    $("div#mensagem").html("Ocorreu um erro na requisição.").addClass("mensagem-erro");
                 }
             });
         }

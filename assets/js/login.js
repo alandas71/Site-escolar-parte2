@@ -12,27 +12,31 @@ $(function () {
             $("div#mensagem").html("Por favor, verifique que você não é um robô.");
         } else {
             $.ajax({
-                url: "conexao_login.php",
+                url: "app/login/conexao_login.php",
                 type: "POST",
                 data: {
                     email: campoEmail,
                     senha: campoSenha,
-                    recaptchaResponse: recaptchaResponse // Include the reCAPTCHA response
+                    recaptchaResponse: recaptchaResponse
                 },
 
                 success: function (retorno) {
-                    retorno = JSON.parse(retorno);
-                    if (retorno["erro"]) {
-                        $("div#mensagem")
-                            .html(retorno["mensagem"])
-                            .addClass(retorno["classe"]);
-                    } else {
-                        window.location = "dashboard.php?view=dashboard";
+                    try {
+                        retorno = JSON.parse(retorno);
+                        if (retorno["erro"]) {
+                            $("div#mensagem")
+                                .html(retorno["mensagem"])
+                                .addClass(retorno["classe"]);
+                        } else {
+                            window.location = "dashboard";
+                        }
+                    } catch (error) {
+                        $("div#mensagem").html("Erro ao processar a resposta.").addClass("mensagem-erro");
                     }
                 },
 
                 error: function () {
-                    $("div#mensagem").html(retorno["mensagem"]).addClass("mensagem-erro");
+                    $("div#mensagem").html("Ocorreu um erro na requisição.").addClass("mensagem-erro");
                 }
             });
         }
