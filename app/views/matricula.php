@@ -3,7 +3,7 @@
         <p class="titulo title">Formulário de pré-matrícula</p>
         <div class="conteudo2">
             <div class="box">
-                <form action="parametros_matricula.php" id="formMatr" class="formMatr" type="post" method="post">
+                <form id="formMatr" class="formMatr" type="post" method="post">
                     <fieldset class=full>
                         <div>O preenchimento do formulário não garante a matrícula,
                             para saber sobre disponibilidades de vagas entre em contato pelo nosso

@@ -1,64 +1,9 @@
-<?php
-$turma2 = $_SESSION["usuario"][4];
-$turma1 = $_SESSION["usuario"][3];
-$id_aluno = $_SESSION["usuario"][2];
-$nome = $_SESSION["usuario"][0];
-
-include('../database/mysqli_connection.php');
-
-$query = "SELECT materia, nota1, nota2, nota3, nota4, falta1, falta2, falta3, falta4, faltas, media, resultado FROM notas WHERE id_aluno = $id_aluno";
-$result = mysqli_query($mysqli, $query);
-
-
-$notas_materias = [
-    ['nome' => 'Matemática', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
-    ['nome' => 'Português', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
-    ['nome' => 'História', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
-    ['nome' => 'Ciências', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
-    ['nome' => 'Geografia', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
-    ['nome' => 'Artes', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
-    ['nome' => 'Inglês', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
-];
-
-while ($row = mysqli_fetch_assoc($result)) {
-    $materia = $row['materia'];
-    $nota1 = $row['nota1'];
-    $nota2 = $row['nota2'];
-    $nota3 = $row['nota3'];
-    $nota4 = $row['nota4'];
-    $falta1 = $row['falta1'];
-    $falta2 = $row['falta2'];
-    $falta3 = $row['falta3'];
-    $falta4 = $row['falta4'];
-    $media = $row['media'];
-    $faltas = $row['faltas'];
-    $resultado = $row['resultado'];
-
-    foreach ($notas_materias as &$materia_atual) {
-        if ($materia_atual['nome'] == $materia) {
-            $materia_atual['nota1'] = $nota1;
-            $materia_atual['nota2'] = $nota2;
-            $materia_atual['nota3'] = $nota3;
-            $materia_atual['nota4'] = $nota4;
-            $materia_atual['falta1'] = $falta1;
-            $materia_atual['falta2'] = $falta2;
-            $materia_atual['falta3'] = $falta3;
-            $materia_atual['falta4'] = $falta4;
-            $materia_atual['media'] = $media;
-            $materia_atual['faltas'] = $faltas;
-            $materia_atual['resultado'] = $resultado;
-            break;
-        }
-    }
-}
-
-?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <link rel="stylesheet" href="..\assets\css\viewNotas.css" />
-    <title>Boletim Escolar</title>
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets\css\viewNotas.css" />
+    <title>Arco-íris</title>
     <style>
         .view {
             position: relative;
@@ -68,10 +13,10 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 <body>
     <div id="print-boletim">
-        <img src="..\assets\images\iconetopo.png" width="150px" style="float:left;">
+        <img src="<?php echo BASE_URL; ?>assets\images\iconetopo.png" width="150px" style="float:left;">
         <div style="display:flex; justify-content:center;">
             <div style="text-align:center;">
-                <h1 style="font-size:25px;">Centro Educar Arco-Íris</h1>
+                <h1 style="font-size:25px;">Centro Educar Arco-íris</h1>
                 <p>BOLETIM DO ALUNO</p>
             </div>
         </div>
@@ -154,7 +99,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
             const newWindow = window.open('', '', 'height=1000,width=1000');
             newWindow.document.write('<html><head>');
-            newWindow.document.write('<title>Boletim Arco-Íris</title>');
+            newWindow.document.write('<title>Boletim Arco-íris</title>');
             newWindow.document.write(estilo);
             newWindow.document.write('</head>');
             newWindow.document.write('<body>');

@@ -5,8 +5,41 @@ class portalProfController extends Controller
     public function index()
     {
         $horario = new HorarioModel;
+        $cliente = new ClienteModel;
+
+        $id  = $_SESSION["usuario"][2];
 
         $turmas = isset($_SESSION["usuario"]) ? $_SESSION["usuario"] : array();
+
+        if (isset($_FILES['foto']) && isset($_POST['cropped-image'])) {
+
+            $targetDir = $_SERVER['DOCUMENT_ROOT'] . '/school/assets/images/clientes/';
+            $extension = pathinfo($_FILES["foto"]["name"], PATHINFO_EXTENSION);
+            $fileName = uniqid() . '.' . $extension;
+            $targetFilePath = $targetDir . $fileName;
+
+            $row = $cliente->readFoto($id);
+            $oldFilePath = $row['foto'];
+            if (!empty($oldFilePath)) {
+                unlink($oldFilePath);
+            }
+
+            $allowTypes = array('jpg', 'jpeg', 'png', 'gif');
+            $fileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
+            if (in_array($fileType, $allowTypes)) {
+
+                if (move_uploaded_file($_FILES["foto"]["tmp_name"], $targetFilePath)) {
+
+                    $cliente->updateFoto($fileName, $id);
+
+                    header("location:" . BASE_URL . "portalProf");
+                } else {
+                    echo "Ocorreu um erro ao enviar a imagem.";
+                }
+            } else {
+                header("location:" . BASE_URL . "portalProf");
+            }
+        }
 
         $resultado = $horario->readHorario($turmas);
 
@@ -85,24 +118,37 @@ class portalProfController extends Controller
             }
         }
 
+        $atualizou = false;
 
         foreach ($_POST as $key => $value) {
 
             if (strpos($key, '_nota1') !== false) {
                 $materia = str_replace('_nota1', '', $key);
                 $notas = array_filter([
-                    $_POST[$key],
-                    $_POST[str_replace('_nota1', '_nota2', $key)],
-                    $_POST[str_replace('_nota1', '_nota3', $key)],
-                    $_POST[str_replace('_nota1', '_nota4', $key)],
-                ]);
+                    str_replace(',', '.', $_POST[$key]),
+                    str_replace(',', '.', $_POST[str_replace('_nota1', '_nota2', $key)]),
+                    str_replace(',', '.', $_POST[str_replace('_nota1', '_nota3', $key)]),
+                    str_replace(',', '.', $_POST[str_replace('_nota1', '_nota4', $key)]),
+                ], function ($value) {
+                    return $value !== '';
+                });
+
                 $faltas = array_filter([
                     $_POST[str_replace('_nota1', '_falta1', $key)],
                     $_POST[str_replace('_nota1', '_falta2', $key)],
                     $_POST[str_replace('_nota1', '_falta3', $key)],
                     $_POST[str_replace('_nota1', '_falta4', $key)],
-                ]);
-                $media = number_format(array_sum($notas) / count($notas), 1);
+                ], function ($value) {
+                    return $value !== '';
+                });
+
+                if (!empty($notas)) {
+                    $media = number_format(array_sum($notas) / count($notas), 1);
+                } else {
+                    $media = '';
+                }
+
+
                 $total_faltas = array_sum($faltas);
 
                 if (!empty($notas) && !empty($faltas) && count($notas) == 4) {
@@ -118,11 +164,15 @@ class portalProfController extends Controller
             $existe = $boletim->existeNota($id_aluno, $materia);
             if ($existe) {
                 $boletim->exiteAtualiza($notas, $faltas, $total_faltas, $media, $resultado, $id_aluno, $materia);
-                header('Location: ' . BASE_URL . 'portalProf/minhasTurmas');
+                $atualizou = true;
             } else {
                 $boletim->naoExisteInsere($id_aluno, $materia, $notas, $faltas, $total_faltas, $media, $resultado);
-                header('Location: ' . BASE_URL . 'portalProf/minhasTurmas');
+                $atualizou = true;
             }
+        }
+
+        if ($atualizou) {
+            header('Location: ' . BASE_URL . 'portalProf/minhasTurmas');
         }
 
         $dados = array(
@@ -132,5 +182,14 @@ class portalProfController extends Controller
         );
 
         $this->loadView('boletim_prof', $dados);
+    }
+
+    public function calendario()
+    {
+        $agenda = new AgendaModel;
+
+        $dados = array('events' => $agenda->readEvents());
+
+        $this->loadAmbienteTemplate('agendaView', $dados);
     }
 }

@@ -23,7 +23,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARCO-ÍRIS</title>
+    <title>Arco-íris</title>
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/style.css" />
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/tablet.css" />
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/mobile.css" />
@@ -94,24 +94,6 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                 <div class="sidebar">
                     <div class="sidebar-header"></div>
                     <ul class="sidebar-menu">
-                        <form action="foto_cliente.php" method="post" enctype="multipart/form-data" id="myForm">
-                            <div class='img_dashboard'>
-                                <label for="foto"></label>
-                                <input type="file" id="foto" name="foto" accept="image/*" style="display: none" onchange="submitForm()">
-                                <?php
-                                // Busca o caminho da imagem na tabela "users"
-                                $stmt = $conn->prepare("SELECT foto FROM users WHERE id = ?");
-                                $stmt->execute(array($adm));
-                                $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                                $caminho_imagem = $row['foto'];
-                                ?>
-                                <img class='client_foto' src='<?php echo isset($caminho_imagem) ? $caminho_imagem : 'assets/images/user.jpg' ?>' width='100px' height='100px' id='foto-preview'>
-                            </div>
-                            <input type="hidden" id="cropped-image" name="cropped-image">
-                        </form>
-                        <p class="img_dashboard_text"><?php echo $nome ?></p>
-                        <hr>
-                        <br>
                         <li>
                             <a href="<?php echo BASE_URL; ?>dashboard" id="menu-dashboard">
                                 <i class="fas fa-tachometer-alt"></i>

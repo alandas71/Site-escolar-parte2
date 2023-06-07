@@ -23,6 +23,11 @@ class Controller
         require 'app/views/ambienteTemplate.php';
     }
 
+    public function loadPortalTemplate($viewName, $viewData = array())
+    {
+        require 'app/views/portalTemplate.php';
+    }
+
     public function loadViewInTemplate($viewName, $viewData = array())
     {
         extract($viewData);

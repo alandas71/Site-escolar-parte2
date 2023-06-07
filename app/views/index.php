@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARCO-ÍRIS</title>
+    <title>Arco-íris</title>
     <link rel="stylesheet" href="assets\css\style.css" />
     <link rel="stylesheet" href="assets\css\tablet.css" />
     <link rel="stylesheet" href="assets\css\mobile.css" />
@@ -120,7 +120,7 @@
             <div class="row textRow">
                 <h1 class="rowTitle">Centro Educar Arco-íris</h1>
                 <p class=mural>
-                    O Centro Educar Arco-Íris foi fundado em 2022 pela psicopedagoga Luciane, uma educadora apaixonada
+                    O Centro Educar Arco-íris foi fundado em 2022 pela psicopedagoga Luciane, uma educadora apaixonada
                     pelo ensino e comprometida em oferecer uma educação de qualidade para as crianças de sua comunidade. Ela queria criar uma escola que valorizasse a
                     individualidade de cada aluno, ajudando-os a descobrir seus talentos e habilidades
                     únicas.
@@ -129,7 +129,7 @@
                     A escola cresceu rapidamente e é reconhecida por sua excelência acadêmica
                     e preocupação com o bem-estar emocional e social de seus alunos. Luciane continua
                     liderando a escola, com projetos para expansão, buscando sempre novas maneiras
-                    de melhorar a experiência de aprendizagem das suas crianças e tornar o Arco-Íris
+                    de melhorar a experiência de aprendizagem das suas crianças e tornar o Arco-íris
                     uma escola ainda mais inclusiva e acolhedora.
                 </p>
             </div>
@@ -256,7 +256,7 @@
             </p>
         </div>
         <div style="position:inherit; bottom:0;" class="copyright">
-            <p>&copy; 2023 Centro Educar Arco-Íris. Todos os direitos reservados.</p>
+            <p>&copy; 2023 Centro Educar Arco-íris. Todos os direitos reservados.</p>
         </div>
     </footer>
     </div>

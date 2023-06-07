@@ -1,5 +1,4 @@
 <?php
-
 if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     require("app/login/connLogin.php");
 
@@ -13,34 +12,32 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     $nome = $_SESSION["usuario"][0];
 
     if ($tipo !== "aluno") {
-        // Redireciona para página de login se não for aluno
-        header("Location: login_aluno.php");
+        header("Location:" . BASE_URL . "aluno");
         exit();
     }
 } else {
-
-    // Redireciona para página de login se não estiver logado
-    header("Location: login_aluno.php");
+    header("Location:" . BASE_URL . "aluno");
     exit();
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARCO-ÍRIS</title>
-    <link rel="stylesheet" href="..\assets\css\style.css" />
-    <link rel="stylesheet" href="..\assets\css\tablet.css" />
-    <link rel="stylesheet" href="..\assets\css\mobile.css" />
-    <link rel="shortcut icon" href="../assets/images/icone.ico" type="image/x-icon">
-    <script src="../assets/js/sidebar_hide.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <title>Arco-íris</title>
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets\css\style.css" />
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets\css\tablet.css" />
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets\css\mobile.css" />
+    <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/images/icone.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="<?php echo BASE_URL; ?>assets/js/sidebar_hide.js" defer></script>
+    <script src='<?php echo BASE_URL; ?>assets/js/fullCalendar/dist/index.global.js'></script>
+    <script src='<?php echo BASE_URL; ?>assets/js/fullCalendar/packages/core/locales/pt-br.global.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
 </head>
 
 <body style="overflow-x: hidden;">
@@ -59,19 +56,19 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                         <span class="spanMenu"></span>
                     </label>
                     <ul>
-                        <a href="../">
+                        <a href="<?php echo BASE_URL; ?>">
                             <li>INÍCIO</li>
                         </a>
-                        <a href="matricula.php">
+                        <a href="<?php echo BASE_URL; ?>matricula">
                             <li>MATRÍCULA</li>
                         </a>
-                        <a href="album.php">
+                        <a href="<?php echo BASE_URL; ?>album">
                             <li>ÁLBUM</li>
                         </a>
-                        <a href="sobre.php">
+                        <a href="<?php echo BASE_URL; ?>sobre">
                             <li>SOBRE</li>
                         </a>
-                        <a href="logout.php">
+                        <a href="<?php echo BASE_URL; ?>logout">
                             <li>SAIR</li>
                         </a>
                     </ul>
@@ -79,19 +76,19 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                 <div class="menu" style="padding: 0;">
                     <ul>
                         <li>
-                            <a href="../">INÍCIO</a>
+                            <a href="<?php echo BASE_URL; ?>">INÍCIO</a>
                         </li>
                         <li>
-                            <a href="album.php">ÁLBUM</a>
+                            <a href="<?php echo BASE_URL; ?>album">ÁLBUM</a>
                         </li>
                         <li>
-                            <a href="matricula.php">MATRÍCULA</a>
+                            <a href="<?php echo BASE_URL; ?>matricula">MATRÍCULA</a>
                         </li>
                         <li>
-                            <a href="sobre.php">SOBRE</a>
+                            <a href="<?php echo BASE_URL; ?>sobre">SOBRE</a>
                         </li>
                         <li>
-                            <a href="logout.php">SAIR</a>
+                            <a href="<?php echo BASE_URL; ?>logout">SAIR</a>
                         </li>
                     </ul>
                 </div>
@@ -100,22 +97,19 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
         <div class="dashboard">
             <div class="wrapper">
                 <div class="sidebar">
-                    <h1>Centro Educar Arco-íris</h1>
                     <div class="sidebar-header"></div>
                     <ul class="sidebar-menu">
-                        <form action="foto_cliente_aluno.php" method="post" enctype="multipart/form-data" id="myForm">
+                        <form method="post" enctype="multipart/form-data" id="myForm">
                             <div class='img_dashboard'>
                                 <label for="foto"></label>
                                 <input type="file" id="foto" name="foto" accept="image/*" style="display: none" onchange="submitForm()">
                                 <?php
-
-                                // Busca o caminho da imagem na tabela "users"
                                 $stmt = $conn->prepare("SELECT foto FROM users WHERE id = ?");
-                                $stmt->execute(array($id)); // alteração aqui
+                                $stmt->execute(array($id));
                                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                                $caminho_imagem = $row['foto'];
+                                $nome_imagem = $row['foto'];
                                 ?>
-                                <img class='client_foto' src='<?php echo isset($caminho_imagem) ? $caminho_imagem : '../assets/images/user.jpg' ?>' width='100px' height='100px' id='foto-preview'>
+                                <img class='client_foto' src='<?php echo isset($nome_imagem) ? 'assets/images/clientes/' . $nome_imagem : 'assets/images/user.jpg'; ?>' width='100px' height='100px' id='foto-preview'>
                             </div>
                             <input type="hidden" id="cropped-image" name="cropped-image">
                         </form>
@@ -123,19 +117,19 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                         <hr>
                         <br>
                         <li>
-                            <a href="portal_aluno.php?view=horario">
+                            <a href="<?php echo BASE_URL; ?>portalAluno">
                                 <i class="far fa-clock"></i>
                                 <p>HORÁRIOS</p>
                             </a>
                         </li>
                         <li>
-                            <a href="portal_aluno.php?view=notas">
+                            <a href="<?php echo BASE_URL; ?>portalAluno/notas">
                                 <i class="fas fa-graduation-cap"></i>
                                 <p>NOTAS</p>
                             </a>
                         </li>
                         <li>
-                            <a href="portal_aluno.php?view=calendario">
+                            <a href="<?php echo BASE_URL; ?>portalAluno/calendario">
                                 <i class="fas fa-calendar"></i>
                                 <p>CALENDÁRIO</p>
                             </a>
@@ -144,20 +138,12 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                 </div>
                 <div class="view">
                     <?php
-                    if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["view"])) {
-                        $view = $_GET["view"];
-                        switch ($view) {
-                            case "horario":
-                                include('horario.php');
-                                break;
-                            case "notas":
-                                include('boletim_view.php');
-                                break;
-                            case "calendario":
-                                include('agendaView-item.php');
-                                break;
-                        }
+                    if (isset($_SESSION['mensagem'])) {
+                        echo '<div class="mensagem">' . $_SESSION['mensagem'] . '</div>';
+                        unset($_SESSION['mensagem']);
                     }
+
+                    $this->loadViewInTemplate($viewName, $viewData);
                     ?>
                 </div>
             </div>
@@ -166,8 +152,9 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
 </body>
 
 </html>
-<script src="../assets/js/jquery-3.6.1.min.js"></script>
-<script src="../assets/js/login_aluno.js"></script>
+<script src="<?php echo BASE_URL; ?>assets/js/jquery-3.6.1.min.js"></script>
+<script src="<?php echo BASE_URL; ?>assets/js/login_aluno.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
     const fotoInput = document.querySelector('#foto');
     const fotoPreview = document.querySelector('#foto-preview');

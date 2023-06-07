@@ -7,20 +7,46 @@ class NotasModel extends pdoModel
     {
         $sql = "SELECT * FROM notas WHERE id_aluno = ? AND materia = ?";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$this->id_aluno, $materia]);
+        $stmt->execute([$id_aluno, $materia]);
         $existe = $stmt->fetch();
 
         return $existe;
     }
 
-    public function exiteAtualiza($notas, $faltas, $total_faltas, $media, $resultado, $id_aluno, $materia)
+    public function exiteAtualiza($notas = null, $faltas = null, $total_faltas = null, $media = null, $resultado = null, $id_aluno, $materia = null)
     {
+        if (!isset($notas[0])) {
+            $notas[0] = null;
+        }
+        if (!isset($notas[1])) {
+            $notas[1] = null;
+        }
+        if (!isset($notas[2])) {
+            $notas[2] = null;
+        }
+        if (!isset($notas[3])) {
+            $notas[3] = null;
+        }
+
+        if (!isset($faltas[0])) {
+            $faltas[0] = null;
+        }
+        if (!isset($faltas[1])) {
+            $faltas[1] = null;
+        }
+        if (!isset($faltas[2])) {
+            $faltas[2] = null;
+        }
+        if (!isset($faltas[3])) {
+            $faltas[3] = null;
+        }
+
         $sql = "UPDATE notas SET nota1 = ?, nota2 = ?, nota3 = ?, nota4 = ?, falta1 = ?, falta2 = ?, falta3 = ?, falta4 = ?, faltas = ?, media = ?, resultado = ? WHERE id_aluno = ? AND materia = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$notas[0], $notas[1], $notas[2], $notas[3], $faltas[0], $faltas[1], $faltas[2], $faltas[3], $total_faltas, $media, $resultado, $id_aluno, $materia]);
     }
 
-    public function naoExisteInsere($id_aluno, $materia, $notas, $faltas, $total_faltas, $media, $resultado)
+    public function naoExisteInsere($id_aluno, $materia = null, $notas = null, $faltas = null, $total_faltas = null, $media = null, $resultado = null)
     {
         $sql = "INSERT INTO notas (id_aluno, materia, nota1, nota2, nota3, nota4, falta1, falta2, falta3, falta4, faltas, media, resultado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);

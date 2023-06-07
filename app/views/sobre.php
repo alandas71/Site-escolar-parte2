@@ -1,7 +1,7 @@
         <div class="header">
             <div class="div1">
                 <div class="conteudo-sobre">
-                    <p class=sobretext><b>Centro Educar Arco-Íris<b></p>
+                    <p class=sobretext><b>Centro Educar Arco-íris<b></p>
                     <p class="sobretext">Somos uma escola comprometida em oferecer uma educação inclusiva e de qualidade para todos os nossos alunos. Fundada em 2022,
                         nossa escola tem sido um modelo de excelência em educação.
                     </p>
@@ -10,7 +10,7 @@
                         acadêmicas, mas também sociais e emocionais.
 
                     </p>
-                    <p class="sobretext"> No Centro Educar Arco-Íris, nossos alunos têm acesso a aulas informatizadas com slides, jogos digitais e físicos exclusivos feitos
+                    <p class="sobretext"> No Centro Educar Arco-íris, nossos alunos têm acesso a aulas informatizadas com slides, jogos digitais e físicos exclusivos feitos
                         pela própria instituição. Acreditamos que o uso da tecnologia pode ser uma ferramenta poderosa para melhorar a aprendizagem, estimulando a interatividade
                         e a imersão nas aulas. Além disso, temos uma brinquedoteca equipada com jogos educativos, televisão e brinquedos para estimular o desenvolvimento cognitivo
                         e social das crianças mais novas. Todas as salas possuem um sistema de climatização eficiente, com ventiladores industriais de alta qualidade, que não apenas
@@ -21,7 +21,7 @@
 
                     </p>
                     <p class="sobretext"> Estamos comprometidos em fornecer um ambiente acolhedor, seguro e estimulante para todos os nossos alunos. Nossa equipe de profissionais dedicados
-                        e apaixonados está sempre trabalhando para garantir que cada aluno alcance todo o seu potencial e tenha a melhor experiência educacional possível no Centro Educar Arco-Íris.
+                        e apaixonados está sempre trabalhando para garantir que cada aluno alcance todo o seu potencial e tenha a melhor experiência educacional possível no Centro Educar Arco-íris.
                         Venha nos visitar e conheça nosso espaço!
                     </p>
                     <p class=sobretext><b>Endereço: Rua Santa Filomena, N° 04, São Tomé de Paripe.</b></p>

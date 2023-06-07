@@ -26,7 +26,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARCO-ÍRIS</title>
+    <title>Arco-íris</title>
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/js/bootstrap-3.3.7/css/bootstrap.css" />
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets\css\style.css" />
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets\css\tablet.css" />
@@ -34,10 +34,13 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/images/icone.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="<?php echo BASE_URL; ?>assets/js/jquery-3.6.1.min.js"></script>
     <script src="<?php echo BASE_URL; ?>assets/js/bootstrap-3.3.7/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="<?php echo BASE_URL; ?>assets/js/sidebar_hide.js" defer></script>
+    <script src='<?php echo BASE_URL; ?>assets/js/fullCalendar/dist/index.global.js'></script>
+    <script src='<?php echo BASE_URL; ?>assets/js/fullCalendar/packages/core/locales/pt-br.global.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/2.3.1/luxon.min.js"></script>
 </head>
 
 <body style="overflow-x: hidden;">
@@ -99,7 +102,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                 <div class="sidebar">
                     <div class="sidebar-header"></div>
                     <ul class="sidebar-menu">
-                        <form action="foto_cliente_prof.php" method="post" enctype="multipart/form-data" id="myForm">
+                        <form method="post" enctype="multipart/form-data" id="myForm">
                             <div class='img_dashboard'>
                                 <label for="foto"></label>
                                 <input type="file" id="foto" name="foto" accept="image/*" style="display: none" onchange="submitForm()">
@@ -107,9 +110,9 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                                 $stmt = $conn->prepare("SELECT foto FROM users WHERE id = ?");
                                 $stmt->execute(array($id));
                                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                                $caminho_imagem = $row['foto'];
+                                $nome_imagem = $row['foto'];
                                 ?>
-                                <img class='client_foto' src='<?php echo isset($caminho_imagem) ? $caminho_imagem : 'assets/images/user.jpg' ?>' width='100px' height='100px' id='foto-preview'>
+                                <img class='client_foto' src='<?php echo isset($nome_imagem) ? 'assets/images/clientes/' . $nome_imagem : 'assets/images/user.jpg'; ?>' width='100px' height='100px' id='foto-preview'>
                             </div>
                             <input type="hidden" id="cropped-image" name="cropped-image">
                         </form>
