@@ -119,7 +119,7 @@
                     } else {
                         echo "<td><a href=' " . BASE_URL . "dashboard/matriculas?email=$email&nome=$nome&turma=$turma&turno=$turno'>Cadastrar</a></td>";
                     }
-                    echo "<td><a href='" . BASE_URL . "dashboard/matriculas?id=" . $row['id'] . "' onclick='return confirm(\" Tem certeza de que deseja excluir o pré-registro?\")'>Excluir</a></td>";
+                    echo "<td><a href='" . BASE_URL . "dashboard/matriculas/" . $row['id'] . "' onclick='return confirm(\" Tem certeza de que deseja excluir o pré-registro?\")'>Excluir</a></td>";
                     echo "<td>" . $row['turma'] . "</td>";
                     echo "<td>" . $row['turno'] . "</td>";
                     echo "<td>" . $row['nome'] . "</td>";

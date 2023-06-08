@@ -18,7 +18,7 @@
                     <td><?php echo $row_turma1["email"] ?></td>
                     <td><span class="senha" data-senha="<?php echo $row_turma1["senha"] ?>">Mostrar senha</span></td>
                     <td>
-                        <form method="post" action="<?php BASE_URL ?>professores/<?php echo $row_turma1['id']; ?>">
+                        <form method="post" action="<? echo BASE_URL ?>professores/<?php echo $row_turma1['id']; ?>">
                             <button type="submit" name="remover_prof" value="<?php echo $row_turma1['id'] ?>" onclick="return confirm('Tem certeza de que deseja remover este prof?')">Remover</button>
                         </form>
                     </td>
@@ -48,7 +48,7 @@
                     <td><?php echo $row_turma2["email"] ?></td>
                     <td><span class="senha" data-senha="<?php echo $row_turma2["senha"] ?>">Mostrar senha</span></td>
                     <td>
-                        <form method="POST" action="<?php BASE_URL ?>professores/<?php echo $row_turma2['id']; ?>">
+                        <form method="POST" action="<?php echo BASE_URL ?>professores/<?php echo $row_turma2['id']; ?>">
                             <button type="submit" name="remover_prof" value="<?php echo $row_turma2['id'] ?>" onclick="return confirm('Tem certeza de que deseja remover este prof?')">Remover</button>
                         </form>
                     </td>

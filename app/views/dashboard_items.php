@@ -80,7 +80,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                             end: '<?= $event['end'] ?>',
                             id: <?= $event['id'] ?>,
                             extendedProps: {
-                                deleteLink: '<?php BASE_URL ?>dashboard?id=<?= $event['id'] ?>'
+                                deleteLink: '<?php BASE_URL ?>dashboard/index/<?= $event['id'] ?>'
                             }
                         },
                     <?php endforeach; ?>

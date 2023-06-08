@@ -60,7 +60,7 @@
                 } else {
                     echo "<td>" . $quantidade_turma2 . "/" . $row["vagas"] . "</td>";
                 }
-                echo "<td><a href='" . BASE_URL . "dashboard/turmas?id=" . $row["id"] . "' onclick='return confirm(\"Tem certeza de que deseja excluir a turma?\")'>Excluir</a></td>";
+                echo "<td><a href='" . BASE_URL . "dashboard/turmas/" . $row["id"] . "' onclick='return confirm(\"Tem certeza de que deseja excluir a turma?\")'>Excluir</a></td>";
             }
             echo "</table>";
             echo "</div>";

@@ -71,7 +71,7 @@ class portalProfController extends Controller
 
         $boletim->setIdAluno($id_aluno);
         $result =  $boletim->readNotas($id_aluno);
-        $nome = $boletim->readAlunoName();
+        $nome = $boletim->readInfo();
 
         $notas = [];
         $faltas = [];

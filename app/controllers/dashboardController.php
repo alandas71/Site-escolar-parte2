@@ -2,7 +2,7 @@
 
 class dashboardController extends Controller
 {
-    public function index()
+    public function index($id = null)
     {
         $num = new CountModel;
         $agenda = new agendaModel;
@@ -18,14 +18,8 @@ class dashboardController extends Controller
             exit();
         }
 
-        if (isset($_GET['id'])) {
-            $id = $_GET['id'];
+        $agenda->deleteEvent($id);
 
-            $agenda->deleteEvent($id);
-
-            header("location:" . BASE_URL . "dashboard");
-            exit();
-        }
 
         $count = $num->getCountAlunos();
         $count2 = $num->getCountProfessor();
@@ -45,17 +39,13 @@ class dashboardController extends Controller
         $this->loadDashboardTemplate('dashboard_items', $dados);
     }
 
-    public function estudantes()
+    public function estudantes($id = null)
     {
         $al = new EstudantesModel;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            if (isset($_POST['remover_aluno'])) {
-                $id = $_POST['remover_aluno'];
-
-                $al->deleteAluno($id);
-            }
+            $al->deleteAluno($id);
 
             if (isset($_POST['adicionar_aluno'])) {
                 $nome = $_POST['nome'];
@@ -95,17 +85,13 @@ class dashboardController extends Controller
         $this->loadDashboardTemplate('relacao_alunos', $dados);
     }
 
-    public function professores()
+    public function professores($id = null)
     {
         $prof = new ProfessoresModel;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            if (isset($_POST['remover_prof'])) {
-                $id = $_POST['remover_prof'];
-
-                $prof->deleteProf($id);
-            }
+            $prof->deleteProf($id);
 
             if (isset($_POST['adicionar_prof'])) {
                 $nome = $_POST['nome'];
@@ -144,7 +130,7 @@ class dashboardController extends Controller
         $this->loadDashboardTemplate('relacao_professores', $dados);
     }
 
-    public function turmas()
+    public function turmas($id_turma = null)
     {
         $turmas = new TurmasModel;
 
@@ -181,14 +167,7 @@ class dashboardController extends Controller
             exit();
         }
 
-        if (isset($_GET['id'])) {
-            $id_turma = $_GET['id'];
-
-            $turmas->deleteTurmas($id_turma);
-
-            header("location:" . BASE_URL . "dashboard/turmas");
-            exit();
-        }
+        $turmas->deleteTurmas($id_turma);
 
         $result = $turmas->readTurmas();
         $nomes = $turmas->getDistinctUsers();
@@ -263,7 +242,7 @@ class dashboardController extends Controller
         $this->loadDashboardTemplate('set_horario', $dados);
     }
 
-    public function matriculas()
+    public function matriculas($id = null)
     {
 
         $matriculas = new MatriculaModel;
@@ -287,15 +266,7 @@ class dashboardController extends Controller
             exit();
         }
 
-
-        if (isset($_GET['id'])) {
-            $id = $_GET['id'];
-
-            $matriculas->deleteMatriculas($id);
-
-            header("location:" . BASE_URL . "dashboard/matriculas");
-            exit();
-        }
+        $matriculas->deleteMatriculas($id);
 
         $email = isset($_GET["email"]) ? $_GET["email"] : "";
         $nome = isset($_GET["nome"]) ? $_GET["nome"] : "";
@@ -598,5 +569,71 @@ class dashboardController extends Controller
         );
 
         $this->loadDashboardTemplate('painel', $dados);
+    }
+
+    public function boletim($id)
+    {
+        $boletim = new NotasModel;
+
+        $boletim->setIdAluno($id);
+        $result =  $boletim->readNotas($id);
+
+        $row = $boletim->readInfo();
+
+        $turma1 = $row['turma1'];
+        $turma2 = $row['turma2'];
+        $nome = $row['nome'];
+
+        $notas_materias = [
+            ['nome' => 'Matemática', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
+            ['nome' => 'Português', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
+            ['nome' => 'História', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
+            ['nome' => 'Ciências', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
+            ['nome' => 'Geografia', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
+            ['nome' => 'Artes', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
+            ['nome' => 'Inglês', 'nota1' => '', 'falta1' => '', 'nota2' => '', 'falta2' => '', 'nota3' => '', 'falta3' => '', 'nota4' => '', 'falta4' => '', 'media' => '', 'faltas' => '', 'resultado' => ''],
+        ];
+
+        foreach ($result as $row) {
+            $materia = $row['materia'];
+            $nota1 = $row['nota1'];
+            $nota2 = $row['nota2'];
+            $nota3 = $row['nota3'];
+            $nota4 = $row['nota4'];
+            $falta1 = $row['falta1'];
+            $falta2 = $row['falta2'];
+            $falta3 = $row['falta3'];
+            $falta4 = $row['falta4'];
+            $media = $row['media'];
+            $faltas = $row['faltas'];
+            $resultado = $row['resultado'];
+
+            foreach ($notas_materias as &$materia_atual) {
+                if ($materia_atual['nome'] == $materia) {
+                    $materia_atual['nota1'] = $nota1;
+                    $materia_atual['nota2'] = $nota2;
+                    $materia_atual['nota3'] = $nota3;
+                    $materia_atual['nota4'] = $nota4;
+                    $materia_atual['falta1'] = $falta1;
+                    $materia_atual['falta2'] = $falta2;
+                    $materia_atual['falta3'] = $falta3;
+                    $materia_atual['falta4'] = $falta4;
+                    $materia_atual['media'] = $media;
+                    $materia_atual['faltas'] = $faltas;
+                    $materia_atual['resultado'] = $resultado;
+                    break;
+                }
+            }
+        }
+
+        $dados = array(
+            'id' => $id,
+            'nome' => $nome,
+            'turma1' => $turma1,
+            'turma2' => $turma2,
+            'notas_materias' => $notas_materias
+        );
+
+        $this->loadDashboardTemplate('boletim_view', $dados);
     }
 }

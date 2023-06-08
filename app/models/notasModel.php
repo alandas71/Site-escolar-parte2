@@ -73,14 +73,14 @@ class NotasModel extends pdoModel
         return $this->id_aluno;
     }
 
-    public function readAlunoName()
+    public function readInfo()
     {
-        $sql = "SELECT nome, id FROM users WHERE id = :id_aluno";
-        $nome = $this->conn->prepare($sql);
-        $nome->bindParam(':id_aluno', $this->id_aluno);
-        $nome->execute();
+        $sql = "SELECT * FROM users WHERE id = :id_aluno";
+        $info = $this->conn->prepare($sql);
+        $info->bindParam(':id_aluno', $this->id_aluno);
+        $info->execute();
 
-        $row = $nome->fetch(PDO::FETCH_ASSOC);
+        $row = $info->fetch(PDO::FETCH_ASSOC);
 
         return $row;
     }
