@@ -22,7 +22,7 @@ class  TurmasModel extends pdoModel
 
     public function readTurma1($id_professor)
     {
-        $sql_turma1 = "SELECT * FROM users WHERE tipo = 'aluno' AND turma1 IN (SELECT turma1 FROM users WHERE tipo = 'prof' AND id = :id_professor)";
+        $sql_turma1 = "SELECT * FROM users WHERE tipo = 'aluno' AND turma1 IN (SELECT turma1 FROM users WHERE tipo = 'prof' AND id = :id_professor) ORDER BY nome ASC";
         $alunos_turma1 = $this->conn->prepare($sql_turma1);
         $alunos_turma1->bindParam(':id_professor', $id_professor);
         $alunos_turma1->execute();
@@ -32,7 +32,7 @@ class  TurmasModel extends pdoModel
 
     public function readTurma2($id_professor)
     {
-        $sql_turma2 = "SELECT * FROM users WHERE tipo = 'aluno' AND turma2 IN (SELECT turma2 FROM users WHERE tipo = 'prof' AND id = :id_professor)";
+        $sql_turma2 = "SELECT * FROM users WHERE tipo = 'aluno' AND turma2 IN (SELECT turma2 FROM users WHERE tipo = 'prof' AND id = :id_professor) ORDER BY nome ASC";
         $alunos_turma2 = $this->conn->prepare($sql_turma2);
         $alunos_turma2->bindParam(':id_professor', $id_professor);
         $alunos_turma2->execute();

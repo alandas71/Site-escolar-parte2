@@ -636,4 +636,19 @@ class dashboardController extends Controller
 
         $this->loadDashboardTemplate('boletim_view', $dados);
     }
+
+    public function ficha($email)
+    {
+        $mtr = new MatriculaModel;
+
+        $data = $mtr->readMatriculasPorEmail($email);
+        $anoAtual = date("Y");
+
+        $dados = array(
+            'dados' => $data,
+            'anoAtual' => $anoAtual
+        );
+
+        $this->loadDashboardTemplate('ficha_matricula', $dados);
+    }
 }

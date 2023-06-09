@@ -1,0 +1,57 @@
+@page {
+    size: A4;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.content {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.mtric {
+    border: 3px solid black;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.field-wrapper {
+    display: inline-block;
+}
+
+h1 {
+    margin-left: 10px;
+}
+
+.field-label {
+    font-weight: bold;
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+.field-value {
+    display: inline-block;
+    font-size: 14px;
+}
+
+.middle-text {
+    text-align: center;
+}

@@ -164,23 +164,6 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
 <script src="<?php echo BASE_URL; ?>assets/js/login.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
-    const fotoInput = document.querySelector('#foto');
-    const fotoPreview = document.querySelector('#foto-preview');
-
-    fotoPreview.addEventListener('click', () => {
-        fotoInput.click();
-    });
-
-    fotoInput.addEventListener('change', () => {
-        const file = fotoInput.files[0];
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => {
-            fotoPreview.src = reader.result;
-        };
-    });
-</script>
-<script>
     function submitForm() {
         document.forms[0].submit();
     }

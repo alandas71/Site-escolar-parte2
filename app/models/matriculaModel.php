@@ -52,6 +52,18 @@ class MatriculaModel extends pdoModel
         return $matriculas;
     }
 
+    public function readMatriculasPorEmail($email)
+    {
+        $sql = "SELECT * FROM matricula WHERE email1 = :email";
+        $matriculas = $this->conn->prepare($sql);
+        $matriculas->bindParam(':email', $email);
+        $matriculas->execute();
+
+        $row = $matriculas->fetch(PDO::FETCH_ASSOC);
+
+        return $row;
+    }
+
     public function deleteMatriculas($id)
     {
         $sql = "DELETE FROM matricula WHERE id = :id";

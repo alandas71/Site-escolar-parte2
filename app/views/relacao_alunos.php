@@ -7,8 +7,9 @@
                 <th>Turma</th>
                 <th>E-mail</th>
                 <th>Senha</th>
-                <th>Ações</th>
                 <th>Notas</th>
+                <th>dados</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -19,16 +20,23 @@
                     <td><?php echo $row_turma1['email']; ?></td>
                     <td><span class="senha" data-senha="<?php echo $row_turma1['senha']; ?>">Mostrar senha</span></td>
                     <td>
-                        <form method="post" action="<?php echo BASE_URL ?>dashboard/estudantes/<?php echo $row_turma1['id']; ?>">
-                            <button type="submit" name="remover_aluno" value="<?php echo $row_turma1['id']; ?>" onclick="return confirm('Tem certeza de que deseja remover este aluno?')">Remover</button>
-                        </form>
-                    </td>
-                    <td>
                         <div class="icon-container" style="text-align:center;">
                             <a href="<?php echo BASE_URL ?>dashboard/boletim/<?php echo $row_turma1['id']; ?>">
                                 <i class="fas fa-file-alt" aria-hidden="true"></i>
                             </a>
                         </div>
+                    </td>
+                    <td>
+                        <div class="icon-container" style="text-align:center;">
+                            <a href="<?php echo BASE_URL ?>dashboard/ficha/<?php echo $row_turma1['email']; ?>">
+                                <i class="fas fa-database"></i>
+                            </a>
+                        </div>
+                    </td>
+                    <td>
+                        <form method="post" action="<?php echo BASE_URL ?>dashboard/estudantes/<?php echo $row_turma1['id']; ?>" style="text-align:center;">
+                            <button type="submit" name="remover_aluno" value="<?php echo $row_turma1['id']; ?>" onclick="return confirm('Tem certeza de que deseja remover este aluno?')">Remover</button>
+                        </form>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -44,8 +52,9 @@
                 <th>Turma</th>
                 <th>E-mail</th>
                 <th>Senha</th>
-                <th>Ações</th>
                 <th>Notas</th>
+                <th>dados</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -56,16 +65,23 @@
                     <td><?php echo $row_turma2['email']; ?></td>
                     <td><span class="senha" data-senha="<?php echo $row_turma2['senha']; ?>">Mostrar senha</span></td>
                     <td>
-                        <form method="POST" action="<?php echo BASE_URL ?>dashboard/estudantes/<?php echo $row_turma2['id']; ?>">
-                            <button type="submit" name="remover_aluno" value="<?php echo $row_turma2['id']; ?>" onclick="return confirm('Tem certeza de que deseja remover este aluno?')">Remover</button>
-                        </form>
-                    <td>
                         <div class="icon-container" style="text-align:center;">
                             <a href=" <?php echo BASE_URL ?>dashboard/boletim/<?php echo $row_turma1['id']; ?>">
                                 <i class="fas fa-file-alt" aria-hidden="true"></i>
                             </a>
                         </div>
                     </td>
+                    <td>
+                        <div class="icon-container" style="text-align:center;">
+                            <a href="<?php echo BASE_URL ?>dashboard/ficha/<?php echo $row_turma1['id']; ?>">
+                                <i class="fas fa-database"></i>
+                            </a>
+                        </div>
+                    </td>
+                    <td>
+                        <form method="POST" action="<?php echo BASE_URL ?>dashboard/estudantes/<?php echo $row_turma2['id']; ?>" style="text-align:center;">
+                            <button type="submit" name="remover_aluno" value="<?php echo $row_turma2['id']; ?>" onclick="return confirm('Tem certeza de que deseja remover este aluno?')">Remover</button>
+                        </form>
                     </td>
                 </tr>
             <?php endforeach; ?>

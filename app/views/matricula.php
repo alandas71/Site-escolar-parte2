@@ -349,24 +349,23 @@
                     <label for="alergia">Alergia a alimentos:</label>
                     <input type="text" name="alergia" id="alergia" class="inputuser" maxlength="15" placeholder="Se houver">
                     <br><br><br><br>
-                    <p>*Telefone de parentes ou amigos, caso não conseguirmos falar com o responsável:</p>
-                    <div class="inputbox">
-                        <input type="tel" name="celular3" id="celular3" class="inputuser" minlength="8" maxlength="15" required>
-                        <label for="celular3" class="labelinput">Celular</label>
-                    </div><br>
-                    <div class="inputbox">
-                        <input type="tel" name="celular4" id="celular4" class="inputuser" minlength="8" maxlength="15" required>
-                        <label for="celular4" class="labelinput">Celular</label>
-                    </div><br>
                     <p>*Pessoas autorizadas a pegar a criança na escola:</p>
-                    <div class="inputbox">
-                        <input type="text" name="autorizados1" id="autorizados1" class="inputuser" maxlength="15" required>
-                        <label for="autorizados1" class="labelinput">Nome</label>
-                    </div><br>
-                    <div class="inputbox">
-                        <input type="text" name="autorizados2" id="autorizados2" class="inputuser" maxlength="15" required>
-                        <label for="autorizados2" class="labelinput">Nome</label>
-                    </div><br>
+                    <h1>Pessoa 1</h1>
+                    <br>
+                    <label for="autorizados1">Nome:</label>
+                    <input type="text" name="autorizados1" id="autorizados1" class="inputuser" maxlength="15">
+                    <br><br>
+                    <label for="celular3">Celular:</label>
+                    <input type="tel" name="celular3" id="celular3" class="inputuser" minlength="8" maxlength="15">
+                    <br><br>
+                    <h1>Pessoa 2</h1>
+                    <br>
+                    <label for="autorizados2">Nome:</label>
+                    <input type="text" name="autorizados2" id="autorizados2" class="inputuser" maxlength="15">
+                    <br><br>
+                    <label for="celular4">Celular:</label>
+                    <input type="tel" name="celular4" id="celular4" class="inputuser" minlength="8" maxlength="15">
+                    <br><br>
                     <p><strong>Ficha de Autorizações Utilização de Fotos e Imagens:</strong> </p>
                     <p>A escola utiliza fotos e filmagens dos alunos para divulgação na internet, folhetos e outros meios de
                         comunicação, públicos ou privados. Autorizo a publicação de fotos e filmagens do meu filho.</p>
@@ -374,6 +373,8 @@
                     <label for="snimg1">Sim</label>
                     <input type="radio" name="snimg" id="snimg2" value="Nao" required>
                     <label for="snimg2">Não</label><br><br>
+                    <p>Atenção:
+                        Na área restrita do site poderão ser utilizadas fotos de todos os alunos, não apenas das crianças autorizadas.</p>
                 </fieldset>
             </div>
         </div>
