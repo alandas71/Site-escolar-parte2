@@ -95,6 +95,11 @@ button {
     margin: 10px 0;
 }
 
+a {
+    text-decoration: none;
+    outline: none;
+}
+
 .menu .submenu a {
     display: block;
     padding: 10px;
@@ -1238,6 +1243,10 @@ span {
     width: 100vw;
 }
 
+td .fa:focus {
+    outline: none;
+}
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -1245,7 +1254,7 @@ span {
     bottom: 0;
     width: 70px;
     height: 100vh;
-    background-color: #133d6d;
+    background-color: #273c75;
     color: #fff;
     padding-left: 0px;
     display: flex;
@@ -1342,7 +1351,7 @@ hr {
 .sidebar-menu {
     list-style: none;
     z-index: 9998;
-    margin-top: 190px;
+    margin-top: 60px;
     padding: 0;
     margin-left: 20px;
 }
@@ -1397,16 +1406,30 @@ th,
 td {
     text-align: left;
     border: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+    padding: 10px;
 }
 
-tr:hover {
-    background-color: #f5f5f5;
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+td:hover {
+    background-image: linear-gradient(to bottom, #f2f2f2, #ddd);
 }
 
 th {
-    background-color: #133d6d;
-    color: white;
+    background-color: #f2f2f2;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background: linear-gradient(to bottom, #f2f2f2, #d9d9d9);
 }
+
+tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
 
 .hide-sidebar {
     position: absolute;

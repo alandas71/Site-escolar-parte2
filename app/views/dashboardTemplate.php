@@ -31,7 +31,92 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="<?php echo BASE_URL; ?>assets/js/sidebar_hide.js" defer></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/sidebar_hide.js" defer></script>¨
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"],
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #375a7f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover,
+        button[type="submit"]:hover {
+            background-color: #1c3d5a;
+        }
+
+        input[type="number"],
+        input[type="email"],
+        input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .deleteft {
+            margin-top: 20px;
+        }
+
+
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        input[type="file"]:focus,
+        input[type="file"]:hover {
+            border-color: #ffbb33;
+            outline: none;
+        }
+
+        input[type="file"]::file-selector-button {
+            padding: 8px 16px;
+            background-color: #ffbb33;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="file"]::file-selector-button:hover {
+            background-color: #e6a329;
+        }
+    </style>
 </head>
 
 <body style="overflow-x: hidden;">

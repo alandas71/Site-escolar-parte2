@@ -42,12 +42,18 @@ class  TurmasModel extends pdoModel
 
     public function updateTurmas($turma_coluna, $turma, $nome)
     {
-        $query = "UPDATE users SET $turma_coluna = :turma WHERE nome = :nome";
+        if ($turma_coluna == 'turma1') {
+            $query = "UPDATE users SET turma1 = :turma, turma2 = NULL WHERE nome = :nome";
+        } elseif ($turma_coluna == 'turma2') {
+            $query = "UPDATE users SET turma2 = :turma, turma1 = NULL WHERE nome = :nome";
+        }
+
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':turma', $turma);
         $stmt->bindParam(':nome', $nome);
         $stmt->execute();
     }
+
 
     public function deleteTurmas($id_turma)
     {

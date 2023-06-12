@@ -188,7 +188,7 @@
                             <label for="n2"></label>
                         </div><br>
                         <div class="inputbox">
-                            <input type="text" name="complemento2" id="complemento2" class="inputuser" maxlength="15" placeholder="Complemento">
+                            <input type="text" name="complemento2" id="complemento2" class="inputuser" maxlength="20" placeholder="Complemento">
                             <label for="complemento2"></label>
                         </div><br>
                         <div class="inputbox">

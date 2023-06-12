@@ -1,34 +1,36 @@
-<h1 class="title">Postar vagas de matrícula</h1>
-<br>
-<form method="post">
-    Turma: <select name="nova_vaga">
-        <?php
-        if ($classes->rowCount() > 0) {
-            echo '<option selected disabled value="">Selecione</option>';
-            foreach ($classes as $row) {
-                echo "<option value='" . $row['turma'] . "'>" . $row['turma'] . "</option>";
+<div style="width: 700px;">
+    <h1 class="title">Postar vagas de matrícula</h1>
+    <br>
+    <form method="post">
+        Turma: <select name="nova_vaga">
+            <?php
+            if ($classes->rowCount() > 0) {
+                echo '<option selected disabled value="">Selecione</option>';
+                foreach ($classes as $row) {
+                    echo "<option value='" . $row['turma'] . "'>" . $row['turma'] . "</option>";
+                }
             }
+            ?>
+        </select><br><br>
+        Disponibilidade de vagas na pré-matrícula:<br>
+        <?php
+        if ($vagas->rowCount() > 0) {
+            echo "<select name='vaga'>";
+            echo '<option selected disabled value="">Selecione</option>';
+            foreach ($vagas as $row) {
+                echo "<option value='" . $row['vaga'] . "'>" . $row['vaga'] . "</option>";
+            }
+            echo "</select>";
+            echo " <input type='submit' name='excluir' value='Excluir' onclick='return confirm(\"Tem certeza de que deseja excluir a disponibilidade de vaga?\")' style='background-color: #B30000;'>";
+        } else {
+            echo "Nenhuma vaga encontrada.";
         }
         ?>
-    </select><br><br>
-    Disponibilidade de vagas na pré-matrícula:<br>
-    <?php
-    if ($vagas->rowCount() > 0) {
-        echo "<select name='vaga'>";
-        echo '<option selected disabled value="">Selecione</option>';
-        foreach ($vagas as $row) {
-            echo "<option value='" . $row['vaga'] . "'>" . $row['vaga'] . "</option>";
-        }
-        echo "</select>";
-        echo " <input type='submit' name='excluir' value='Excluir' onclick='return confirm(\"Tem certeza de que deseja excluir a disponibilidade de vaga?\")'>";
-    } else {
-        echo "Nenhuma vaga encontrada.";
-    }
-    ?>
-    <br><br>
-    <input type="submit" name="inserir" value="Inserir vaga">
-</form>
-<br>
+        <br>
+        <input type="submit" name="inserir" value="Inserir vaga">
+    </form>
+    <br>
+</div>
 <div style='overflow-x: auto; overflow-y: auto;'>
     <table>
         <thead>
@@ -119,7 +121,7 @@
                     } else {
                         echo "<td><a href=' " . BASE_URL . "dashboard/matriculas?email=$email&nome=$nome&turma=$turma&turno=$turno'>Cadastrar</a></td>";
                     }
-                    echo "<td><a href='" . BASE_URL . "dashboard/matriculas/" . $row['id'] . "' onclick='return confirm(\" Tem certeza de que deseja excluir o pré-registro?\")'>Excluir</a></td>";
+                    echo "<td><a href='" . BASE_URL . "dashboard/matriculas/" . $row['id'] . "' onclick='return confirm(\" Tem certeza de que deseja excluir o pré-registro?\")'><i class='fas fa-trash-alt' style='color: #B30000; text-align: center;'></i></a></td>";
                     echo "<td>" . $row['turma'] . "</td>";
                     echo "<td>" . $row['turno'] . "</td>";
                     echo "<td>" . $row['nome'] . "</td>";

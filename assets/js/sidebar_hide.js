@@ -34,7 +34,7 @@ if (window.innerWidth > 976) {
         view.style.left = '70px';
         view.style.width = 'calc(100% - 70px)';
         dashboard.style.left = '70px';
-        sidebarMenu.style.marginTop = '190px';
+        sidebarMenu.style.marginTop = '60px';
         dashboard.style.width = 'calc(100% - 70px)';
         sidebar.style.width = '70px';
         dashboard.classList.add('collapsed');

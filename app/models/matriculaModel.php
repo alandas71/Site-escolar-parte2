@@ -59,9 +59,12 @@ class MatriculaModel extends pdoModel
         $matriculas->bindParam(':email', $email);
         $matriculas->execute();
 
-        $row = $matriculas->fetch(PDO::FETCH_ASSOC);
-
-        return $row;
+        if ($matriculas->rowCount() > 0) {
+            $row = $matriculas->fetch(PDO::FETCH_ASSOC);
+            return $row;
+        } else {
+            header('Location:' . BASE_URL . 'dashboard/estudantes');
+        }
     }
 
     public function deleteMatriculas($id)

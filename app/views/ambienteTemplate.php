@@ -102,23 +102,6 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                 <div class="sidebar">
                     <div class="sidebar-header"></div>
                     <ul class="sidebar-menu">
-                        <form method="post" enctype="multipart/form-data" id="myForm">
-                            <div class='img_dashboard'>
-                                <label for="foto"></label>
-                                <input type="file" id="foto" name="foto" accept="image/*" style="display: none" onchange="submitForm()">
-                                <?php
-                                $stmt = $conn->prepare("SELECT foto FROM users WHERE id = ?");
-                                $stmt->execute(array($id));
-                                $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                                $nome_imagem = $row['foto'];
-                                ?>
-                                <img class='client_foto' src='<?php echo isset($nome_imagem) ? 'assets/images/clientes/' . $nome_imagem : 'assets/images/user.jpg'; ?>' width='100px' height='100px' id='foto-preview'>
-                            </div>
-                            <input type="hidden" id="cropped-image" name="cropped-image">
-                        </form>
-                        <p class='img_dashboard'><?php echo $nome ?></p>
-                        <hr>
-                        <br>
                         <li>
                             <a href="<?php echo BASE_URL; ?>portalProf">
                                 <i class="far fa-clock"></i>

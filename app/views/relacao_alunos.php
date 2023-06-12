@@ -20,22 +20,18 @@
                     <td><?php echo $row_turma1['email']; ?></td>
                     <td><span class="senha" data-senha="<?php echo $row_turma1['senha']; ?>">Mostrar senha</span></td>
                     <td>
-                        <div class="icon-container" style="text-align:center;">
-                            <a href="<?php echo BASE_URL ?>dashboard/boletim/<?php echo $row_turma1['id']; ?>">
-                                <i class="fas fa-file-alt" aria-hidden="true"></i>
-                            </a>
-                        </div>
+                        <form method="post" action="<?php echo BASE_URL ?>dashboard/boletim/<?php echo $row_turma1['id']; ?>" style="text-align:center;">
+                            <input type="submit" name="submit" value="Boletim" class="btn">
+                        </form>
                     </td>
                     <td>
-                        <div class="icon-container" style="text-align:center;">
-                            <a href="<?php echo BASE_URL ?>dashboard/ficha/<?php echo $row_turma1['email']; ?>">
-                                <i class="fas fa-database"></i>
-                            </a>
-                        </div>
+                        <form method="post" action="<?php echo BASE_URL ?>dashboard/ficha/<?php echo $row_turma1['email']; ?>" style="text-align:center;">
+                            <input type="submit" name="submit" value="Ficha" class="btn">
+                        </form>
                     </td>
                     <td>
-                        <form method="post" action="<?php echo BASE_URL ?>dashboard/estudantes/<?php echo $row_turma1['id']; ?>" style="text-align:center;">
-                            <button type="submit" name="remover_aluno" value="<?php echo $row_turma1['id']; ?>" onclick="return confirm('Tem certeza de que deseja remover este aluno?')">Remover</button>
+                        <form method="post" action="<?php echo BASE_URL ?>dashboard/estudantes/<?php echo $row_turma1['id']; ?>">
+                            <input type="submit" name="remover_aluno" value="Remover" onclick="return confirm('Tem certeza de que deseja remover este aluno?')" class="btn" style="background-color: #B30000;">
                         </form>
                     </td>
                 </tr>
@@ -65,22 +61,18 @@
                     <td><?php echo $row_turma2['email']; ?></td>
                     <td><span class="senha" data-senha="<?php echo $row_turma2['senha']; ?>">Mostrar senha</span></td>
                     <td>
-                        <div class="icon-container" style="text-align:center;">
-                            <a href=" <?php echo BASE_URL ?>dashboard/boletim/<?php echo $row_turma1['id']; ?>">
-                                <i class="fas fa-file-alt" aria-hidden="true"></i>
-                            </a>
-                        </div>
+                        <form method="post" action="<?php echo BASE_URL ?>dashboard/boletim/<?php echo $row_turma2['id']; ?>" style="text-align:center;">
+                            <input type="submit" name="submit" value="Boletim" class="btn">
+                        </form>
                     </td>
                     <td>
-                        <div class="icon-container" style="text-align:center;">
-                            <a href="<?php echo BASE_URL ?>dashboard/ficha/<?php echo $row_turma1['id']; ?>">
-                                <i class="fas fa-database"></i>
-                            </a>
-                        </div>
+                        <form method="post" action="<?php echo BASE_URL ?>dashboard/ficha/<?php echo $row_turma2['email']; ?>" style="text-align:center;">
+                            <input type="submit" name="submit" value="Ficha" class="btn">
+                        </form>
                     </td>
                     <td>
-                        <form method="POST" action="<?php echo BASE_URL ?>dashboard/estudantes/<?php echo $row_turma2['id']; ?>" style="text-align:center;">
-                            <button type="submit" name="remover_aluno" value="<?php echo $row_turma2['id']; ?>" onclick="return confirm('Tem certeza de que deseja remover este aluno?')">Remover</button>
+                        <form method="post" action="<?php echo BASE_URL ?>dashboard/estudantes/<?php echo $row_turma2['id']; ?>">
+                            <input type="submit" name="remover_aluno" value="Remover" onclick="return confirm('Tem certeza de que deseja remover este aluno?')" class="btn" style="background-color: #B30000;">
                         </form>
                     </td>
                 </tr>
@@ -88,42 +80,35 @@
         </tbody>
     </table>
 </div>
-<h1 class="title">Adicionar aluno</h1>
-<br>
-<form method="post">
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome" required>
+<div style="width: 700px;">
+    <h1 class="title">Adicionar aluno</h1>
     <br>
-    <br>
-    <label for="email">E-mail:</label>
-    <input type="email" id="email" name="email" required>
-    <br>
-    <br>
-    <label for="senha">Senha:</label>
-    <input type="password" id="senha" name="senha" required>
-    <br>
-    <br>
-    <label for="turma">Turma:</label>
-    <select id="turma" name="turma" required>
-        <option selected disabled value="">Selecione</option>
-        <?php
-        foreach ($result_turmas as $row) {
-            echo "<option value='" . $row["turma"] . "'>" . $row["turma"] . "</option>";
-        }
-        ?>
-    </select>
-    <br>
-    <br>
-    Turno:
-    <select name="turno">
-        <option selected disabled value="">Selecione</option>
-        <option value="Matutino">Matutino</option>
-        <option value="Vespertino">Vespertino</option>
-    </select>
-    <br>
-    <br>
-    <button type="submit" name="adicionar_aluno">Adicionar Aluno</button>
-</form>
+    <form method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required>
+        <label for="turma">Turma:</label>
+        <select id="turma" name="turma" required>
+            <option selected disabled value="">Selecione</option>
+            <?php
+            foreach ($result_turmas as $row) {
+                echo "<option value='" . $row["turma"] . "'>" . $row["turma"] . "</option>";
+            }
+            ?>
+        </select>
+        Turno:
+        <select name="turno">
+            <option selected disabled value="">Selecione</option>
+            <option value="Matutino">Matutino</option>
+            <option value="Vespertino">Vespertino</option>
+        </select>
+        <br>
+        <button type="submit" name="adicionar_aluno">Adicionar Aluno</button>
+    </form>
+</div>
 <footer style="margin-top: 50px; padding: 0; width: 100%; height: 100px; text-align:center;">
     <p>&copy; 2023 Centro Educar Arco-íris</p>
 </footer>

@@ -10,7 +10,7 @@
     <button id="btn_imp">Imprimir</button>
     <div class="content">
         <div class="mtric">
-            <img src="<?php echo BASE_URL; ?>assets\images\iconetopo.png" width="250px">
+            <img src="<?php echo BASE_URL; ?>assets\images\iconetopo.png" width="200px">
             <h1>➣ Ficha de Matrícula <?php echo $anoAtual ?></h1>
             <div></div>
             <div class=" section-title">1. Identificação do aluno
@@ -34,6 +34,7 @@
                     <span class="field-label">Bairro:</span>
                     <span class="field-value"><?= $dados['endereco']; ?></span><br>
                 </div>
+                <br>
                 <div class="field-wrapper">
                     <span class="field-label">Complemento:</span>
                     <span class="field-value"><?= !empty($dados['complemento']) ? $dados['complemento'] : '_______________________________________________________________________'; ?></span>
@@ -375,7 +376,6 @@
             </div>
         </div>
     </div>
-    <button id="btn_imp">Imprimir</button>
     <script>
         const btn_imp = document.getElementById("btn_imp");
         const conteudo = document.querySelector('.content').innerHTML;
