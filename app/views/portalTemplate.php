@@ -27,6 +27,7 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arco-íris</title>
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/js/bootstrap-3.3.7/css/bootstrap.css" />
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets\css\style.css" />
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets\css\tablet.css" />
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets\css\mobile.css" />
@@ -38,6 +39,41 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     <script src='<?php echo BASE_URL; ?>assets/js/fullCalendar/dist/index.global.js'></script>
     <script src='<?php echo BASE_URL; ?>assets/js/fullCalendar/packages/core/locales/pt-br.global.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <style>
+        .legend {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+
+        .legend-item span {
+            font-size: 10px;
+        }
+
+        .legend-color {
+            width: 10px;
+            height: 10px;
+            margin-right: 5px;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .green {
+            background-color: green;
+        }
+    </style>
 </head>
 
 <body style="overflow-x: hidden;">
@@ -101,8 +137,8 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                     <ul class="sidebar-menu">
                         <li>
                             <a href="<?php echo BASE_URL; ?>portalAluno">
-                                <i class="far fa-clock"></i>
-                                <p>HORÁRIOS</p>
+                                <i class="far fa-user"></i>
+                                <p>PERFIL</p>
                             </a>
                         </li>
                         <li>
@@ -117,9 +153,15 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                                 <p>CALENDÁRIO</p>
                             </a>
                         </li>
+                        <li>
+                            <a href="<?php echo BASE_URL; ?>portalAluno/horarios">
+                                <i class="far fa-clock"></i>
+                                <p>HORÁRIOS</p>
+                            </a>
+                        </li>
                     </ul>
                 </div>
-                <div class="view">
+                <div class="view" style="background-color: #f5f5f5;">
                     <?php
                     if (isset($_SESSION['mensagem'])) {
                         echo '<div class="mensagem">' . $_SESSION['mensagem'] . '</div>';
@@ -138,25 +180,4 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
 <script src="<?php echo BASE_URL; ?>assets/js/jquery-3.6.1.min.js"></script>
 <script src="<?php echo BASE_URL; ?>assets/js/login_aluno.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script>
-    const fotoInput = document.querySelector('#foto');
-    const fotoPreview = document.querySelector('#foto-preview');
-
-    fotoPreview.addEventListener('click', () => {
-        fotoInput.click();
-    });
-
-    fotoInput.addEventListener('change', () => {
-        const file = fotoInput.files[0];
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => {
-            fotoPreview.src = reader.result;
-        };
-    });
-</script>
-<script>
-    function submitForm() {
-        document.forms[0].submit();
-    }
-</script>
+<script src="<?php echo BASE_URL; ?>assets/js/bootstrap-3.3.7/js/bootstrap.js"></script>

@@ -242,7 +242,7 @@ class dashboardController extends Controller
         $this->loadDashboardTemplate('set_horario', $dados);
     }
 
-    public function matriculas($id = null)
+    public function matriculas($id = null, $email = null, $nome = null, $turno = null, $turma = null)
     {
 
         $matriculas = new MatriculaModel;
@@ -266,14 +266,16 @@ class dashboardController extends Controller
             exit();
         }
 
-        $matriculas->deleteMatriculas($id);
+        if ($email === null && $nome === null && $turno === null && $turma === null) {
+            $matriculas->deleteMatriculas($id);
+        }
 
         $email = isset($_GET["email"]) ? $_GET["email"] : "";
         $nome = isset($_GET["nome"]) ? $_GET["nome"] : "";
         $turno = isset($_GET["turno"]) ? $_GET["turno"] : "";
         $turma = isset($_GET["turma"]) ? $_GET["turma"] : "";
 
-        $matriculas->createAluno($email, $nome, $turno, $turma);
+        $matriculas->createAlunoById($id, $email, $nome, $turno, $turma);
 
 
 
@@ -650,5 +652,65 @@ class dashboardController extends Controller
         );
 
         $this->loadDashboardTemplate('ficha_matricula', $dados);
+    }
+
+    public function perfil($id_aluno)
+    {
+        $boletim = new NotasModel;
+        $mtr = new MatriculaModel;
+        $cliente = new ClienteModel;
+        $estudante = new EstudantesModel;
+
+        $boletim->setIdAluno($id_aluno);
+        $id_matricula = $mtr->readIdMatricula($id_aluno);
+        $foto = $cliente->readFoto($id_aluno);
+
+        $row = $id_matricula->fetch(PDO::FETCH_ASSOC);
+        $id_matricula = $row['id_matricula'];
+        $pfl =  $estudante->readAlunoPorId($id_aluno);
+
+        $data = $mtr->readMatriculaPorId($id_matricula);
+
+        if (isset($_FILES['foto'])) {
+            $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/school/assets/images/clientes/";
+            $extension = pathinfo($_FILES["foto"]["name"], PATHINFO_EXTENSION);
+            $fileName = uniqid() . '.' . $extension;
+            $targetFilePath = $targetDir . $fileName;
+
+            if (!empty($targetDir . $foto['foto'])) {
+                unlink($targetDir . $foto['foto']);
+            }
+
+            $allowTypes = array('jpg', 'jpeg', 'png', 'gif');
+            $fileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
+
+            if (in_array($fileType, $allowTypes)) {
+                if (move_uploaded_file($_FILES["foto"]["tmp_name"], $targetFilePath)) {
+                    $cliente->updateFoto($fileName, $id_aluno);
+                    $_SESSION['caminho_imagem'] = $targetFilePath;
+                }
+            }
+            header('Location: ' . BASE_URL . 'dashboard/perfil/' . $id_aluno);
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $email = $_POST['email'];
+            $telefone = $_POST['telefone'];
+            $endereco = $_POST['endereco'];
+
+            $mtr->updatePerfil($id_matricula, $email, $telefone, $endereco);
+
+            header('Location: ' . BASE_URL . 'dashboard/perfil/' . $id_aluno);
+        }
+
+
+        $dados = array(
+            'id' => $id_aluno,
+            'pfl' => $pfl,
+            'data' => $data,
+            'foto' =>  $foto
+        );
+
+        $this->loadDashboardTemplate('perfil_edit', $dados);
     }
 }

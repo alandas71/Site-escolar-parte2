@@ -41,6 +41,18 @@ class EstudantesModel extends pdoModel
         return $result_turma2;
     }
 
+    public function readAlunoPorId($id)
+    {
+        $pdo = "SELECT nome, turma1, turma2 FROM users WHERE id = :id";
+        $result = $this->conn->prepare($pdo);
+        $result->bindValue(':id', $id);
+        $result->execute();
+
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+
+        return $row;
+    }
+
     public function deleteAluno($id)
     {
         $pdo_excluir = "DELETE FROM users WHERE id = :id";

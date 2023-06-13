@@ -10,6 +10,7 @@
 
     .view {
         left: 27px;
+        width: calc(100% - 27px);
     }
 
     .sidebar ul li a i {

@@ -3,6 +3,7 @@
     <table>
         <thead>
             <tr>
+                <th>Perfil</th>
                 <th>Nome</th>
                 <th>Turma</th>
                 <th>E-mail</th>
@@ -15,6 +16,15 @@
         <tbody>
             <?php foreach ($result_turma1 as $row_turma1) : ?>
                 <tr>
+                    <?php if ($row_turma1['foto']) : ?>
+                        <td>
+                            <a href="<?php echo BASE_URL ?>dashboard/perfil/<?php echo $row_turma1['id']; ?>">
+                                <img src="<?php echo BASE_URL . 'assets/images/clientes/' . $row_turma1['foto']; ?>" width="50px" height="50px">
+                            </a>
+                        </td>
+                    <?php else : ?>
+                        <td><img src="<?php echo BASE_URL; ?>assets/images/user.jpg" width="50px"></td>
+                    <?php endif; ?>
                     <td><?php echo $row_turma1['nome']; ?></td>
                     <td><?php echo $row_turma1['turma1']; ?></td>
                     <td><?php echo $row_turma1['email']; ?></td>
@@ -44,6 +54,7 @@
     <table>
         <thead>
             <tr>
+                <th>Perfil</th>
                 <th>Nome</th>
                 <th>Turma</th>
                 <th>E-mail</th>
@@ -56,6 +67,11 @@
         <tbody>
             <?php foreach ($result_turma2 as $row_turma2) :  ?>
                 <tr>
+                    <?php if ($row_turma2['foto']) : ?>
+                        <td><img src="<?php echo BASE_URL . 'assets/images/clientes/' . $row_turma2['foto']; ?>" width="50px" height="50px"></td>
+                    <?php else : ?>
+                        <td><img src="<?php echo BASE_URL; ?>assets/images/user.jpg" width="50px"></td>
+                    <?php endif; ?>
                     <td><?php echo $row_turma2['nome']; ?></td>
                     <td><?php echo $row_turma2['turma2']; ?></td>
                     <td><?php echo $row_turma2['email']; ?></td>

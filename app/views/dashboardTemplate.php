@@ -116,6 +116,40 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
         input[type="file"]::file-selector-button:hover {
             background-color: #e6a329;
         }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+
+        .legend-item span {
+            font-size: 10px;
+        }
+
+        .legend-color {
+            width: 10px;
+            height: 10px;
+            margin-right: 5px;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .green {
+            background-color: green;
+        }
     </style>
 </head>
 

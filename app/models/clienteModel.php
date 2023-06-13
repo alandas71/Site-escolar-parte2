@@ -1,10 +1,11 @@
 <?php
 class ClienteModel extends pdoModel
 {
-    public function readFoto($user_id)
+    public function readFoto($id_aluno)
     {
-        $stmt = $this->conn->prepare("SELECT foto FROM users WHERE id = ?");
-        $stmt->execute(array($user_id));
+        $stmt = $this->conn->prepare("SELECT foto FROM users WHERE id = :id_aluno");
+        $stmt->bindParam(':id_aluno', $id_aluno);
+        $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         return $row;

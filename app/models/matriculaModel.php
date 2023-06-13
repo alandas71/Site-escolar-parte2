@@ -1,6 +1,18 @@
 <?php
 class MatriculaModel extends pdoModel
 {
+
+    public function updatePerfil($id, $email, $telefone, $endereco)
+    {
+        $sql = "UPDATE matricula SET email1 = :email, telefone = :telefone, rua = :endereco WHERE id = :id";
+        $result = $this->conn->prepare($sql);
+        $result->bindParam(':id', $id);
+        $result->bindParam(':email', $email);
+        $result->bindParam(':telefone', $telefone);
+        $result->bindParam(':endereco', $endereco);
+        $result->execute();
+    }
+
     public function getVagas()
     {
         $query = "SELECT vaga FROM vagas";
@@ -21,21 +33,23 @@ class MatriculaModel extends pdoModel
         $this->conn->query($sql);
     }
 
-    public function createAluno($email, $nome, $turno, $turma)
+    public function createAlunoById($id, $email, $nome, $turno, $turma)
     {
         $num_aleatorio = str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT);
 
         if ($turno == 'Matutino') {
-            $sql = "INSERT INTO users (email, senha, nome, tipo, adm, turma1) VALUES (:email, CONCAT('ceai', :num_aleatorio), :nome, 'aluno', 0, :turma)";
+            $sql = "INSERT INTO users (id_matricula, email, senha, nome, tipo, adm, turma1) VALUES (:id ,:email, CONCAT('ceai', :num_aleatorio), :nome, 'aluno', 0, :turma)";
             $result = $this->conn->prepare($sql);
+            $result->bindParam(':id', $id);
             $result->bindParam(':email', $email);
             $result->bindParam(':num_aleatorio', $num_aleatorio);
             $result->bindParam(':nome', $nome);
             $result->bindParam(':turma', $turma);
             $result->execute();
         } else if ($turno == 'Vespertino') {
-            $sql = "INSERT INTO users (email, senha, nome, tipo, adm, turma2) VALUES (:email, CONCAT('ceai', :num_aleatorio), :nome, 'aluno', 0, :turma)";
+            $sql = "INSERT INTO users (id_matricula, email, senha, nome, tipo, adm, turma2) VALUES (:id , :email, CONCAT('ceai', :num_aleatorio), :nome, 'aluno', 0, :turma)";
             $result = $this->conn->prepare($sql);
+            $result->bindParam(':id', $id);
             $result->bindParam(':email', $email);
             $result->bindParam(':num_aleatorio', $num_aleatorio);
             $result->bindParam(':nome', $nome);
@@ -65,6 +79,28 @@ class MatriculaModel extends pdoModel
         } else {
             header('Location:' . BASE_URL . 'dashboard/estudantes');
         }
+    }
+
+    public function readIdMatricula($id)
+    {
+        $sql = "SELECT id_matricula FROM users WHERE id = :id";
+        $id_matricula = $this->conn->prepare($sql);
+        $id_matricula->bindParam(':id', $id);
+        $id_matricula->execute();
+
+        return $id_matricula;
+    }
+
+    public function readMatriculaPorId($id)
+    {
+        $sql = "SELECT * FROM matricula WHERE id = :id";
+        $matriculas = $this->conn->prepare($sql);
+        $matriculas->bindParam(':id', $id);
+        $matriculas->execute();
+
+        $row = $matriculas->fetch(PDO::FETCH_ASSOC);
+
+        return $row;
     }
 
     public function deleteMatriculas($id)

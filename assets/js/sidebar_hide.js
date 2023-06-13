@@ -14,12 +14,6 @@ if (window.innerWidth > 976) {
         dashboard.style.left = '300px';
         dashboard.style.width = 'calc(100% - 300px)';
         dashboard.classList.remove('collapsed');
-        sidebarMenu.querySelectorAll('h1, hr').forEach(element => {
-            element.style.display = 'block';
-        });
-        document.querySelectorAll('.img_dashboard, .custom-submit-button').forEach(element => {
-            element.style.display = 'block';
-        });
         const sidebarParagraphs = sidebarMenu.querySelectorAll('p');
         sidebarParagraphs.forEach(paragraph => {
             paragraph.setAttribute('data-aos', 'fade-left');
@@ -38,12 +32,6 @@ if (window.innerWidth > 976) {
         dashboard.style.width = 'calc(100% - 70px)';
         sidebar.style.width = '70px';
         dashboard.classList.add('collapsed');
-        sidebarMenu.querySelectorAll('h1, hr').forEach(element => {
-            element.style.display = 'none';
-        });
-        document.querySelectorAll('.img_dashboard, .custom-submit-button').forEach(element => {
-            element.style.display = 'none';
-        });
         const sidebarParagraphs = sidebarMenu.querySelectorAll('p');
         sidebarParagraphs.forEach(paragraph => {
             paragraph.removeAttribute('data-aos');
@@ -79,12 +67,6 @@ checkbox.addEventListener('change', function () {
             dashboard.style.width = 'calc(100% - 300px)';
         }
         dashboard.classList.remove('collapsed');
-        sidebarMenu.querySelectorAll('h1, hr').forEach(element => {
-            element.style.display = 'block';
-        });
-        document.querySelectorAll('.img_dashboard, .custom-submit-button').forEach(element => {
-            element.style.display = 'block';
-        });
         const sidebarParagraphs = sidebarMenu.querySelectorAll('p');
         sidebarParagraphs.forEach(paragraph => {
             paragraph.setAttribute('data-aos', 'fade-left');
@@ -112,12 +94,6 @@ checkbox.addEventListener('change', function () {
             sidebar.style.width = '70px';
         }
         dashboard.classList.add('collapsed');
-        sidebarMenu.querySelectorAll('h1, hr').forEach(element => {
-            element.style.display = 'none';
-        });
-        document.querySelectorAll('.img_dashboard, .custom-submit-button').forEach(element => {
-            element.style.display = 'none';
-        });
         const sidebarParagraphs = sidebarMenu.querySelectorAll('p');
         sidebarParagraphs.forEach(paragraph => {
             paragraph.removeAttribute('data-aos');

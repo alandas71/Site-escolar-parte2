@@ -10,8 +10,8 @@
         </tr>
         <?php foreach ($alunos_turma1 as $aluno) : ?>
             <tr>
-                <?php if ($aluno['foto'] && file_exists($aluno['foto'])) : ?>
-                    <td><img src="<?php echo $aluno['foto']; ?>" width="50px"></td>
+                <?php if ($aluno['foto']) : ?>
+                    <td><img src="<?php echo BASE_URL . 'assets/images/clientes/' . $aluno['foto']; ?>" width="50px" height="50px"></td>
                 <?php else : ?>
                     <td><img src="<?php echo BASE_URL; ?>assets/images/user.jpg" width="50px"></td>
                 <?php endif; ?>
@@ -49,8 +49,8 @@
         </tr>
         <?php foreach ($alunos_turma2 as $aluno) : ?>
             <tr>
-                <?php if ($aluno['foto'] && file_exists($aluno['foto'])) : ?>
-                    <td><img src="<?php echo $aluno['foto']; ?>" width="50px"></td>
+                <?php if ($aluno['foto']) : ?>
+                    <td><img src="<?php echo BASE_URL . 'assets/images/clientes/' . $aluno['foto']; ?>" width="50px"></td>
                 <?php else : ?>
                     <td><img src="<?php echo BASE_URL; ?>assets/images/user.jpg" width="50px"></td>
                 <?php endif; ?>

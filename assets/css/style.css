@@ -1066,13 +1066,9 @@ span {
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-
 .client_foto {
-    border-radius: 100%;
-    border: #FFD700 solid 5px;
     cursor: pointer;
 }
-
 
 .radiusProfa {
     border-radius: 100%;
@@ -1291,11 +1287,6 @@ td .fa:focus {
 }
 
 hr {
-    display: none;
-}
-
-.img_dashboard,
-.custom-submit-button {
     display: none;
 }
 
