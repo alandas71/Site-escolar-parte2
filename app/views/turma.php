@@ -1,4 +1,4 @@
-<div style="width: 700px;">
+<div class="formularios">
     <h1 class="title">Criar nova turma</h1>
     <form method="POST">
         <label for="turma">Nome da turma:</label>
@@ -59,7 +59,7 @@ if ($result->rowCount() > 0) {
 }
 ?>
 <br>
-<div style="width: 700px;">
+<div class="formularios">
     <h1 class="title">Trocar de turma</h1>
     <br>
     <form method="post">

@@ -96,7 +96,7 @@
         </tbody>
     </table>
 </div>
-<div style="width: 700px;">
+<div class="formularios">
     <h1 class="title">Adicionar aluno</h1>
     <br>
     <form method="post">

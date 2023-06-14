@@ -1,4 +1,4 @@
-<div style="width: 700px;">
+<div class="formularios">
     <div class="header" style="text-align: left; padding-left: 20px; background: none;">
         <form method="post" enctype="multipart/form-data">
             <h1 class="title">Banners</h1>

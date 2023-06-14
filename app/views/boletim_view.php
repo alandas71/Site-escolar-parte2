@@ -20,7 +20,7 @@
                 <p>BOLETIM DO ALUNO</p>
             </div>
         </div>
-        <p style="margin-bottom: 0;"><?php echo $nome; ?><?php echo ' - ' . $turma1 . $turma2; ?></p>
+        <p style="margin-bottom: 0;"><?php echo $nome . ' - ' . ($turma1 !== null ? $turma1 : $turma2); ?></p>
         <p style="font-size:12px; margin-top: 0;"><?php echo 'Registro acadêmico - ' . $id; ?></p>
         <div id="tabelaView">
             <div>

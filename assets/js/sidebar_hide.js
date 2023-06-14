@@ -56,7 +56,7 @@ checkbox.addEventListener('change', function () {
             view.style.width = '100%';
             sidebar.style.width = '250px';
             dashboard.style.left = '250px';
-            sidebarMenu.style.marginTop = '0px';
+            sidebarMenu.style.marginTop = '40px';
             dashboard.style.width = 'calc(100% - 250px)';
         } else {
             view.style.left = '300px';
@@ -84,7 +84,7 @@ checkbox.addEventListener('change', function () {
             dashboard.style.left = '40px';
             dashboard.style.width = 'calc(100% - 40px)';
             sidebar.style.width = '40px';
-            sidebarMenu.style.marginTop = '130px';
+            sidebarMenu.style.marginTop = '40px';
         } else {
             view.style.left = '70px';
             view.style.width = 'calc(100% - 70px)';

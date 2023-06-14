@@ -1,4 +1,4 @@
-<div style="width: 700px;">
+<div class="formularios">
     <h1 class="title">Postar vagas de matrícula</h1>
     <br>
     <form method="post">

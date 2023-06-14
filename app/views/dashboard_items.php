@@ -147,8 +147,6 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
         </div>
     </div>
 
-
-
     <footer style="margin: 0; padding: 0; width: 100%; height: 100px; text-align:center;">
         <p>&copy; 2023 Centro Educar Arco-íris</p>
     </footer>

@@ -1,4 +1,4 @@
-<div style="width: 700px;">
+<div class="formularios">
     <h1 class="title">POSTAR HORÁRIOS</h1>
     <br>
     <form method="POST" enctype="multipart/form-data">

@@ -1,4 +1,4 @@
-<div style="width: 500px;">
+<div class="formularios">
     <h1 class="title">Criar álbum</h1>
     <br>
     <form method="POST" enctype="multipart/form-data">
