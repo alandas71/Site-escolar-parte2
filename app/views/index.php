@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arco-íris</title>
-    <link rel="stylesheet" href="assets\css\style.css" />
-    <link rel="stylesheet" href="assets\css\tablet.css" />
-    <link rel="stylesheet" href="assets\css\mobile.css" />
-    <link rel="stylesheet" href="assets\css\owl.carousel.css" />
-    <link rel="stylesheet" href="assets\css\owl.carousel.default.css" />
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets\css\style.css" />
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets\css\tablet.css" />
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets\css\mobile.css" />
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets\css\owl.carousel.css" />
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets\css\owl.carousel.default.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="assets/images/icone.ico" type="image/x-icon">
-    <script src="assets/js/script1.js" defer></script>
-    <script src="assets/js/submenu_login.js" defer></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/script1.js" defer></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/submenu_login.js" defer></script>
 </head>
 
 <body>
@@ -65,9 +65,9 @@
                 </ul>
             </div>
 
-            <img class="bodyLogo" data-aos="fade-right" src="assets\images\bodyLogo.png">
-            <img class="sunLogo" data-aos="fade-right" data-aos-delay="1000" src="assets\images\sunLogo.png"></a>
-            <img class="textLogo" data-aos="fade-right" data-aos-delay="1600" src="assets\images\logoText.png"></a>
+            <img class="bodyLogo" data-aos="fade-right" src="<?php echo BASE_URL; ?>assets\images\bodyLogo.png">
+            <img class="sunLogo" data-aos="fade-right" data-aos-delay="1000" src="<?php echo BASE_URL; ?>assets\images\sunLogo.png"></a>
+            <img class="textLogo" data-aos="fade-right" data-aos-delay="1600" src="<?php echo BASE_URL; ?>assets\images\logoText.png"></a>
             <div class="menu">
                 <ul>
                     <li data-submenu>
@@ -98,7 +98,9 @@
                 <?php
                 foreach ($imagem as $slide) {
                     $imagem = $slide['imagem'];
-                    echo "<img src='assets/images/banners/$imagem'>";
+                ?>
+                    <img src="<?php echo BASE_URL; ?>assets/images/banners/<?php echo $imagem; ?>">
+                <?php
                 }
                 ?>
             </div>
@@ -113,11 +115,11 @@
             <i class="fa fa-heart"></i>
         </div>
         <div class="container5">
-            <img class="imgRowBelow" src="assets/images/abc21.jpg" />
-            <div class="row">
-                <img class="imgRow" src="assets/images/abc13.jpg" />
+            <img class="imgRowBelow" src="<?php echo BASE_URL; ?>assets/images/abc21.jpg" />
+            <div class="rowHome">
+                <img class="imgRow" src="<?php echo BASE_URL; ?>assets/images/abc13.jpg" />
             </div>
-            <div class="row textRow">
+            <div class="rowHome textRow">
                 <h1 class="rowTitle">Centro Educar Arco-íris</h1>
                 <p class=mural>
                     O Centro Educar Arco-íris foi fundado em 2022 pela psicopedagoga Luciane, uma educadora apaixonada
@@ -138,7 +140,7 @@
     <div id=wallpaper1>
         <div class=container>
             <div id='bloco1' data-aos="fade-right">
-                <img src="assets/images/bloco1.png" class="imgbloco">
+                <img src="<?php echo BASE_URL; ?>assets/images/bloco1.png" class="imgbloco">
                 <h1><b>EDUCAÇÃO TECNOLÓGICA</b></h1>
                 <p class="mural">
                     A tecnologia é uma grande aliada no processo de aprendizagem. Nossas crianças
@@ -148,7 +150,7 @@
             </div>
             <hr>
             <div id=bloco2 data-aos="fade-right">
-                <img src="assets/images/bloco2.png" class="imgbloco">
+                <img src="<?php echo BASE_URL; ?>assets/images/bloco2.png" class="imgbloco">
                 <h1><b>AULAS DE BALLET</b></h1>
                 <p class="mural"> O ballet auxilia na concentração, postura e ritmo, que são importantes para
                     muitas outras atividades, pois combina atividades físicas com musicalidade,
@@ -159,7 +161,7 @@
         </div>
         <div class=container2>
             <div id="bloco3" data-aos="fade-right">
-                <img src="assets/images/bloco3.png" class="imgbloco">
+                <img src="<?php echo BASE_URL; ?>assets/images/bloco3.png" class="imgbloco">
                 <h1><b>BRINQUEDOTECA</b></h1>
                 <p class="mural">
                     O brincar tem influência no desenvolvimento das crianças, através do “faz de conta”,
@@ -170,7 +172,7 @@
             </div>
             <hr>
             <div id="bloco4" data-aos="fade-right">
-                <img src="assets/images/bloco4.png" class="imgbloco">
+                <img src="<?php echo BASE_URL; ?>assets/images/bloco4.png" class="imgbloco">
                 <h1><b>AULAS DINÂMICAS</b></h1>
                 <p class="mural"> Promover uma educação de qualidade é essêncial para que os alunos tenham prazer em aprender,
                     pensando nisso trabalhamos com atividades lúdicas, onde as crianças aprendem brincando.
@@ -183,7 +185,7 @@
         <div class="sobre1">
             <?php foreach ($prof as $professores) : ?>
                 <div class='profa'>
-                    <img class='radiusProfa' src='assets/images/professores/<?php echo $professores['face']; ?>' width='150px' height='150px' />
+                    <img class='radiusProfa' src='<?php echo BASE_URL; ?>assets/images/professores/<?php echo $professores['face']; ?>' width='150px' height='150px' />
                     <br>
                     <h1><?php echo $professores['nome']; ?></h1>
                     <p class='sobreprof'><?php echo $professores['info']; ?></p>
@@ -202,7 +204,9 @@
                     <?php
                     foreach ($depoimentos as $depoimento) {
                         $depoimento = $depoimento['depoimento'];
-                        echo " <img class='mySlides' src='assets/images/depoimentos/$depoimento' style='width:100%'>";
+                    ?>
+                        <img class='mySlides' src="<?php echo BASE_URL; ?>assets/images/depoimentos/<?php echo $depoimento; ?>" style='width:100%'>
+                    <?php
                     }
                     ?>
                     <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
@@ -245,7 +249,7 @@
             <h3>Parceria:</h3>
             <div>
                 <a href="https://wa.me/557194116610" target="_blank">
-                    <img src="assets/images/rifabot.jpg" alt="Rifa bot" style="width: 100px;">
+                    <img src="<?php echo BASE_URL; ?>assets/images/rifabot.jpg" alt="Rifa bot" style="width: 100px;">
                 </a>
             </div>
             <p style="text-align:justify; display: block;">Imagine só: você cria um grupo no WhatsApp para a sua
@@ -260,8 +264,8 @@
         </div>
     </footer>
     </div>
-    <script src="assets/js/jquery-3.6.1.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/jquery-3.6.1.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/owl.carousel.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         $(document).ready(function() {

@@ -30,10 +30,10 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/images/icone.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/js/bootstrap-5.0.2/css/bootstrap.css" />
+    <script src="<?php echo BASE_URL; ?>assets/js/bootstrap-5.0.2/js/bootstrap.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="<?php echo BASE_URL; ?>assets/js/sidebar_hide.js" defer></script>¨
+    <script src="<?php echo BASE_URL; ?>assets/js/sidebar_hide.js" defer></script>
     <style>
         .formularios {
             width: 90%;
@@ -276,12 +276,37 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
                     </ul>
                 </div>
                 <div class="view">
+                    <div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; bottom: 1rem; right: 1rem;">
+                        <div class="toast-header bg-success text-white">
+                            <strong class="me-auto">Sucesso</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Fechar"></button>
+                        </div>
+                        <div class="toast-body">
+                            <?php
+                            if (isset($_SESSION['message']) && $_SESSION['alertClass'] === 'success') {
+                                echo '<div class="message">' . $_SESSION['message'] . '</div>';
+                                unset($_SESSION['message']);
+                                unset($_SESSION['alertClass']);
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <div id="errorToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; bottom: 1rem; right: 1rem;">
+                        <div class="toast-header bg-danger text-white">
+                            <strong class="me-auto">Erro</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Fechar"></button>
+                        </div>
+                        <div class="toast-body">
+                            <?php
+                            if (isset($_SESSION['message']) && $_SESSION['alertClass'] === 'danger') {
+                                echo '<div class="message">' . $_SESSION['message'] . '</div>';
+                                unset($_SESSION['message']);
+                                unset($_SESSION['alertClass']);
+                            }
+                            ?>
+                        </div>
+                    </div>
                     <?php
-                    if (isset($_SESSION['mensagem'])) {
-                        echo '<div class="mensagem">' . $_SESSION['mensagem'] . '</div>';
-                        unset($_SESSION['mensagem']);
-                    }
-
                     $this->loadViewInTemplate($viewName, $viewData);
                     ?>
                 </div>
@@ -298,4 +323,15 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     function submitForm() {
         document.forms[0].submit();
     }
+</script>
+<script>
+    $(document).ready(function() {
+        if ($('#successToast .toast-body').text().trim() !== '') {
+            $('#successToast').toast('show');
+        }
+
+        if ($('#errorToast .toast-body').text().trim() !== '') {
+            $('#errorToast').toast('show');
+        }
+    });
 </script>

@@ -1,5 +1,5 @@
 <?php
-class AlbumModel extends pdoModel
+class AlbumModel extends Model
 {
     public function getAlbum()
     {
@@ -40,6 +40,8 @@ class AlbumModel extends pdoModel
         $result->bindParam(':nome_album', $nome_album);
         $result->bindParam(':nome_arquivo', $nome_arquivo);
         $result->execute();
+
+        return true;
     }
 
     public function createFotos($id_album, $nome_foto)
@@ -50,11 +52,7 @@ class AlbumModel extends pdoModel
         $result->bindParam(':nome_foto', $nome_foto);
         $result->execute();
 
-        if ($result->rowCount() > 0) {
-            $_SESSION['mensagem'] = "Foto adicionada com sucesso.";
-        } else {
-            $_SESSION['mensagem'] = "Erro ao adicionar foto.";
-        }
+        return true;
     }
 
     public function verifyAlbum($id_album)
@@ -83,6 +81,8 @@ class AlbumModel extends pdoModel
         $foto = $this->conn->prepare($sql);
         $foto->bindParam(':id', $id);
         $foto->execute();
+
+        return true;
     }
 
     public function deleteAllFotos($id_foto)
@@ -91,6 +91,8 @@ class AlbumModel extends pdoModel
         $result = $this->conn->prepare($sql);
         $result->bindParam(':id_foto', $id_foto);
         $result->execute();
+
+        return true;
     }
 
     public function deleteAlbum($id_album_to_delete)
@@ -99,6 +101,8 @@ class AlbumModel extends pdoModel
         $result = $this->conn->prepare($sql);
         $result->bindParam(':id_album_to_delete', $id_album_to_delete);
         $result->execute();
+
+        return true;
     }
 
     public function getCapa($id_album_to_delete)

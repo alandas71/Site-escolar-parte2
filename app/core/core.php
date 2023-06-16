@@ -38,7 +38,6 @@ class Core
             $currentAction = 'index';
         }
 
-
         // Verifica se a classe do controlador existe antes de instanciá-la
         if (class_exists($currentController)) {
             $c = new $currentController();
@@ -47,11 +46,11 @@ class Core
             if (method_exists($c, $currentAction)) {
                 call_user_func_array(array($c, $currentAction), $params);
             } else {
-                header("Location:" . BASE_URL .  $link);
+                header("Location:" . BASE_URL .  "erro");
                 exit();
             }
         } else {
-            header("Location:" . BASE_URL);
+            header("Location:" . BASE_URL .  "erro");
             exit();
         }
     }

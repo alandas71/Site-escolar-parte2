@@ -49,6 +49,7 @@
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" name="confirm-update">
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </form>
                 </div>

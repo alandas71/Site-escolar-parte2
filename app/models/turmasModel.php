@@ -1,5 +1,5 @@
 <?php
-class  TurmasModel extends pdoModel
+class  TurmasModel extends Model
 {
 
     public function createTurmas($turma, $turno, $vagas)
@@ -10,6 +10,8 @@ class  TurmasModel extends pdoModel
         $stmt->bindParam(':turno', $turno);
         $stmt->bindParam(':vagas', $vagas);
         $stmt->execute();
+
+        return true;
     }
 
     public function readTurmas()
@@ -52,6 +54,8 @@ class  TurmasModel extends pdoModel
         $stmt->bindParam(':turma', $turma);
         $stmt->bindParam(':nome', $nome);
         $stmt->execute();
+
+        return true;
     }
 
 
@@ -61,6 +65,8 @@ class  TurmasModel extends pdoModel
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id_turma', $id_turma);
         $stmt->execute();
+
+        return true;
     }
 
     public function getDistinctUsers()

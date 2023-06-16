@@ -163,10 +163,22 @@ class portalProfController extends Controller
 
             $existe = $boletim->existeNota($id_aluno, $materia);
             if ($existe) {
-                $boletim->exiteAtualiza($notas, $faltas, $total_faltas, $media, $resultado, $id_aluno, $materia);
+                if ($boletim->exiteAtualiza($notas, $faltas, $total_faltas, $media, $resultado, $id_aluno, $materia)) {
+                    $_SESSION['message'] = 'Notas atualizadas com sucesso.';
+                    $_SESSION['alertClass'] = 'success';
+                } else {
+                    $_SESSION['message'] = 'Falha ao atualizar notas.';
+                    $_SESSION['alertClass'] = 'danger';
+                }
                 $atualizou = true;
             } else {
-                $boletim->naoExisteInsere($id_aluno, $materia, $notas, $faltas, $total_faltas, $media, $resultado);
+                if ($boletim->naoExisteInsere($id_aluno, $materia, $notas, $faltas, $total_faltas, $media, $resultado)) {
+                    $_SESSION['message'] = 'Notas atualizadas com sucesso.';
+                    $_SESSION['alertClass'] = 'success';
+                } else {
+                    $_SESSION['message'] = 'Falha ao atualizar notas.';
+                    $_SESSION['alertClass'] = 'danger';
+                }
                 $atualizou = true;
             }
         }

@@ -10,11 +10,11 @@
                         <p class='title'><?php echo $id_album; ?></p>
                         <img onclick="openModal('.<?php echo $id_album; ?>')" src='assets/images/album/<?php echo $capa; ?>' class='gallery-items2' alt='album'>
                     </div>
-                    <div class='<?php echo $id_album; ?> modal-container'>
+                    <div class='<?php echo $id_album; ?> modal-containerr'>
                         <div class='btns'>
                             <button class='btnClose btns' onclick="closeModal('.<?php echo $id_album; ?>')">Fechar</button>
                         </div>
-                        <div class='modal'>
+                        <div class='modall'>
                             <span>
                                 <main>
                                     <div class='gallery-container'>

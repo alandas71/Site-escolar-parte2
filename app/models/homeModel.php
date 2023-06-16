@@ -1,5 +1,5 @@
 <?php
-class homeModel extends pdoModel
+class homeModel extends Model
 {
     public function getBanners()
     {

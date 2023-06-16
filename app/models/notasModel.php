@@ -1,5 +1,5 @@
 <?php
-class NotasModel extends pdoModel
+class NotasModel extends Model
 {
     private $id_aluno;
 
@@ -44,6 +44,8 @@ class NotasModel extends pdoModel
         $sql = "UPDATE notas SET nota1 = ?, nota2 = ?, nota3 = ?, nota4 = ?, falta1 = ?, falta2 = ?, falta3 = ?, falta4 = ?, faltas = ?, media = ?, resultado = ? WHERE id_aluno = ? AND materia = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$notas[0], $notas[1], $notas[2], $notas[3], $faltas[0], $faltas[1], $faltas[2], $faltas[3], $total_faltas, $media, $resultado, $id_aluno, $materia]);
+
+        return true;
     }
 
     public function naoExisteInsere($id_aluno, $materia = null, $notas = null, $faltas = null, $total_faltas = null, $media = null, $resultado = null)
@@ -51,6 +53,8 @@ class NotasModel extends pdoModel
         $sql = "INSERT INTO notas (id_aluno, materia, nota1, nota2, nota3, nota4, falta1, falta2, falta3, falta4, faltas, media, resultado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$id_aluno, $materia, $notas[0], $notas[1], $notas[2], $notas[3], $faltas[0], $faltas[1], $faltas[2], $faltas[3], $total_faltas, $media, $resultado]);
+
+        return true;
     }
 
     public function readNotas($id_aluno)

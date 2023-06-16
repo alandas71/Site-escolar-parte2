@@ -12,14 +12,26 @@ class dashboardController extends Controller
             $start = $_POST['start'];
             $end = $_POST['end'];
 
-            $agenda->createEvent($title, $start, $end);
-
-            header("location:" . BASE_URL . "dashboard");
-            exit();
+            if ($agenda->createEvent($title, $start, $end)) {
+                $_SESSION['message'] = 'Evento criado com sucesso.';
+                $_SESSION['alertClass'] = 'success';
+            } else {
+                $_SESSION['message'] = 'Falha ao criar evento.';
+                $_SESSION['alertClass'] = 'danger';
+            }
+            exit;
         }
 
-        $agenda->deleteEvent($id);
-
+        if ($id != null) {
+            if ($agenda->deleteEvent($id)) {
+                $_SESSION['message'] = 'Evento excluído com sucesso.';
+                $_SESSION['alertClass'] = 'success';
+            } else {
+                $_SESSION['message'] = 'Falha ao excluir evento.';
+                $_SESSION['alertClass'] = 'danger';
+            }
+            exit;
+        }
 
         $count = $num->getCountAlunos();
         $count2 = $num->getCountProfessor();
@@ -27,13 +39,12 @@ class dashboardController extends Controller
         $frequencias = $num->getQtAlunosPorTurma();
         $events = $agenda->readEvents();
 
-
         $dados = array(
             'count' => $count,
             'count2' => $count2,
             'count3' => $count3,
             'frequencias' => $frequencias,
-            'events' => $events
+            'events' => $events,
         );
 
         $this->loadDashboardTemplate('dashboard_items', $dados);
@@ -45,7 +56,16 @@ class dashboardController extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $al->deleteAluno($id);
+            if ($id != null) {
+
+                if ($al->deleteAluno($id)) {
+                    $_SESSION['message'] = 'Aluno excluído com sucesso.';
+                    $_SESSION['alertClass'] = 'success';
+                } else {
+                    $_SESSION['message'] = 'Falha ao excluir aluno.';
+                    $_SESSION['alertClass'] = 'danger';
+                }
+            }
 
             if (isset($_POST['adicionar_aluno'])) {
                 $nome = $_POST['nome'];
@@ -65,7 +85,13 @@ class dashboardController extends Controller
                     $turma2 = null;
                 }
 
-                $al->createAluno($nome, $email, $senha, $turma1, $turma2);
+                if ($al->createAluno($nome, $email, $senha, $turma1, $turma2)) {
+                    $_SESSION['message'] = 'Aluno criado com sucesso.';
+                    $_SESSION['alertClass'] = 'success';
+                } else {
+                    $_SESSION['message'] = 'Falha ao criar aluno.';
+                    $_SESSION['alertClass'] = 'danger';
+                }
             }
 
             header("location:" . BASE_URL . "dashboard/estudantes");
@@ -79,7 +105,7 @@ class dashboardController extends Controller
         $dados = array(
             'result_turmas' => $result_turmas,
             'result_turma1' => $result_turma1,
-            'result_turma2' => $result_turma2
+            'result_turma2' => $result_turma2,
         );
 
         $this->loadDashboardTemplate('relacao_alunos', $dados);
@@ -91,7 +117,16 @@ class dashboardController extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $prof->deleteProf($id);
+            if ($id != null) {
+
+                if ($prof->deleteProf($id)) {
+                    $_SESSION['message'] = 'Professor excluído com sucesso.';
+                    $_SESSION['alertClass'] = 'success';
+                } else {
+                    $_SESSION['message'] = 'Falha ao excluir professor.';
+                    $_SESSION['alertClass'] = 'danger';
+                }
+            }
 
             if (isset($_POST['adicionar_prof'])) {
                 $nome = $_POST['nome'];
@@ -110,7 +145,14 @@ class dashboardController extends Controller
                     $turma1 = null;
                     $turma2 = null;
                 }
-                $prof->createProf($nome, $email, $senha, $turma1, $turma2);
+
+                if ($prof->createProf($nome, $email, $senha, $turma1, $turma2)) {
+                    $_SESSION['message'] = 'Professor criado com sucesso.';
+                    $_SESSION['alertClass'] = 'success';
+                } else {
+                    $_SESSION['message'] = 'Falha ao criar professor.';
+                    $_SESSION['alertClass'] = 'danger';
+                }
             }
 
             header("location:" . BASE_URL . "dashboard/professores");
@@ -146,7 +188,13 @@ class dashboardController extends Controller
                     $turma_coluna = "turma2";
                 }
 
-                $turmas->updateTurmas($turma_coluna, $turma, $nome);
+                if ($turmas->updateTurmas($turma_coluna, $turma, $nome)) {
+                    $_SESSION['message'] = 'Turma trocada com sucesso.';
+                    $_SESSION['alertClass'] = 'success';
+                } else {
+                    $_SESSION['message'] = 'Falha ao trocar turma.';
+                    $_SESSION['alertClass'] = 'danger';
+                }
             }
 
             if (isset($_POST['criar'])) {
@@ -157,9 +205,16 @@ class dashboardController extends Controller
 
                 $existeTurma = $turmas->verifyTurmas($turma, $turno);
                 if ($existeTurma->fetch(PDO::FETCH_ASSOC) > 0) {
-                    echo "<div style='color:red; margin-left:100px'>Essa turma já existe.</div>";
-                } else {
-                    $turmas->createTurmas($turma, $turno, $vagas);
+                    $_SESSION['message'] = 'Essa turma já existe.';
+                    $_SESSION['alertClass'] = 'danger';
+                } else {;
+                    if ($turmas->createTurmas($turma, $turno, $vagas)) {
+                        $_SESSION['message'] = 'Turma criada com sucesso.';
+                        $_SESSION['alertClass'] = 'success';
+                    } else {
+                        $_SESSION['message'] = 'Falha ao criar nova turma.';
+                        $_SESSION['alertClass'] = 'danger';
+                    }
                 }
             }
 
@@ -167,7 +222,15 @@ class dashboardController extends Controller
             exit();
         }
 
-        $turmas->deleteTurmas($id_turma);
+        if ($id_turma != null) {
+            if ($turmas->deleteTurmas($id_turma)) {
+                $_SESSION['message'] = 'Turma excluída com sucesso.';
+                $_SESSION['alertClass'] = 'success';
+            } else {
+                $_SESSION['message'] = 'Falha ao excluir turma.';
+                $_SESSION['alertClass'] = 'danger';
+            }
+        };
 
         $result = $turmas->readTurmas();
         $nomes = $turmas->getDistinctUsers();
@@ -198,9 +261,11 @@ class dashboardController extends Controller
             $allowed_types = array('image/jpeg', 'image/png', 'image/gif');
 
             if (in_array($file_type, $allowed_types) === false) {
-                echo 'O tipo de arquivo não é permitido. Por favor, envie uma imagem no formato JPEG, PNG ou GIF.';
+                $_SESSION['message'] = 'Falha: O tipo de arquivo não é permitido.';
+                $_SESSION['alertClass'] = 'danger';
             } elseif ($file_size > 5242880) {
-                echo 'O tamanho do arquivo deve ser no máximo 5MB.';
+                $_SESSION['message'] = 'Falha: O tamanho do arquivo deve ser no máximo 5MB.';
+                $_SESSION['alertClass'] = 'danger';
             } else {
                 $upload_dir = $_SERVER['DOCUMENT_ROOT'] . '/school/assets/images/horarios/';
                 $file_extension = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
@@ -215,12 +280,25 @@ class dashboardController extends Controller
 
                     $count = $horarios->getCountHorarios($turma, $turno);
                     if ($count > 0) {
-                        $horarios->updateHorarios($file_name, $turma, $turno);
+                        if ($horarios->updateHorarios($file_name, $turma, $turno)) {
+                            $_SESSION['message'] = 'Horário atualizado com sucesso.';
+                            $_SESSION['alertClass'] = 'success';
+                        } else {
+                            $_SESSION['message'] = 'Falha ao atualizar horário.';
+                            $_SESSION['alertClass'] = 'danger';
+                        }
                     } else {
-                        $horarios->createHorarios($file_name, $turma, $turno);
+                        if ($horarios->createHorarios($file_name, $turma, $turno)) {
+                            $_SESSION['message'] = 'Horário criado com sucesso.';
+                            $_SESSION['alertClass'] = 'success';
+                        } else {
+                            $_SESSION['message'] = 'Falha ao criar horário.';
+                            $_SESSION['alertClass'] = 'danger';
+                        }
                     }
                 } else {
-                    echo 'Falha ao mover o arquivo enviado.';
+                    $_SESSION['message'] = 'Falha ao mover o arquivo enviado.';
+                    $_SESSION['alertClass'] = 'danger';
                 }
             }
 
@@ -242,7 +320,7 @@ class dashboardController extends Controller
         $this->loadDashboardTemplate('set_horario', $dados);
     }
 
-    public function matriculas($id = null, $email = null, $nome = null, $turno = null, $turma = null)
+    public function matriculas($id = null)
     {
 
         $matriculas = new MatriculaModel;
@@ -253,21 +331,39 @@ class dashboardController extends Controller
             if (!empty($_POST['nova_vaga'])) {
                 $nova_vaga = $_POST['nova_vaga'];
 
-                $matriculas->createVagas($nova_vaga);
+                if ($matriculas->createVagas($nova_vaga)) {
+                    $_SESSION['message'] = 'Vaga criada com sucesso.';
+                    $_SESSION['alertClass'] = 'success';
+                } else {
+                    $_SESSION['message'] = 'Falha ao criar vaga.';
+                    $_SESSION['alertClass'] = 'danger';
+                }
             }
 
             if (isset($_POST['excluir'])) {
                 $excluir_vaga = $_POST['vaga'];
 
-                $matriculas->deleteVagas($excluir_vaga);
+                if ($matriculas->deleteVagas($excluir_vaga)) {
+                    $_SESSION['message'] = 'Vaga excluída com sucesso.';
+                    $_SESSION['alertClass'] = 'success';
+                } else {
+                    $_SESSION['message'] = 'Falha ao excluir vaga.';
+                    $_SESSION['alertClass'] = 'danger';
+                }
             }
 
             header("location:" . BASE_URL . "dashboard/matriculas");
             exit();
         }
 
-        if ($email === null && $nome === null && $turno === null && $turma === null) {
-            $matriculas->deleteMatriculas($id);
+        if ($id != null) {
+            if ($matriculas->deleteMatriculas($id)) {
+                $_SESSION['message'] = 'Matricula excluída com sucesso.';
+                $_SESSION['alertClass'] = 'success';
+            } else {
+                $_SESSION['message'] = 'Falha ao excluir matrícula.';
+                $_SESSION['alertClass'] = 'danger';
+            }
         }
 
         $email = isset($_GET["email"]) ? $_GET["email"] : "";
@@ -275,9 +371,15 @@ class dashboardController extends Controller
         $turno = isset($_GET["turno"]) ? $_GET["turno"] : "";
         $turma = isset($_GET["turma"]) ? $_GET["turma"] : "";
 
-        $matriculas->createAlunoById($id, $email, $nome, $turno, $turma);
-
-
+        if ($email != null && $nome  != null  && $turno  != null  && $turma  != null) {
+            if ($matriculas->createAlunoById($id, $email, $nome, $turno, $turma)) {
+                $_SESSION['message'] = 'Aluno cadastrado com sucesso.';
+                $_SESSION['alertClass'] = 'success';
+            } else {
+                $_SESSION['message'] = 'Falha ao cadastrar aluno.';
+                $_SESSION['alertClass'] = 'danger';
+            }
+        }
 
         $emails = $matriculas->getEmail();
         $classes = $turmas->getDistinctTurmas();
@@ -309,7 +411,9 @@ class dashboardController extends Controller
                 $extensao = strtolower(pathinfo($_FILES['capa_album']['name'], PATHINFO_EXTENSION));
 
                 if ($extensao != 'png' && $extensao != 'jpg') {
-                    echo 'Formato não permitido';
+                    $_SESSION['message'] = 'Formato não permitido.';
+                    $_SESSION['alertClass'] = 'danger';
+                    header('Location: ' . BASE_URL . 'dashboard/album');
                     exit();
                 }
 
@@ -318,7 +422,13 @@ class dashboardController extends Controller
                 $target_file = $target_dir . $nome_arquivo;
                 move_uploaded_file($_FILES["capa_album"]["tmp_name"], $target_file);
 
-                $album->createAlbum($nome_album, $nome_arquivo);
+                if ($album->createAlbum($nome_album, $nome_arquivo)) {
+                    $_SESSION['message'] = 'Álbum criado com sucesso.';
+                    $_SESSION['alertClass'] = 'success';
+                } else {
+                    $_SESSION['message'] = 'Falha ao criar álbum.';
+                    $_SESSION['alertClass'] = 'danger';
+                }
             }
 
             if (isset($_POST['id_album']) && isset($_POST['nova_foto'])) {
@@ -330,7 +440,9 @@ class dashboardController extends Controller
                     $extensao = strtolower(pathinfo($nome_original, PATHINFO_EXTENSION));
 
                     if ($extensao != 'png' && $extensao != 'jpg') {
-                        $_SESSION['mensagem'] = "Erro, só é permitido adicionar imagens PNG ou JPG.";
+                        $_SESSION['message'] = 'Erro: só é permitido adicionar imagens PNG ou JPG.';
+                        $_SESSION['alertClass'] = 'danger';
+                        header('Location: ' . BASE_URL . 'dashboard/album');
                         exit();
                     }
 
@@ -339,7 +451,13 @@ class dashboardController extends Controller
                     $caminho_foto = $_SERVER['DOCUMENT_ROOT'] . '/school/assets/images/album/fotos/' . $nome_foto;
                     move_uploaded_file($_FILES['nova_foto']['tmp_name'][$i], $caminho_foto);
 
-                    $album->createFotos($id_album, $nome_foto);
+                    if ($album->createFotos($id_album, $nome_foto)) {
+                        $_SESSION['message'] = 'Foto adicionada com sucesso.';
+                        $_SESSION['alertClass'] = 'success';
+                    } else {
+                        $_SESSION['message'] = 'Falha ao adicionar foto.';
+                        $_SESSION['alertClass'] = 'danger';
+                    }
                 }
             }
 
@@ -359,13 +477,18 @@ class dashboardController extends Controller
                     $album->deleteAllFotos($id_foto);
                 }
 
-
                 $capa = $album->getCapa($id_album_to_delete);
 
                 $row = $capa->fetch(PDO::FETCH_ASSOC);
                 $nome_capa = $row['capa'];
 
-                $album->deleteAlbum($id_album_to_delete);
+                if ($album->deleteAlbum($id_album_to_delete)) {
+                    $_SESSION['message'] = 'Álbum excluído com sucesso.';
+                    $_SESSION['alertClass'] = 'success';
+                } else {
+                    $_SESSION['message'] = 'Falha ao excluir álbum.';
+                    $_SESSION['alertClass'] = 'danger';
+                }
 
                 $caminho_capa =  $_SERVER['DOCUMENT_ROOT'] . "/school/assets/images/album/" . $nome_capa;
                 if (file_exists($caminho_capa)) {
@@ -384,7 +507,14 @@ class dashboardController extends Controller
                     $row2 = $result2->fetch(PDO::FETCH_ASSOC);
                     $nome_arquivo = $row2['foto'];
 
-                    $album->deleteFotosPorId($id);
+                    if ($album->deleteFotosPorId($id)) {
+                        $_SESSION['message'] = 'Fotos excluídas com sucesso.';
+                        $_SESSION['alertClass'] = 'success';
+                    } else {
+                        $_SESSION['message'] = 'Falha ao excluir fotos.';
+                        $_SESSION['alertClass'] = 'danger';
+                    }
+
 
                     $diretorio =  $_SERVER['DOCUMENT_ROOT'] . "/school/assets/images/album/fotos/";
                     $caminho_arquivo = $diretorio . $nome_arquivo;
@@ -416,7 +546,13 @@ class dashboardController extends Controller
             $row = $result->fetch(PDO::FETCH_ASSOC);
             $nome_arquivo = $row['imagem'];
 
-            $site->deleteBannersPorId($id);
+            if ($site->deleteBannersPorId($id)) {
+                $_SESSION['message'] = 'Banner excluído com sucesso.';
+                $_SESSION['alertClass'] = 'success';
+            } else {
+                $_SESSION['message'] = 'Falha ao excluir banner.';
+                $_SESSION['alertClass'] = 'danger';
+            }
 
             $diretorio =  $_SERVER['DOCUMENT_ROOT'] . '/school/assets/images/banners/';
             $caminho_arquivo = $diretorio . $nome_arquivo;
@@ -428,7 +564,13 @@ class dashboardController extends Controller
             $id = $_POST['id'];
             $situacao = $_POST['situacao'] == 1 ? 2 : 1;
 
-            $site->updateSituacaoBanner($situacao, $id);
+            if ($site->updateSituacaoBanner($situacao, $id)) {
+                $_SESSION['message'] = 'Situação alterada com sucesso.';
+                $_SESSION['alertClass'] = 'success';
+            } else {
+                $_SESSION['message'] = 'Falha ao alterar situação.';
+                $_SESSION['alertClass'] = 'danger';
+            }
 
             header("location:" . BASE_URL . "dashboard/site");
             exit();
@@ -443,6 +585,8 @@ class dashboardController extends Controller
 
 
             if ($extensao != 'png' && $extensao != 'jpg') {
+                $_SESSION['message'] = 'Falha: só é permitido arquivos JPG e PNG.';
+                $_SESSION['alertClass'] = 'danger';
                 header("location:" . BASE_URL . "dashboard/site");
                 exit();
             }
@@ -452,7 +596,14 @@ class dashboardController extends Controller
 
             if (move_uploaded_file($_FILES['image']['tmp_name'], $caminho_arquivo)) {
 
-                $site->createBanners($nome_arquivo);
+
+                if ($site->createBanners($nome_arquivo)) {
+                    $_SESSION['message'] = 'Banner criado com sucesso.';
+                    $_SESSION['alertClass'] = 'success';
+                } else {
+                    $_SESSION['message'] = 'Falha ao criar banner.';
+                    $_SESSION['alertClass'] = 'danger';
+                }
             }
 
             header("location:" . BASE_URL . "dashboard/site");
@@ -468,6 +619,8 @@ class dashboardController extends Controller
 
 
             if ($extensao != 'png' && $extensao != 'jpg') {
+                $_SESSION['message'] = 'Falha: só é permitido arquivos JPG e PNG.';
+                $_SESSION['alertClass'] = 'danger';
                 header("location:" . BASE_URL . "dashboard/site");
                 exit();
             }
@@ -477,7 +630,13 @@ class dashboardController extends Controller
 
             if (move_uploaded_file($_FILES['image']['tmp_name'], $caminho_arquivo)) {
 
-                $site->createDepoimentos($nome_arquivo);
+                if ($site->createDepoimentos($nome_arquivo)) {
+                    $_SESSION['message'] = 'Depoimento criado com sucesso.';
+                    $_SESSION['alertClass'] = 'success';
+                } else {
+                    $_SESSION['message'] = 'Falha ao criar depoimento.';
+                    $_SESSION['alertClass'] = 'danger';
+                }
             }
 
             header("location:" . BASE_URL . "dashboard/site");
@@ -494,6 +653,8 @@ class dashboardController extends Controller
 
 
             if ($extensao != 'png' && $extensao != 'jpg') {
+                $_SESSION['message'] = 'Falha: só é permitido arquivos JPG e PNG.';
+                $_SESSION['alertClass'] = 'danger';
                 header("location:" . BASE_URL . "dashboard/site");
                 exit();
             }
@@ -506,7 +667,13 @@ class dashboardController extends Controller
 
             if (move_uploaded_file($_FILES['image']['tmp_name'], $caminho_arquivo)) {
 
-                $site->createProf($nome_arquivo, $nome, $info);
+                if ($site->createProf($nome_arquivo, $nome, $info)) {
+                    $_SESSION['message'] = 'Professor criado com sucesso.';
+                    $_SESSION['alertClass'] = 'success';
+                } else {
+                    $_SESSION['message'] = 'Falha ao criar professor.';
+                    $_SESSION['alertClass'] = 'danger';
+                }
             }
 
             header("location:" . BASE_URL . "dashboard/site");
@@ -522,7 +689,13 @@ class dashboardController extends Controller
             $row = $result->fetch(PDO::FETCH_ASSOC);
             $nome_arquivo = $row['face'];
 
-            $site->deleteProfPorId($id);
+            if ($site->deleteProfPorId($id)) {
+                $_SESSION['message'] = 'Professor excluído com sucesso.';
+                $_SESSION['alertClass'] = 'success';
+            } else {
+                $_SESSION['message'] = 'Falha ao excluir professor.';
+                $_SESSION['alertClass'] = 'danger';
+            }
 
             $diretorio =  $_SERVER['DOCUMENT_ROOT'] . "/school/assets/images/professores/";
             $caminho_arquivo = $diretorio . $nome_arquivo;
@@ -533,7 +706,13 @@ class dashboardController extends Controller
             $id = $_POST['id'];
             $situacao = $_POST['situacao'] == 1 ? 2 : 1;
 
-            $site->updateProf($situacao, $id);
+            if ($site->updateProf($situacao, $id)) {
+                $_SESSION['message'] = 'Situação alterada com sucesso.';
+                $_SESSION['alertClass'] = 'success';
+            } else {
+                $_SESSION['message'] = 'Falha ao alterar situação.';
+                $_SESSION['alertClass'] = 'danger';
+            }
 
             header("location:" . BASE_URL . "dashboard/site");
             exit();
@@ -547,7 +726,13 @@ class dashboardController extends Controller
             $row = $result->fetch(PDO::FETCH_ASSOC);
             $nome_arquivo = $row['depoimento'];
 
-            $site->deleteDepoimentosPorId($id);
+            if ($site->deleteDepoimentosPorId($id)) {
+                $_SESSION['message'] = 'Depoimento excluído com sucesso.';
+                $_SESSION['alertClass'] = 'success';
+            } else {
+                $_SESSION['message'] = 'Falha ao excluir depoimento.';
+                $_SESSION['alertClass'] = 'danger';
+            }
 
             $diretorio = $_SERVER['DOCUMENT_ROOT'] . "/school/assets/images/depoimentos/";
             $caminho_arquivo = $diretorio . $nome_arquivo;
@@ -558,7 +743,13 @@ class dashboardController extends Controller
             $id = $_POST['id'];
             $situacao = $_POST['situacao'] == 1 ? 2 : 1;
 
-            $site->updateDepoimentos($id, $situacao);
+            if ($site->updateDepoimentos($id, $situacao)) {
+                $_SESSION['message'] = 'Situação alterada com sucesso.';
+                $_SESSION['alertClass'] = 'success';
+            } else {
+                $_SESSION['message'] = 'Falha ao alterar situação.';
+                $_SESSION['alertClass'] = 'danger';
+            }
 
             header("location:" . BASE_URL . "dashboard/site");
             exit();
@@ -671,35 +862,47 @@ class dashboardController extends Controller
 
         $data = $mtr->readMatriculaPorId($id_matricula);
 
-        if (isset($_FILES['foto'])) {
-            $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/school/assets/images/clientes/";
-            $extension = pathinfo($_FILES["foto"]["name"], PATHINFO_EXTENSION);
-            $fileName = uniqid() . '.' . $extension;
-            $targetFilePath = $targetDir . $fileName;
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_FILES['foto']) && isset($_POST['cropped-image'])) {
+                $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/school/assets/images/clientes/";
+                $extension = pathinfo($_FILES["foto"]["name"], PATHINFO_EXTENSION);
+                $fileName = uniqid() . '.' . $extension;
+                $targetFilePath = $targetDir . $fileName;
 
-            if (!empty($targetDir . $foto['foto'])) {
-                unlink($targetDir . $foto['foto']);
-            }
+                if (!empty($targetDir . $foto['foto'])) {
+                    unlink($targetDir . $foto['foto']);
+                }
 
-            $allowTypes = array('jpg', 'jpeg', 'png', 'gif');
-            $fileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
+                $allowTypes = array('jpg', 'jpeg', 'png', 'gif');
+                $fileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
 
-            if (in_array($fileType, $allowTypes)) {
-                if (move_uploaded_file($_FILES["foto"]["tmp_name"], $targetFilePath)) {
-                    $cliente->updateFoto($fileName, $id_aluno);
-                    $_SESSION['caminho_imagem'] = $targetFilePath;
+                if (in_array($fileType, $allowTypes)) {
+                    if (move_uploaded_file($_FILES["foto"]["tmp_name"], $targetFilePath)) {
+                        if ($cliente->updateFoto($fileName, $id_aluno)) {
+                            $_SESSION['message'] = 'Foto alterada com sucesso.';
+                            $_SESSION['alertClass'] = 'success';
+                        } else {
+                            $_SESSION['message'] = 'Falha ao alterar foto.';
+                            $_SESSION['alertClass'] = 'danger';
+                        }
+                        $_SESSION['caminho_imagem'] = $targetFilePath;
+                    }
                 }
             }
-            header('Location: ' . BASE_URL . 'dashboard/perfil/' . $id_aluno);
-        }
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $email = $_POST['email'];
-            $telefone = $_POST['telefone'];
-            $endereco = $_POST['endereco'];
+            if (isset($_POST['email']) || isset($_POST['telefone']) || isset($_POST['endereco']) && isset($_POST['confirm-update'])) {
+                $email = $_POST['email'];
+                $telefone = $_POST['telefone'];
+                $endereco = $_POST['endereco'];
 
-            $mtr->updatePerfil($id_matricula, $email, $telefone, $endereco);
-
+                if ($mtr->updatePerfil($id_matricula, $email, $telefone, $endereco)) {
+                    $_SESSION['message'] = 'Perfil atualizado com sucesso.';
+                    $_SESSION['alertClass'] = 'success';
+                } else {
+                    $_SESSION['message'] = 'Falha ao atualizar perfil.';
+                    $_SESSION['alertClass'] = 'danger';
+                }
+            }
             header('Location: ' . BASE_URL . 'dashboard/perfil/' . $id_aluno);
         }
 

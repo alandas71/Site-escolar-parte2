@@ -1,7 +1,6 @@
 <?php
-class MatriculaModel extends pdoModel
+class MatriculaModel extends Model
 {
-
     public function updatePerfil($id, $email, $telefone, $endereco)
     {
         $sql = "UPDATE matricula SET email1 = :email, telefone = :telefone, rua = :endereco WHERE id = :id";
@@ -11,6 +10,14 @@ class MatriculaModel extends pdoModel
         $result->bindParam(':telefone', $telefone);
         $result->bindParam(':endereco', $endereco);
         $result->execute();
+
+        $sql = "UPDATE users SET email = :email WHERE id_matricula = :id";
+        $result = $this->conn->prepare($sql);
+        $result->bindParam(':id', $id);
+        $result->bindParam(':email', $email);
+        $result->execute();
+
+        return true;
     }
 
     public function getVagas()
@@ -25,12 +32,16 @@ class MatriculaModel extends pdoModel
     {
         $sql = "INSERT INTO vagas (vaga) VALUES ('$nova_vaga')";
         $this->conn->query($sql);
+
+        return true;
     }
 
     public function deleteVagas($excluir_vaga)
     {
         $sql = "DELETE FROM vagas WHERE vaga = '$excluir_vaga'";
         $this->conn->query($sql);
+
+        return true;
     }
 
     public function createAlunoById($id, $email, $nome, $turno, $turma)
@@ -56,6 +67,8 @@ class MatriculaModel extends pdoModel
             $result->bindParam(':turma', $turma);
             $result->execute();
         }
+
+        return true;
     }
 
     public function readMatriculas()
@@ -109,6 +122,8 @@ class MatriculaModel extends pdoModel
         $result = $this->conn->prepare($sql);
         $result->bindParam(':id', $id);
         $result->execute();
+
+        return true;
     }
 
     public function getEmail()

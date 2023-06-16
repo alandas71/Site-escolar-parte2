@@ -242,12 +242,16 @@ a {
     height: 230px;
 }
 
-.row {
+.rowHome {
     margin-top: 50px;
     display: inline-block;
     text-align: center;
     justify-content: center;
     align-items: center;
+}
+
+.row {
+    margin-bottom: 15px;
 }
 
 .textRow {
@@ -753,7 +757,7 @@ hr {
     border-top: 1px solid lightgray;
 }
 
-.modal-container {
+.modal-containerr {
     width: 100vw;
     height: 100%;
     position: fixed;
@@ -762,19 +766,6 @@ hr {
     display: none;
     z-index: 999;
     justify-content: center;
-
-}
-
-.modal {
-    display: flex;
-    flex-direction: column;
-    padding: 30px;
-    background-color: white;
-    border-radius: 10px;
-    width: 80%;
-    overflow: hidden;
-    overflow-y: scroll;
-    height: 70vh;
 
 }
 
@@ -796,16 +787,29 @@ hr {
     height: 20vw;
 }
 
+.modall {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    width: 80%;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 70vh;
+
+}
+
 .active {
     display: flex;
 }
 
-.active .modal,
+.active .modall,
 .modalMtr {
-    animation: modal .4s;
+    animation: modall .4s;
 }
 
-@keyframes modal {
+@keyframes modall {
     from {
         opacity: 0;
         transform: translate3d(0, -60px, 0);
@@ -1474,12 +1478,18 @@ tbody {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.modal-dialog {
+    display: table;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
 .modal-content {
+    display: inline-table;
     background-color: #fefefe;
-    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
 }
 
 .close {
@@ -1505,6 +1515,13 @@ tbody {
     margin-right: 40px;
     padding-bottom: 50px;
     box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5);
+}
+
+.container-count {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
 }
 
 .container-count>div {
@@ -1643,15 +1660,7 @@ tbody {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal-content {
-    background-color: white;
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 100%;
-    max-width: 800px;
-    position: relative;
-}
+
 
 .close {
     position: absolute;

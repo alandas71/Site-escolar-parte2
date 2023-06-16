@@ -71,8 +71,8 @@
                 </div>
             </div>
 
-            <a href="">
-                <img class="logotopo" src="assets\images\iconetopo.png" title="Ir para início" width="74 px"></a>
+            <a href="<?php echo BASE_URL; ?>">
+                <img class="logotopo" src="<?php echo BASE_URL; ?>assets\images\iconetopo.png" title="Ir para início" width="74 px"></a>
             <div class="menu" style="padding: 0;">
                 <ul>
                     <li>

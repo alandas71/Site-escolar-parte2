@@ -120,7 +120,7 @@
                     if ($emails->fetch(PDO::FETCH_ASSOC) > 0) {
                         echo "<td id='situacao_aluno'>Aluno</td>";
                     } else {
-                        echo "<td><a href='" . BASE_URL . "dashboard/matriculas/" . $id . "/" . $email . "/" . $nome . "/" . $turma . "/" . $turno . "'>Cadastrar</a></td>";
+                        echo "<td><a href=' " . BASE_URL . "dashboard/matriculas?email=$email&nome=$nome&turma=$turma&turno=$turno'>Cadastrar</a></td>";
                     }
                     echo "<td><a href='" . BASE_URL . "dashboard/matriculas/" . $row['id'] . "' onclick='return confirm(\" Tem certeza de que deseja excluir o pré-registro?\")'><i class='fas fa-trash-alt' style='color: #B30000; text-align: center;'></i></a></td>";
                     echo "<td>" . $row['turma'] . "</td>";

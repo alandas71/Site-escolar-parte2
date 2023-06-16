@@ -152,8 +152,8 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
     </footer>
 
     <script>
-        var limite = <?= $count ?>; // define o número limite da contagem
-        var contador = 0; // inicializa o contador
+        var limite = <?= $count ?>;
+        var contador = 0;
         var intervalo = setInterval(function() {
             if (<?= $count ?> > 0) {
                 contador++;
@@ -162,13 +162,13 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
             }
             document.getElementById("contador-alunos").innerHTML = contador;
             if (contador == limite) {
-                clearInterval(intervalo); // para a animação quando alcançar o limite
+                clearInterval(intervalo);
             }
-        }, 100); // define o intervalo de tempo entre cada contagem (1000ms = 1s)
+        }, 100);
     </script>
     <script>
-        var limite2 = <?= $count2 ?>; // define o número limite da contagem
-        var contador2 = 0; // inicializa o contador
+        var limite2 = <?= $count2 ?>;
+        var contador2 = 0;
         var intervalo2 = setInterval(function() {
             if (<?= $count2 ?> > 0) {
                 contador2++;
@@ -177,13 +177,13 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
             }
             document.getElementById("contador-prof").innerHTML = contador2;
             if (contador2 == limite2) {
-                clearInterval(intervalo2); // para a animação quando alcançar o limite
+                clearInterval(intervalo2);
             }
-        }, 100); // define o intervalo de tempo entre cada contagem (1000ms = 1s)
+        }, 100);
     </script>
     <script>
-        var limite3 = <?= $count3 ?>; // define o número limite da contagem
-        var contador3 = 0; // inicializa o contador
+        var limite3 = <?= $count3 ?>;
+        var contador3 = 0;
         var intervalo3 = setInterval(function() {
             if (<?= $count3 ?> > 0) {
                 contador3++;
@@ -192,9 +192,9 @@ if (isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])) {
             }
             document.getElementById("contador-turma").innerHTML = contador3;
             if (contador3 == limite3) {
-                clearInterval(intervalo3); // para a animação quando alcançar o limite
+                clearInterval(intervalo3);
             }
-        }, 100); // define o intervalo de tempo entre cada contagem (1000ms = 1s)
+        }, 100);
     </script>
 </body>
 

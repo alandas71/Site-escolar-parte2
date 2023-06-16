@@ -1,5 +1,5 @@
 <?php
-class ClienteModel extends pdoModel
+class ClienteModel extends Model
 {
     public function readFoto($id_aluno)
     {
@@ -17,5 +17,7 @@ class ClienteModel extends pdoModel
         $stmt->bindParam(':foto', $fileName);
         $stmt->bindParam(':user_id', $user_id);
         $stmt->execute();
+
+        return true;
     }
 }

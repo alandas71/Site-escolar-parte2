@@ -1,7 +1,7 @@
 <section>
-    <div class="container py-5" style="display: block;">
+    <div class="container py-5" style="display: block;  margin:auto;">
         <div class="row">
-            <div class=" col-lg-4" style="box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.1); background-color: white; border-radius: 10px;">
+            <div class=" col-lg-4">
                 <div class="card mb-4">
                     <div class="card-body text-center">
                         <form method="post" enctype="multipart/form-data" id="myForm">
@@ -21,11 +21,11 @@
                 </div>
             </div>
             <div class="col-lg-8">
-                <div class="card mb-4" style="box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.1); background-color: white; border-radius: 10px;">
+                <div class="card mb-4">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Email</p>
+                                <p class="mb-0">Email:</p>
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted mb-0"><?= $data ? $data['email1'] : 'Indefinido'; ?></p>
@@ -33,7 +33,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Telefone</p>
+                                <p class="mb-0">Telefone:</p>
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted mb-0"><?= $data ? $data['telefone'] : 'Indefinido'; ?></p>
@@ -41,7 +41,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Endereço</p>
+                                <p class="mb-0">Endereço:</p>
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted mb-0"><?= $data ? $data['rua'] : 'Indefinido'; ?></p>
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" style="box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.1); background-color: white; border-radius: 10px;">
+                <div class="row">
                     <p class="mb-4"><span class="text-primary font-italic me-1">Desempenho</span>
                     </p>
                     <div class="col-md-6">

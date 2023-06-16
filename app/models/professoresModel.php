@@ -1,5 +1,5 @@
 <?php
-class ProfessoresModel extends pdoModel
+class ProfessoresModel extends Model
 {
     public function createProf($nome, $email, $senha, $turma1, $turma2)
     {
@@ -11,6 +11,8 @@ class ProfessoresModel extends pdoModel
         $stmt->bindParam(':turma1', $turma1);
         $stmt->bindParam(':turma2', $turma2);
         $stmt->execute();
+
+        return true;
     }
 
     public function readTurmas()
@@ -46,5 +48,7 @@ class ProfessoresModel extends pdoModel
         $stmt = $this->conn->prepare($pdo_excluir);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
+
+        return true;
     }
 }

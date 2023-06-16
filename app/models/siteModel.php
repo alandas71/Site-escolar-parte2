@@ -1,6 +1,6 @@
 <?php
 
-class siteModel extends pdoModel
+class siteModel extends Model
 {
     public function getBanners()
     {
@@ -18,6 +18,8 @@ class siteModel extends pdoModel
         $result = $this->conn->prepare($sql);
         $result->bindParam(':nome_arquivo', $nome_arquivo);
         $result->execute();
+
+        return true;
     }
 
 
@@ -38,6 +40,8 @@ class siteModel extends pdoModel
         $result->bindParam(':id', $id);
         $result->bindParam(':situacao', $situacao);
         $result->execute();
+
+        return true;
     }
 
     public function deleteBannersPorId($id)
@@ -46,6 +50,8 @@ class siteModel extends pdoModel
         $result = $this->conn->prepare($sql);
         $result->bindParam(':id', $id);
         $result->execute();
+
+        return true;
     }
 
     public function getProf()
@@ -64,6 +70,8 @@ class siteModel extends pdoModel
         $result = $this->conn->prepare($sql);
         $result->bindParam(':nome_arquivo', $nome_arquivo);
         $result->execute();
+
+        return true;
     }
 
     public function createProf($nome_arquivo, $nome, $info)
@@ -74,6 +82,8 @@ class siteModel extends pdoModel
         $result->bindParam(':nome', $nome);
         $result->bindParam(':info', $info);
         $result->execute();
+
+        return true;
     }
 
     public function readProfPorId($id)
@@ -92,6 +102,8 @@ class siteModel extends pdoModel
         $resultProf = $this->conn->prepare($sql);
         $resultProf->bindParam(':id', $id);
         $resultProf->execute();
+
+        return true;
     }
 
     public function updateProf($situacao, $id)
@@ -101,6 +113,8 @@ class siteModel extends pdoModel
         $result->bindParam(':id', $id);
         $result->bindParam(':situacao', $situacao);
         $result->execute();
+
+        return true;
     }
 
     public function getDepoimentos()
@@ -129,6 +143,8 @@ class siteModel extends pdoModel
         $resultProf = $this->conn->prepare($sql);
         $resultProf->bindParam(':id', $id);
         $resultProf->execute();
+
+        return true;
     }
 
     public function updateDepoimentos($id, $situacao)
@@ -138,5 +154,7 @@ class siteModel extends pdoModel
         $result->bindParam(':id', $id);
         $result->bindParam(':situacao', $situacao);
         $result->execute();
+
+        return true;
     }
 }

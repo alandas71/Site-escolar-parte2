@@ -1,5 +1,5 @@
 <?php
-class CountModel extends pdoModel
+class CountModel extends Model
 {
     public function getCountAlunos()
     {

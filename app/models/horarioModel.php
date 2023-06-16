@@ -1,5 +1,5 @@
 <?php
-class HorarioModel extends pdoModel
+class HorarioModel extends Model
 {
 
     public function getTurmas()
@@ -40,6 +40,8 @@ class HorarioModel extends pdoModel
         $stmt_insert->bindParam(':turno', $turno);
         $stmt_insert->execute();
         $stmt_insert->closeCursor();
+
+        return true;
     }
 
     public function readHorario($turmas)
@@ -60,5 +62,7 @@ class HorarioModel extends pdoModel
         $stmt_update->bindParam(':turno', $turno);
         $stmt_update->execute();
         $stmt_update->closeCursor();
+
+        return true;
     }
 }

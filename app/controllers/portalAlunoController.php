@@ -38,7 +38,14 @@ class portalAlunoController extends Controller
 
             if (in_array($fileType, $allowTypes)) {
                 if (move_uploaded_file($_FILES["foto"]["tmp_name"], $targetFilePath)) {
-                    $cliente->updateFoto($fileName, $id_aluno);
+
+                    if ($cliente->updateFoto($fileName, $id_aluno)) {
+                        $_SESSION['message'] = 'Foto atualizada com sucesso.';
+                        $_SESSION['alertClass'] = 'success';
+                    } else {
+                        $_SESSION['message'] = 'Falha ao atualizar foto.';
+                        $_SESSION['alertClass'] = 'danger';
+                    }
                     $_SESSION['caminho_imagem'] = $targetFilePath;
                 }
             }

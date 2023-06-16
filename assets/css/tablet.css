@@ -29,7 +29,7 @@
 
 
 @media screen and (max-width: 1544px) {
-    .modal {
+    .modall {
         height: 80vh;
     }
 
@@ -46,7 +46,7 @@
     }
 
 
-    .modal {
+    .modall {
         height: 80vh;
     }
 
@@ -539,7 +539,7 @@
         height: 220px;
     }
 
-    .row {
+    .rowHome {
         display: block;
     }
 

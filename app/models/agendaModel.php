@@ -1,11 +1,13 @@
 <?php
 
-class AgendaModel extends pdoModel
+class AgendaModel extends Model
 {
     public function createEvent($title, $start, $end)
     {
         $stmt = $this->conn->prepare('INSERT INTO events (title, start, end) VALUES (?, ?, ?)');
         $stmt->execute([$title, $start, $end]);
+
+        return true;
     }
 
     public function readEvents()
@@ -20,5 +22,7 @@ class AgendaModel extends pdoModel
     {
         $stmt = $this->conn->prepare('DELETE FROM events WHERE id = ?');
         $stmt->execute([$id]);
+
+        return true;
     }
 }
